@@ -1,0 +1,46 @@
+PRATHAMESH LONARE
++91-9028061523 | prathameshlonare9@gmail.com
+LinkedIn: https://www.linkedin.com/in/prathamesh-lonare-a0759b275/
+GitHub: https://github.com/prathameshlonare
+Chandrapur, Maharashtra
+
+PROFESSIONAL SUMMARY
+Final-year B.Tech CSE student specialising in AWS cloud infrastructure, with hands-on experience designing and deploying two end-to-end serverless apps using Lambda, API Gateway, DynamoDB, CloudFront, and CloudFormation. Seeking an entry-level Cloud / DevOps Engineer role where I can apply AWS-native development and IaC skills in a production environment.
+
+TECHNICAL SKILLS
+Cloud Platforms: AWS (Lambda, EC2, S3, DynamoDB, API Gateway, IAM, CloudFront, CloudFormation, CloudWatch, Cognito), Azure
+IaC & Automation: CloudFormation, Terraform, Python Boto3 / AWS SDK, Bash
+CI/CD & DevOps: GitHub Actions, Git, Linux
+Networking: VPC, IAM Policies, Least-Privilege Access, TCP/IP, DNS
+Programming: Python, Shell Scripting
+
+PROJECTS & APPLIED EXPERIENCE
+
+Cloud Based Student Accommodation and Mess Finder | GitHub
+Role: Backend Engineer | 2026
+Tech Stack: Lambda, API Gateway, DynamoDB, S3, CloudFront, CloudFormation, CloudWatch, Python
+• Designed and deployed a serverless multi-tier platform on AWS, projected hosting cost reduction of 80% compared to traditional EC2 deployments.
+• Developed 6 RESTful API endpoints using API Gateway and Python (Boto3) Lambda functions.
+• Provisioned infrastructure as code via 3 modular CloudFormation stacks, enabling single-command environment deployments.
+• Configured CloudWatch alarms for Lambda error rates and API latency to monitor production health.
+
+Serverless Cloud-Based Voting System | GitHub
+Role: Cloud Engineer | 2025
+Tech Stack: Lambda, IAM, DynamoDB, Cognito, CloudWatch, S3, GitHub Actions
+• Engineered a GitHub Actions CI/CD pipeline, reducing manual deployment steps from 8 to zero.
+• Implemented a highly available backend using DynamoDB On-Demand capacity to automatically handle peak voting traffic without manual provisioning.
+• Secured application access via Cognito User Pools, enforcing IAM least-privilege policies across all Lambda execution roles.
+
+EDUCATION
+
+B.Tech (CSE) | 2022–2026 | 7.4 CGPA
+Rajiv Gandhi College of Engineering, Research and Technology, Chandrapur, MH
+
+XII (HSC) | 2022 | 72.67%
+Lal Bahadur Shastri Dyanpeeth and Junior College, Akot, MH
+
+X (SSC) | 2020 | 78.80%
+Shri Swami Vivekanand English School, Akot, MH
+
+CERTIFICATIONS & TRAINING
+• Microsoft Elevate & AICTE: Azure Fundamentals Training Program (25 Hours) | Jan–Feb 2026
