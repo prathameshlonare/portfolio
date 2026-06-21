@@ -169,12 +169,12 @@ export default function Home() {
         <section id="about" className="scroll-mt-16 md:scroll-mt-24 max-w-[75ch] mx-auto terminal-mono mb-10">
           <TerminalSection command="cat about.txt">
             <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed max-w-[65ch] lg:text-justify terminal-body break-words">
-              Final-year B.Tech CSE student specialising in AWS cloud
-              infrastructure, with hands-on experience designing and deploying two
-              end-to-end serverless apps using Lambda, API Gateway, DynamoDB,
-              CloudFront, and CloudFormation. Seeking an entry-level Cloud / DevOps
-              Engineer role where I can apply AWS-native development and IaC skills
-              in a production environment.
+              B.Tech CSE graduate specialising in AWS cloud infrastructure,
+              with hands-on experience designing and deploying two end-to-end
+              serverless apps using Lambda, API Gateway, DynamoDB, CloudFront,
+              and CloudFormation. Seeking an entry-level Cloud / DevOps Engineer
+              role where I can apply AWS-native development and IaC skills in a
+              production environment.
             </p>
           </TerminalSection>
         </section>
@@ -353,7 +353,7 @@ export default function Home() {
         <SectionReveal>
         <section id="certifications" className="scroll-mt-16 md:scroll-mt-24 mb-10">
           <TerminalSection command="cat certifications.txt">
-            <div className="text-sm md:text-base terminal-body">
+            <div className="text-sm md:text-base terminal-body space-y-3">
               <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline gap-0.5 sm:gap-x-3 sm:gap-y-1">
                 <span className="text-[var(--text-primary)] font-medium break-words">
                   Microsoft Elevate &amp; AICTE
@@ -362,6 +362,15 @@ export default function Home() {
                   Azure Fundamentals Training Program (25 Hours)
                 </span>
                 <span className="text-[var(--text-dim)]">Jan–Feb 2026</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline gap-0.5 sm:gap-x-3 sm:gap-y-1">
+                <span className="text-[var(--text-primary)] font-medium break-words">
+                  AWS Skill Builder
+                </span>
+                <span className="text-[var(--text-secondary)] break-words">
+                  Cloud Practitioner Essentials
+                </span>
+                <span className="text-[var(--text-dim)]">Jun 2026</span>
               </div>
             </div>
           </TerminalSection>
@@ -373,6 +382,17 @@ export default function Home() {
         <section id="contact" className="scroll-mt-16 md:scroll-mt-24">
           <TerminalSection command="echo $CONTACT">
             <div className="space-y-3 md:space-y-4 text-sm md:text-base pl-0 md:pl-4 border-l-0 md:border-l border-[var(--border)] terminal-body">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-0">
+                <span className="text-[var(--text-dim)] w-full sm:w-24 shrink-0 whitespace-nowrap">
+                  Mobile:
+                </span>
+                <a
+                  href="tel:+919028061523"
+                  className="text-[var(--accent-blue)] hover:underline transition-colors terminal-mono break-all"
+                >
+                  +91 9028061523
+                </a>
+              </div>
               <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-0">
                 <span className="text-[var(--text-dim)] w-full sm:w-24 shrink-0 whitespace-nowrap">
                   GitHub:
