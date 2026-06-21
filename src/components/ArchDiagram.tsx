@@ -4,11 +4,13 @@ import { useState, useRef, useCallback } from "react";
 
 interface ArchNode {
   label: string;
+  description?: string;
 }
 
 interface ArchDiagramProps {
   nodes: ArchNode[];
   title: string;
+  variant?: "badges" | "flow";
 }
 
 function prefersReducedMotion(): boolean {
@@ -27,6 +29,16 @@ const awsColors: Record<string, string> = {
   CloudFormation: "bg-indigo-600",
   IAM: "bg-red-600",
   "GitHub Actions": "bg-gray-500",
+  React: "bg-sky-500",
+  Vite: "bg-violet-500",
+  "pdf.js": "bg-orange-400",
+  "Tesseract.js": "bg-blue-500",
+  localStorage: "bg-zinc-500",
+  "Service Worker": "bg-zinc-500",
+  Streamlit: "bg-red-500",
+  "sentence-transformers": "bg-blue-400",
+  "scikit-learn": "bg-blue-600",
+  "CSV Data Pipeline": "bg-zinc-500",
 };
 
 function getNodeColor(label: string): string {
@@ -36,7 +48,7 @@ function getNodeColor(label: string): string {
   return "bg-zinc-600";
 }
 
-export function ArchDiagram({ nodes, title }: ArchDiagramProps) {
+export function ArchDiagram({ nodes, title, variant = "badges" }: ArchDiagramProps) {
   const [open, setOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState<React.CSSProperties>({ height: 0, opacity: 0, overflow: "hidden" });
@@ -114,23 +126,45 @@ export function ArchDiagram({ nodes, title }: ArchDiagramProps) {
       </button>
 
       <div ref={contentRef} style={style}>
-        <div className="flex flex-col md:flex-row md:flex-wrap md:items-center gap-1.5 pt-3">
-          {nodes.map((node, i) => (
-            <div key={i} className="flex items-center gap-1.5">
-              <span
-                className={`text-[10px] leading-none px-2 py-1 rounded text-white font-mono ${getNodeColor(node.label)}`}
-              >
-                {node.label}
-              </span>
-              {i < nodes.length - 1 && (
-                <>
-                  <span className="text-[var(--text-dim)] text-xs hidden md:inline">→</span>
-                  <span className="text-[var(--text-dim)] text-xs md:hidden">↓</span>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
+        {variant === "flow" ? (
+          <div className="pt-3 font-mono text-[11px] flex flex-col items-center">
+            <span className="text-[var(--text-dim)]">Client</span>
+            <span className="text-[var(--accent-green)] my-0.5">↓</span>
+            {nodes.map((node, i) => (
+              <div key={i} className="flex flex-col items-center">
+                <div className="flex items-center gap-2 border border-[var(--text-dim)]/30 rounded px-3 py-1.5 bg-[var(--text-dim)]/5">
+                  <span className={`px-1.5 py-0.5 rounded text-white text-[10px] ${getNodeColor(node.label)}`}>
+                    {node.label}
+                  </span>
+                  {node.description && (
+                    <span className="text-[var(--text-dim)]">— {node.description}</span>
+                  )}
+                </div>
+                {i < nodes.length - 1 && (
+                  <span className="text-[var(--accent-green)] my-0.5">↓</span>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col md:flex-row md:flex-wrap md:items-center gap-1.5 pt-3">
+            {nodes.map((node, i) => (
+              <div key={i} className="flex items-center gap-1.5">
+                <span
+                  className={`text-[10px] leading-none px-2 py-1 rounded text-white font-mono ${getNodeColor(node.label)}`}
+                >
+                  {node.label}
+                </span>
+                {i < nodes.length - 1 && (
+                  <>
+                    <span className="text-[var(--text-dim)] text-xs hidden md:inline">→</span>
+                    <span className="text-[var(--text-dim)] text-xs md:hidden">↓</span>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

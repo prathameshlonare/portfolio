@@ -122,7 +122,7 @@ export default function Home() {
               </MagneticWrap>
               <MagneticWrap strength={4}>
                 <a
-                  href="/prathamesh_resume.pdf"
+                  href="/prathamesh_lonare_resume.pdf"
                   download
                   className="interactive group cta-cursor min-h-[44px] flex items-center px-4 sm:px-6 py-3 text-xs sm:text-sm border border-[var(--border)] rounded-lg text-[var(--text-muted)] hover:text-[var(--accent-green)] hover:border-[var(--accent-green)] hover:bg-[color-mix(in_srgb,var(--accent-green)_8%,transparent)] font-mono text-center"
                 >
@@ -199,13 +199,14 @@ export default function Home() {
                 ]}
               />
               <ArchDiagram
+                variant="flow"
                 nodes={[
-                  { label: "CloudFront" },
-                  { label: "S3" },
-                  { label: "API Gateway" },
-                  { label: "Lambda" },
-                  { label: "DynamoDB" },
-                  { label: "CloudWatch" },
+                  { label: "CloudFront", description: "CDN" },
+                  { label: "S3", description: "Static Assets" },
+                  { label: "API Gateway", description: "REST API" },
+                  { label: "Lambda", description: "Business Logic" },
+                  { label: "DynamoDB", description: "Database" },
+                  { label: "CloudWatch", description: "Monitoring" },
                 ]}
                 title="Dorm-Dish"
               />
@@ -220,19 +221,66 @@ export default function Home() {
                   "Implemented a highly available backend using DynamoDB On-Demand capacity to automatically handle peak voting traffic without manual provisioning.",
                   "Secured application access via Cognito User Pools, enforcing IAM least-privilege policies across all Lambda execution roles.",
                 ]}
+              />
+              <ArchDiagram
+                variant="flow"
+                nodes={[
+                  { label: "S3", description: "Static Hosting" },
+                  { label: "Cognito", description: "User Auth" },
+                  { label: "Lambda", description: "Business Logic" },
+                  { label: "DynamoDB", description: "Database" },
+                  { label: "IAM", description: "Access Control" },
+                  { label: "CloudWatch", description: "Monitoring" },
+                  { label: "GitHub Actions", description: "CI/CD" },
+                ]}
+                title="online-voting-system"
+              />
+              <ProjectCard
+                name="Statement Dashboard"
+                role="Full-Stack Developer"
+                year="2026"
+                githubUrl="https://github.com/prathameshlonare/statement-dashboard"
+                tech="React 19 · TypeScript 6 · Vite 8 · Tailwind CSS · shadcn/ui · Recharts · pdf.js · Tesseract.js · jsPDF"
+                bullets={[
+                  "Built a 100% offline-first PWA bank statement analyzer with PDF/CSV import, OCR fallback, and budget tracking — zero data leaves the device.",
+                  "Implemented recurring payment detection with confidence scoring, month-over-month comparison, and a composite financial health score algorithm.",
+                  "Designed a Swiss editorial UI with dark mode, micro-animations, scroll-triggered staggers, and mobile-first responsive layout using shadcn/ui primitives.",
+                ]}
+              />
+              <ArchDiagram
+                variant="flow"
+                nodes={[
+                  { label: "React", description: "UI Framework" },
+                  { label: "Vite", description: "Build Tool" },
+                  { label: "pdf.js", description: "PDF Parsing" },
+                  { label: "Tesseract.js", description: "OCR Engine" },
+                  { label: "localStorage", description: "Data Persistence" },
+                  { label: "Service Worker", description: "Offline Support" },
+                ]}
+                title="statement-dashboard"
+              />
+              <ProjectCard
+                name="AI Resume-Job Matcher"
+                role="ML Engineer"
+                year="2026"
+                githubUrl="https://github.com/prathameshlonare/ai-resume-job-matcher"
+                tech="Python · Streamlit · sentence-transformers · scikit-learn · pandas · numpy"
+                bullets={[
+                  "Developed an ML-based resume-job compatibility predictor trained on 1,200+ real job postings, achieving ~90% accuracy and ~95% AUC-ROC.",
+                  "Used semantic embeddings (all-MiniLM-L6-v2) with cosine similarity and logistic regression for match probability prediction.",
+                  "Built a Streamlit web app that extracts missing keywords and detected skills to help candidates optimize their resumes.",
+                ]}
                 isLast
               />
               <ArchDiagram
+                variant="flow"
                 nodes={[
-                  { label: "S3" },
-                  { label: "Cognito" },
-                  { label: "Lambda" },
-                  { label: "DynamoDB" },
-                  { label: "CloudWatch" },
-                  { label: "IAM" },
-                  { label: "GitHub Actions" },
+                  { label: "Streamlit", description: "Web Interface" },
+                  { label: "sentence-transformers", description: "Semantic Embeddings" },
+                  { label: "scikit-learn", description: "ML Model" },
+                  { label: "CSV Data Pipeline", description: "Training Data" },
                 ]}
-                title="online-voting-system"
+                title="ai-resume-job-matcher"
               />
             </div>
           </TerminalSection>
