@@ -32,8 +32,8 @@ export function useParallax<T extends HTMLElement>(options: ParallaxOptions = {}
     };
 
     function animate() {
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
       el!.style.transform = `translate(${currentX}px, ${currentY}px)`;
       raf = requestAnimationFrame(animate);
     }

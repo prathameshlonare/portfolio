@@ -87,7 +87,7 @@ export function ArchDiagram({ nodes, title, variant = "badges" }: ArchDiagramPro
       setStyle({ height: 0, opacity: 0, overflow: "hidden" });
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          setStyle({ height: h, opacity: 1, overflow: "hidden", transition: "height 0.2s ease, opacity 0.2s ease" });
+          setStyle({ height: h, opacity: 1, overflow: "hidden", transition: "height 0.2s var(--ease-out), opacity 0.2s var(--ease-out)" });
           const onEnd = () => {
             setStyle({ height: "auto", opacity: 1, overflow: "visible" });
             cleanup();
@@ -102,7 +102,7 @@ export function ArchDiagram({ nodes, title, variant = "badges" }: ArchDiagramPro
       setStyle({ height: h, opacity: 1, overflow: "hidden" });
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          setStyle({ height: 0, opacity: 0, overflow: "hidden", transition: "height 0.2s ease, opacity 0.15s ease" });
+          setStyle({ height: 0, opacity: 0, overflow: "hidden", transition: "height 0.2s var(--ease-out), opacity 0.15s var(--ease-out)" });
           const onEnd = () => {
             cleanup();
             el.removeEventListener("transitionend", onEnd);
