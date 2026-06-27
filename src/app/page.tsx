@@ -191,6 +191,7 @@ export default function Home() {
                 year="2026"
                 githubUrl="https://github.com/prathameshlonare/Dorm-and-Dish"
                 tech="Lambda · API Gateway · DynamoDB · S3 · CloudFront · CloudFormation · CloudWatch · Python"
+                initialOpen={true}
                 bullets={[
                   "Designed and deployed a serverless multi-tier platform on AWS, projected hosting cost reduction of 80% compared to traditional EC2 deployments.",
                   "Developed 6 RESTful API endpoints using API Gateway and Python (Boto3) Lambda functions.",

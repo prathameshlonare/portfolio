@@ -13,6 +13,7 @@ interface ProjectProps {
   githubUrl?: string;
   demoUrl?: string;
   isLast?: boolean;
+  initialOpen?: boolean;
 }
 
 export function ProjectCard({
@@ -24,8 +25,9 @@ export function ProjectCard({
   githubUrl,
   demoUrl,
   isLast = false,
+  initialOpen = false,
 }: ProjectProps) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(initialOpen);
   const magneticRef = useMagneticHover<HTMLDivElement>({ strength: 2 });
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
