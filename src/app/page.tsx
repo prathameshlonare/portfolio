@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Avatar } from "@/components/Avatar";
 import { TypingText } from "@/components/TypingText";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -13,6 +14,12 @@ import { SectionReveal } from "@/components/SectionReveal";
 import { TerminalCursor } from "@/components/TerminalCursor";
 import { useParallax } from "@/hooks/useParallax";
 import { useToast } from "@/components/Toast";
+import {
+  trackResumeDownload,
+  trackCtaClick,
+  trackSectionView,
+  trackScrollDepth,
+} from "@/lib/analytics";
 
 const skills = [
   "AWS",
@@ -38,6 +45,54 @@ const skills = [
 export default function Home() {
   const heroRef = useParallax<HTMLDivElement>({ strength: 8 });
   const { toast, ToastContainer } = useToast();
+
+  // Analytics: section view tracking
+  useEffect(() => {
+    const sectionIds = ["whoami", "about", "projects", "skills", "education", "certifications", "contact"];
+    const seen = new Set<string>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !seen.has(entry.target.id)) {
+            seen.add(entry.target.id);
+            trackSectionView(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: 0.05 },
+    );
+
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Analytics: scroll depth tracking
+  useEffect(() => {
+    const milestones = [25, 50, 75, 100];
+    const fired = new Set<number>();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      const percent = Math.round((scrollTop / docHeight) * 100);
+
+      for (const m of milestones) {
+        if (percent >= m && !fired.has(m)) {
+          fired.add(m);
+          trackScrollDepth(m);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -86,6 +141,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="interactive group cta-cursor min-h-[44px] flex items-center px-4 sm:px-6 py-3 text-xs sm:text-sm border border-[var(--border)] rounded-lg text-[var(--text-muted)] hover:text-[var(--accent-green)] hover:border-[var(--accent-green)] hover:bg-[color-mix(in_srgb,var(--accent-green)_8%,transparent)] font-mono text-center"
+                  onClick={() => trackCtaClick("GitHub", "https://github.com/prathameshlonare")}
                 >
                   <span className="mr-1 sm:mr-2 text-[var(--accent-green)] group-hover:text-[var(--accent-green)]">{"{"}</span>
                   <span className="group-hover:text-[var(--accent-green)]">GitHub</span>
@@ -98,6 +154,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="interactive group cta-cursor min-h-[44px] flex items-center px-4 sm:px-6 py-3 text-xs sm:text-sm border border-[var(--border)] rounded-lg text-[var(--text-muted)] hover:text-[var(--accent-blue)] hover:border-[var(--accent-blue)] hover:bg-[color-mix(in_srgb,var(--accent-blue)_8%,transparent)] font-mono text-center"
+                  onClick={() => trackCtaClick("LinkedIn", "https://www.linkedin.com/in/prathamesh-lonare-a0759b275/")}
                 >
                   <span className="mr-1 sm:mr-2 text-[var(--accent-blue)] group-hover:text-[var(--accent-blue)]">{"{"}</span>
                   <span className="group-hover:text-[var(--accent-blue)]">LinkedIn</span>
@@ -113,6 +170,7 @@ export default function Home() {
                     navigator.clipboard.writeText("prathameshlonare9@gmail.com").then(() => {
                       toast("Email copied to clipboard");
                     });
+                    trackCtaClick("Email", "mailto:prathameshlonare9@gmail.com");
                   }}
                 >
                   <span className="mr-1 sm:mr-2 text-[var(--text-primary)] group-hover:text-[var(--text-primary)]">{"{"}</span>
@@ -125,6 +183,7 @@ export default function Home() {
                   href="/prathamesh_lonare_resume.pdf"
                   download
                   className="interactive group cta-cursor min-h-[44px] flex items-center px-4 sm:px-6 py-3 text-xs sm:text-sm border border-[var(--border)] rounded-lg text-[var(--text-muted)] hover:text-[var(--accent-green)] hover:border-[var(--accent-green)] hover:bg-[color-mix(in_srgb,var(--accent-green)_8%,transparent)] font-mono text-center"
+                  onClick={() => trackResumeDownload()}
                 >
                   <span className="mr-1 sm:mr-2 text-[var(--accent-green)] group-hover:text-[var(--accent-green)]">{"{"}</span>
                   <span className="group-hover:text-[var(--accent-green)]">Resume</span>
