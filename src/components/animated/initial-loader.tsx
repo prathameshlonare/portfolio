@@ -60,7 +60,7 @@ export function InitialLoader() {
         transform: fading ? "scale(0.95)" : "scale(1)",
         transition:
           "opacity 0.4s cubic-bezier(0.76,0,0.24,1), transform 0.4s cubic-bezier(0.76,0,0.24,1)",
-        pointerEvents: fading ? "none" : "auto",
+        pointerEvents: "none",
       }}
     >
       {/* Logo */}
