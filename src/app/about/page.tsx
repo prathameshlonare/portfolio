@@ -7,7 +7,6 @@ import { Spotlight } from "@/components/animated/spotlight";
 import { NumberTicker } from "@/components/animated/number-ticker";
 import { Footer } from "@/components/layout/footer";
 import { Circle } from "lucide-react";
-import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -31,12 +30,10 @@ export default function AboutPage() {
               <Spotlight fill="#FF6B35" />
 
               <div className="w-full aspect-square border-2 border-[#1A1A2E] shadow-[4px_4px_0px_#7C3AED] relative z-30 overflow-hidden">
-                <Image
+                <img
                   src="/profile.png"
                   alt="Prathamesh Lonare"
-                  fill
-                  className="object-cover"
-                  priority
+                  className="w-full h-full object-cover"
                 />
               </div>
 
