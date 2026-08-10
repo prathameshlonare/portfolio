@@ -1,0 +1,177 @@
+/* Neo-Brutalist & Anti-UX Design System CSS */
+
+/* Neo-brutalist card: thick border, sharp corners, hard offset shadow */
+.neo-card {
+  border: 3px solid #1A1A2E;
+  border-radius: 0;
+  box-shadow: 6px 6px 0 #FF6B35;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background-color: #FFFFFF;
+}
+
+.neo-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 #7C3AED;
+}
+
+/* Neo-brutalist button: interactive physical button with hard shadow */
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 3px solid #1A1A2E;
+  border-radius: 0;
+  background-color: #FF6B35;
+  color: #FFFFFF;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 4px 4px 0 #1A1A2E;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #1A1A2E;
+  background-color: #e55a2b;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #1A1A2E;
+}
+
+.neo-btn-secondary {
+  background-color: #FFFFFF;
+  color: #1A1A2E;
+}
+
+.neo-btn-secondary:hover {
+  background-color: #FAFAFA;
+}
+
+/* Hard shadow utility class */
+.hard-shadow {
+  box-shadow: 5px 5px 0 #1A1A2E;
+}
+
+.hard-shadow-orange {
+  box-shadow: 6px 6px 0 #FF6B35;
+}
+
+.hard-shadow-purple {
+  box-shadow: 6px 6px 0 #7C3AED;
+}
+
+/* Dot grid overlay — subtle graph-paper texture for technical aesthetic */
+.grain-overlay {
+  position: relative;
+  background-image: radial-gradient(circle, rgba(26, 26, 46, 0.250) 0.8px, transparent 0.8px);
+  background-size: 20px 20px;
+}
+
+/* Exposed infrastructure grid lines background */
+.grid-exposed {
+  background-image:
+    linear-gradient(rgba(26, 26, 46, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 46, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Monospace label emphasis */
+.mono-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #6B7280;
+}
+
+/* Viewport-scaled fluid hero typography */
+.viewport-type {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #1A1A2E;
+}
+
+/* Marquee infinite scroll keyframes */
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 1.5rem)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap, 1.5rem)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 30s) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 30s) linear infinite;
+}
+
+/* Accessibility: prefers-reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-vertical {
+    animation: none !important;
+  }
+
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Responsive shadow adjustments for mobile */
+@media (max-width: 768px) {
+  .neo-card {
+    box-shadow: 3px 3px 0 #FF6B35;
+  }
+  .neo-card:hover {
+    box-shadow: 4px 4px 0 #7C3AED;
+  }
+  .neo-btn {
+    box-shadow: 2px 2px 0 #1A1A2E;
+  }
+  .neo-btn:hover {
+    box-shadow: 3px 3px 0 #1A1A2E;
+  }
+  .neo-btn:active {
+    box-shadow: 1px 1px 0 #1A1A2E;
+  }
+  .hard-shadow {
+    box-shadow: 3px 3px 0 #1A1A2E;
+  }
+  .hard-shadow-orange {
+    box-shadow: 3px 3px 0 #FF6B35;
+  }
+  .hard-shadow-purple {
+    box-shadow: 3px 3px 0 #7C3AED;
+  }
+}
+
+/* Hide cursor trail on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  canvas.fixed {
+    display: none !important;
+  }
+}
