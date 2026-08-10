@@ -163,14 +163,14 @@ export default function StackPage() {
     <GrainOverlay className="min-h-screen flex flex-col bg-[#FAFAFA] text-[#1A1A2E] overflow-x-hidden">
       <Navigation />
 
-      <main id="main-content" className="flex-1 max-w-7xl mx-auto px-4 md:px-8 py-8 w-full">
+      <main id="main-content" className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-8 w-full">
         {/* Page Banner */}
-        <div className="border-b-3 border-[#1A1A2E] pb-8 mb-12">
+        <div className="border-b-3 border-[#1A1A2E] pb-6 md:pb-8 mb-8 md:mb-12">
           <MonoLabel className="text-[#FF6B35] font-bold">TOOLS & INFRASTRUCTURE MATRIX</MonoLabel>
           <ViewportType as="h2" className="text-[var(--text-page)] font-black mt-2">
             TECH <span className="text-[#FF6B35]">STACK</span>
           </ViewportType>
-          <p className="text-lg text-zinc-700 font-medium max-w-2xl mt-4 leading-relaxed">
+          <p className="text-base md:text-lg text-zinc-700 font-medium max-w-2xl mt-3 md:mt-4 leading-relaxed">
             Battle-tested technologies, cloud platforms, IaC tools, and automated pipelines used in production.
           </p>
         </div>
@@ -179,7 +179,7 @@ export default function StackPage() {
         <TechMarquee />
 
         {/* Expandable Categories */}
-        <div className="flex flex-col gap-4 my-12">
+        <div className="flex flex-col gap-3 md:gap-4 my-8 md:my-12">
           {STACK_CATEGORIES.map((category) => (
             <StackCategory key={category.id} {...category} />
           ))}

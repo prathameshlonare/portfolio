@@ -8,22 +8,22 @@ import Link from "next/link";
 
 export function FeaturedWorkPreview() {
   return (
-    <section id="work" className="w-full max-w-7xl mx-auto px-4 md:px-8 py-16">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+    <section id="work" className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-3 md:gap-4">
         <div>
           <MonoLabel className="text-[#FF6B35]">SELECTED CASE STUDIES & PROJECTS</MonoLabel>
-          <h2 className="text-3xl md:text-5xl font-black text-[#1A1A2E] tracking-tight mt-1">
+          <h2 className="text-2xl md:text-3xl lg:text-5xl font-black text-[#1A1A2E] tracking-tight mt-1">
             INFRASTRUCTURE IN ACTION
           </h2>
         </div>
         <Link href="/work">
           <NeoButton variant="secondary" className="font-mono text-xs">
-            [view_all_case_studies] <ArrowUpRight className="w-4 h-4" />
+            VIEW ALL CASE STUDIES <ArrowUpRight className="w-4 h-4" />
           </NeoButton>
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {projects.map((project, idx) => (
           <NeoCard
             key={project.name}
@@ -41,10 +41,10 @@ export function FeaturedWorkPreview() {
                 <span className="font-mono text-xs font-bold text-zinc-500">{project.year}</span>
               </div>
 
-              <h3 className="text-2xl font-black text-[#1A1A2E] mb-3">{project.name}</h3>
+              <h3 className="text-xl md:text-2xl font-black text-[#1A1A2E] mb-3">{project.name}</h3>
 
               {project.image && (
-                <div className="w-full h-44 mb-4 border-2 border-[#1A1A2E] bg-black shadow-[3px_3px_0px_#1A1A2E] relative overflow-hidden group">
+                <div className="w-full h-36 md:h-44 mb-4 border-2 border-[#1A1A2E] bg-black shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] relative overflow-hidden group">
                   <img
                     src={project.image}
                     alt={`${project.name} Architecture / Screenshot`}

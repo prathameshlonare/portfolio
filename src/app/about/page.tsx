@@ -14,9 +14,9 @@ export default function AboutPage() {
     <GrainOverlay className="min-h-screen flex flex-col bg-[#FAFAFA] text-[#1A1A2E] overflow-x-hidden">
       <Navigation />
 
-      <main id="main-content" className="flex-1 max-w-7xl mx-auto px-4 md:px-8 py-8 w-full">
+      <main id="main-content" className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-8 w-full">
         {/* Page Banner */}
-        <div className="border-b-3 border-[#1A1A2E] pb-8 mb-12">
+        <div className="border-b-3 border-[#1A1A2E] pb-6 md:pb-8 mb-8 md:mb-12">
           <MonoLabel className="text-[#FF6B35] font-bold">SYSTEMS ENGINEER & ARCHITECT</MonoLabel>
           <ViewportType as="h2" className="text-[var(--text-page)] font-black mt-2">
             ABOUT <span className="text-[#FF6B35]">PRATHAMESH</span>
@@ -24,10 +24,10 @@ export default function AboutPage() {
         </div>
 
         {/* Bio Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start mb-12 md:mb-16">
           {/* Left Column: Spotlight Photo Card */}
           <div className="lg:col-span-5">
-            <div className="relative border-3 border-[#1A1A2E] bg-white shadow-[8px_8px_0px_#FF6B35] p-6 overflow-hidden">
+            <div className="relative border-3 border-[#1A1A2E] bg-white shadow-[4px_4px_0px_#FF6B35] md:shadow-[8px_8px_0px_#FF6B35] p-4 md:p-6 overflow-hidden">
               <Spotlight fill="#FF6B35" />
 
               <div className="w-full aspect-square border-2 border-[#1A1A2E] shadow-[4px_4px_0px_#7C3AED] relative z-30 overflow-hidden">
@@ -74,35 +74,35 @@ export default function AboutPage() {
             </p>
 
             {/* Metrics Cards */}
-            <div className="grid grid-cols-3 gap-4 pt-4">
-              <div className="border-2 border-[#1A1A2E] bg-white p-4 shadow-[3px_3px_0px_#1A1A2E] text-center">
-                <div className="font-mono text-2xl md:text-3xl font-black text-[#FF6B35]">
+            <div className="grid grid-cols-3 gap-2 md:gap-4 pt-4">
+              <div className="border-2 border-[#1A1A2E] bg-white p-2.5 md:p-4 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] text-center">
+                <div className="font-mono text-xl md:text-2xl lg:text-3xl font-black text-[#FF6B35]">
                   <NumberTicker value={7.5} decimalPlaces={1} />
                 </div>
-                <MonoLabel className="text-[10px] block mt-1">B.TECH CGPA</MonoLabel>
+                <MonoLabel className="text-[8px] md:text-[10px] block mt-1">B.TECH CGPA</MonoLabel>
               </div>
 
-              <div className="border-2 border-[#1A1A2E] bg-white p-4 shadow-[3px_3px_0px_#7C3AED] text-center">
-                <div className="font-mono text-2xl md:text-3xl font-black text-[#7C3AED]">
+              <div className="border-2 border-[#1A1A2E] bg-white p-2.5 md:p-4 shadow-[2px_2px_0px_#7C3AED] md:shadow-[3px_3px_0px_#7C3AED] text-center">
+                <div className="font-mono text-xl md:text-2xl lg:text-3xl font-black text-[#7C3AED]">
                   <NumberTicker value={41} />
                 </div>
-                <MonoLabel className="text-[10px] block mt-1">LAMBDA ENDPOINTS</MonoLabel>
+                <MonoLabel className="text-[8px] md:text-[10px] block mt-1">LAMBDA ENDPOINTS</MonoLabel>
               </div>
 
-              <div className="border-2 border-[#1A1A2E] bg-white p-4 shadow-[3px_3px_0px_#FF6B35] text-center">
-                <div className="font-mono text-2xl md:text-3xl font-black text-[#1A1A2E]">
+              <div className="border-2 border-[#1A1A2E] bg-white p-2.5 md:p-4 shadow-[2px_2px_0px_#FF6B35] md:shadow-[3px_3px_0px_#FF6B35] text-center">
+                <div className="font-mono text-xl md:text-2xl lg:text-3xl font-black text-[#1A1A2E]">
                   <NumberTicker value={500} suffix="+" />
                 </div>
-                <MonoLabel className="text-[10px] block mt-1">USERS SERVED</MonoLabel>
+                <MonoLabel className="text-[8px] md:text-[10px] block mt-1">USERS SERVED</MonoLabel>
               </div>
             </div>
           </div>
         </div>
 
         {/* 3 Core Principles */}
-        <section className="my-16">
+        <section className="my-12 md:my-16">
           <MonoLabel className="text-[#FF6B35] mb-4 block">HOW I THINK — 3 CORE PRINCIPLES</MonoLabel>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             <NeoCard variant="orange">
               <div className="w-10 h-10 bg-[#FF6B35] text-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#1A1A2E] flex items-center justify-center font-mono font-black text-lg mb-4">
                 01
