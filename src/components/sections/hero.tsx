@@ -70,7 +70,7 @@ export function Hero() {
                 </NeoButton>
               </Link>
                <Link
-                href="/Prathamesh_lonare_resume.pdf"
+                href="/prathamesh_lonare_resume.pdf"
                 download="Prathamesh_Lonare_Resume.pdf"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 font-mono text-xs font-bold text-[#1A1A2E] bg-[#FAFAFA] border-2 border-[#1A1A2E] px-3 py-2.5 shadow-[2px_2px_0px_#1A1A2E] hover:bg-[#FF6B35] hover:text-white hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
               >

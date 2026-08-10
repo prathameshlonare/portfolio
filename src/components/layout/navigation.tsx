@@ -56,7 +56,7 @@ export function Navigation() {
           })}
 
           <a
-            href="/Prathamesh_lonare_resume.pdf"
+            href="/prathamesh_lonare_resume.pdf"
             download="Prathamesh_Lonare_Resume.pdf"
             className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] hover:bg-[#FF6B35] hover:text-white font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center gap-1.5"
           >
