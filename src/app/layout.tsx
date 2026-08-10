@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Syne, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { TransitionProvider } from "@/components/providers/transition-provider";
-import { AgentationWrapper } from "@/components/providers/agentation-wrapper";
 import { InitialLoader } from "@/components/animated/initial-loader";
 
 const syne = Syne({
@@ -90,7 +89,6 @@ export default function RootLayout({
           Skip to content
         </a>
         <InitialLoader />
-        <AgentationWrapper />
         <TransitionProvider>{children}</TransitionProvider>
       </body>
     </html>
