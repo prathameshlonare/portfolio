@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     "DevOps Engineer specializing in AWS, Terraform, Docker, and CI/CD automation. Building resilient, scalable, and automated cloud infrastructure.",
   keywords: ["DevOps", "AWS", "Terraform", "Docker", "CI/CD", "Cloud Infrastructure", "Prathamesh Lonare"],
   authors: [{ name: "Prathamesh Lonare" }],
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
     title: "Prathamesh Lonare | DevOps & Cloud Systems Engineer",
     description: "DevOps Engineer specializing in AWS, Terraform, Docker, and CI/CD automation.",
