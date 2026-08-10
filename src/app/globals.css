@@ -12,7 +12,7 @@
   --border: #E5E7EB;
 
   /* Type scale — brand register, fluid clamp, ≥1.25 ratio */
-  --text-hero: clamp(3.5rem, 8vw, 6rem);          /* 56px–96px  hero display */
+  --text-hero: clamp(3rem, 6.5vw, 5rem);              /* 48px–80px  hero display */
   --text-page: clamp(2.5rem, 5vw, 4.5rem);         /* 40px–72px  page banners */
   --text-section: clamp(1.75rem, 3vw, 2.5rem);     /* 28px–40px  section heads */
   --text-body: 1rem;                                /* 16px body */
