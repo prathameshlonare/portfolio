@@ -38,19 +38,15 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
     setTargetPath(href);
     setPhase("enter");
 
-    // Push router once screen is fully covered (650ms)
-    setTimeout(() => {
-      router.push(href);
-    }, 650);
-
-    // Hold the terminal HUD briefly, then start pulling up the blinds to reveal new page (1000ms)
+    // Hold the terminal HUD briefly, then start pulling up the blinds (1000ms)
     setTimeout(() => {
       setPhase("exit");
     }, 1000);
 
-    // Complete transition and reset back to idle (1700ms)
+    // Complete transition, then navigate (1700ms)
     setTimeout(() => {
       setPhase("idle");
+      router.push(href);
     }, 1700);
   };
 
