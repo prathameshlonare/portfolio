@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Shadow -->
+  <rect x="4" y="4" width="28" height="28" fill="#1A1A2E"/>
+  <!-- Background -->
+  <rect x="0" y="0" width="28" height="28" fill="#FF6B35"/>
+  <!-- Border -->
+  <rect x="0" y="0" width="28" height="28" fill="none" stroke="#1A1A2E" stroke-width="2"/>
+  <!-- Letter P -->
+  <text x="14" y="21" text-anchor="middle" font-family="monospace" font-weight="900" font-size="18" fill="white">P</text>
+</svg>

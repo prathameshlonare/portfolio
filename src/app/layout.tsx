@@ -29,7 +29,12 @@ export const metadata: Metadata = {
     canonical: "https://prathameshlonare.me/",
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.png",
   },
   openGraph: {
     title: "Prathamesh Lonare | DevOps & Cloud Systems Engineer",
