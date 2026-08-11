@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 
 interface TransitionContextType {
@@ -27,6 +27,7 @@ const ROUTE_MAP: Record<string, { label: string; tag: string }> = {
 };
 
 export function TransitionProvider({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
   const pathname = usePathname();
   const [phase, setPhase] = useState<"idle" | "enter" | "exit">("idle");
   const [targetPath, setTargetPath] = useState("");
@@ -45,7 +46,7 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
     // Complete transition, then navigate (1700ms)
     setTimeout(() => {
       setPhase("idle");
-      window.location.href = href;
+      router.push(href);
     }, 1700);
   };
 

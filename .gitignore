@@ -46,3 +46,8 @@ resume.txt
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent/AI tool files (local only)
+.impeccable/
+AGENTS.md
+CLAUDE.md
