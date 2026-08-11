@@ -93,9 +93,19 @@ export function ContactContent() {
             </div>
 
             <p className="font-mono text-sm text-zinc-600 leading-relaxed">
-              Click below to open your email client with a pre-filled message. Alternatively, copy the
-              message template and paste it into any email or messaging app.
+              Click below to open your primary desktop or mobile email client with a pre-formatted technical dispatch. Alternatively, copy the message template below to paste into LinkedIn, GitHub, or any messaging platform.
             </p>
+
+            <div className="bg-amber-50 border border-amber-300 p-3.5 font-mono text-xs text-amber-900 leading-relaxed">
+              <div className="font-bold mb-1 flex items-center gap-1.5 text-[#FF6B35]">
+                <span>💡</span> WHAT TO INCLUDE IN YOUR INQUIRY:
+              </div>
+              <ul className="list-disc list-inside space-y-1 text-zinc-700">
+                <li>DevOps engineering or AWS cloud infrastructure role details</li>
+                <li>Target cloud platform (AWS, Hybrid, Serverless, Containers)</li>
+                <li>Project timelines, deployment goals, or architecture requirements</li>
+              </ul>
+            </div>
 
             <a
               href={mailtoLink}

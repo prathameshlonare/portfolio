@@ -68,9 +68,12 @@ export function Footer() {
 
       <VisitorTelemetry />
 
-      <div className="flex justify-between items-center mt-3 md:mt-4 font-mono text-[10px] md:text-xs text-zinc-500">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-2 mt-3 md:mt-4 font-mono text-[10px] md:text-xs text-zinc-500">
         <span>© {new Date().getFullYear()} Prathamesh Lonare. Built with Next.js 16 &amp; Tailwind.</span>
-        <span className="hidden sm:inline">Engineered for speed &amp; reliability</span>
+        <div className="flex items-center gap-4">
+          <a href="/privacy/" className="hover:text-[#FF6B35] underline transition-colors">Privacy Policy</a>
+          <span className="hidden sm:inline">Engineered for speed &amp; reliability</span>
+        </div>
       </div>
     </footer>
   );

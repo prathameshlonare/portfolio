@@ -181,7 +181,7 @@ export default function StackPage() {
             TECH <span className="text-[#FF6B35]">STACK</span>
           </ViewportType>
           <p className="text-base md:text-lg text-zinc-700 font-medium max-w-2xl mt-3 md:mt-4 leading-relaxed">
-            Battle-tested technologies, cloud platforms, IaC tools, and automated pipelines used in production.
+            A comprehensive matrix of battle-tested cloud technologies, AWS serverless primitives, Infrastructure as Code (IaC) tooling, container orchestration platforms, and automated CI/CD security pipelines deployed in production environments. Each tool represents active hands-on engineering experience.
           </p>
         </div>
 

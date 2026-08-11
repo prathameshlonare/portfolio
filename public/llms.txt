@@ -1,0 +1,50 @@
+# Prathamesh Lonare — DevOps & Cloud Systems Engineer
+
+> DevOps Engineer specializing in AWS serverless infrastructure, Terraform Infrastructure as Code (IaC), Docker containerization, and automated CI/CD pipelines.
+
+## Executive Summary
+- **Name:** Prathamesh Lonare
+- **Role:** DevOps & Cloud Systems Engineer
+- **Education:** B.Tech in Computer Science
+- **Location:** Akot, Maharashtra, India (UTC+5:30)
+- **Email:** prathameshlonare9@gmail.com
+- **Website:** https://prathameshlonare.me/
+- **GitHub:** https://github.com/prathameshlonare
+- **LinkedIn:** https://www.linkedin.com/in/prathamesh-lonare21/
+
+## Core Technical Stack
+- **Cloud Platform:** AWS (Lambda, DynamoDB, API Gateway, S3, CloudFront, CloudWatch, IAM, Cognito)
+- **Infrastructure as Code:** Terraform, AWS CloudFormation
+- **Containers & CI/CD:** Docker, GitHub Actions, Nginx
+- **Languages & Runtimes:** Python (Boto3, scikit-learn), Bash/Linux Shell, Node.js, TypeScript
+- **Security & Quality:** Bandit SAST Scanner, IAM Least-Privilege Policies
+
+## Key Projects & Case Studies
+1. **Serverless Online Voting Platform (2025)**
+   - 6 AWS Lambda microservices, API Gateway, DynamoDB On-Demand.
+   - 500+ active student users served with zero downtime and 180ms P99 latency.
+   - Reduced deployment time from 12 mins to 3 mins via GitHub Actions.
+   - GitHub: https://github.com/prathameshlonare/Online-voting-system
+
+2. **Dorm-Dish Multi-Tier AWS Platform (2026)**
+   - IaC CloudFormation stacks with S3 static hosting & CloudFront CDN.
+   - Achieved 80% cost reduction compared to provisioned EC2 instances.
+   - GitHub: https://github.com/prathameshlonare/Dorm-and-Dish
+
+3. **Statement Dashboard PWA (2026)**
+   - Offline-first financial statement analyzer running 100% in browser (React 19, pdf.js).
+   - Zero server data transmission for privacy-preserving analytics.
+   - GitHub: https://github.com/prathameshlonare/statement-dashboard
+
+4. **AI Resume-Job Matcher (2026)**
+   - Machine learning classifier (scikit-learn, sentence-transformers) for ATS resume optimization.
+   - 95% AUC-ROC score on job relevance classification dataset.
+   - GitHub: https://github.com/prathameshlonare/ai-resume-job-matcher
+
+## Site Navigation
+- Home: https://prathameshlonare.me/
+- Work / Case Studies: https://prathameshlonare.me/work/
+- About / Bio: https://prathameshlonare.me/about/
+- Tech Stack Matrix: https://prathameshlonare.me/stack/
+- Contact / Direct Dispatch: https://prathameshlonare.me/contact/
+- Privacy Policy: https://prathameshlonare.me/privacy/

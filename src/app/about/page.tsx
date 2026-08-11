@@ -75,11 +75,15 @@ export default function AboutPage() {
             </h2>
 
             <p className="text-base md:text-lg text-zinc-700 font-medium leading-relaxed">
-              I am a B.Tech Computer Science graduate specializing in cloud infrastructure automation, Infrastructure as Code (IaC) with Terraform, and serverless architectures on AWS.
+              I am a B.Tech Computer Science graduate specializing in cloud infrastructure automation, Infrastructure as Code (IaC) with Terraform and CloudFormation, and serverless backends on Amazon Web Services (AWS).
             </p>
 
             <p className="text-base text-zinc-700 font-medium leading-relaxed">
-              My core philosophy centers on building automated deployment pipelines that eliminate human error. Whether provisioning AWS Lambda endpoints, configuring DynamoDB databases, or writing CI/CD workflows in GitHub Actions, I focus on system reliability, speed, and cost efficiency.
+              My core engineering philosophy centers on building automated deployment pipelines that eliminate human error. Whether provisioning AWS Lambda microservices, configuring DynamoDB databases, establishing API Gateway routing rules, or writing GitHub Actions CI/CD workflows, I focus on system reliability, high availability, and cost efficiency.
+            </p>
+
+            <p className="text-base text-zinc-700 font-medium leading-relaxed">
+              Throughout my engineering journey, I have architected and deployed production systems serving hundreds of active users. I believe modern cloud infrastructure should be declarative, reproducible, and self-healing. By leveraging serverless primitives, least-privilege IAM policies, and automated static security analysis (SAST), I build cloud environments engineered for zero downtime and rapid iteration.
             </p>
 
             {/* Metrics Cards */}
