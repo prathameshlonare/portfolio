@@ -85,6 +85,7 @@ export default function RootLayout({
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "c0b6e20c1e38446ebbc4abb4ced1066c"}'
+          crossOrigin="anonymous"
         />
       </head>
       <body className="text-[#1A1A2E] selection:bg-[#FF6B35] selection:text-white">
