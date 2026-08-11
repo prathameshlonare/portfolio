@@ -41,8 +41,10 @@ export default function AboutPage() {
 
               <div className="w-full aspect-square border-2 border-[#1A1A2E] shadow-[4px_4px_0px_#7C3AED] relative z-30 overflow-hidden">
                 <img
-                  src="/profile.png"
+                  src="/profile.webp"
                   alt="Prathamesh Lonare"
+                  width={500}
+                  height={500}
                   className="w-full h-full object-cover"
                 />
               </div>

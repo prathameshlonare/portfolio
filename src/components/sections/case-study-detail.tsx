@@ -100,6 +100,8 @@ export function CaseStudyDetail({
                     <img
                       src={img.src}
                       alt={img.alt}
+                      width={400}
+                      height={225}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
