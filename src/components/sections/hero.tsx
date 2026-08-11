@@ -59,12 +59,12 @@ export function Hero() {
 
             {/* Action CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 pt-4 gsap-cta">
-              <Link href="/work" className="w-full sm:w-auto">
+              <Link href="/work/" className="w-full sm:w-auto">
                 <NeoButton variant="primary" className="w-full sm:w-auto text-sm font-mono tracking-wider justify-center">
                   SEE THE WORK <ArrowRight className="w-4 h-4" />
                 </NeoButton>
               </Link>
-              <Link href="/contact" className="w-full sm:w-auto">
+              <Link href="/contact/" className="w-full sm:w-auto">
                 <NeoButton variant="secondary" className="w-full sm:w-auto text-sm font-mono tracking-wider justify-center">
                   <Terminal className="w-4 h-4" /> GET IN TOUCH
                 </NeoButton>

@@ -8,9 +8,9 @@ import { TransitionLink } from "@/components/layout/transition-link";
 
 
 const NAV_LINKS = [
-  { label: "WORK", href: "/work", badge: "01" },
-  { label: "ABOUT", href: "/about", badge: "02" },
-  { label: "STACK", href: "/stack", badge: "03" },
+  { label: "WORK", href: "/work/", badge: "01" },
+  { label: "ABOUT", href: "/about/", badge: "02" },
+  { label: "STACK", href: "/stack/", badge: "03" },
 ];
 
 export function Navigation() {
@@ -63,7 +63,7 @@ export function Navigation() {
             <FileDown className="w-3.5 h-3.5" /> RESUME
           </a>
 
-          <TransitionLink href="/contact">
+          <TransitionLink href="/contact/">
             <NeoButton variant="primary" className="py-1.5 px-4 text-xs font-mono">
               Let&apos;s Talk <ArrowUpRight className="w-3.5 h-3.5" />
             </NeoButton>
@@ -110,7 +110,7 @@ export function Navigation() {
               </TransitionLink>
             );
           })}
-          <TransitionLink href="/contact" onClick={() => setMobileMenuOpen(false)}>
+          <TransitionLink href="/contact/" onClick={() => setMobileMenuOpen(false)}>
             <NeoButton variant="primary" className="w-full py-3.5 font-mono text-sm min-h-[48px]">
               Let&apos;s Talk <ArrowUpRight className="w-4 h-4" />
             </NeoButton>

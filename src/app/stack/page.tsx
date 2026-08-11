@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { GrainOverlay } from "@/components/anti-ux/grain-overlay";
 import { Navigation } from "@/components/layout/navigation";
 import { ViewportType } from "@/components/anti-ux/viewport-type";
@@ -6,6 +7,15 @@ import { TechMarquee } from "@/components/sections/tech-marquee";
 import { StackCategory } from "@/components/sections/stack-category";
 import { Footer } from "@/components/layout/footer";
 import { Cloud, Layers, Server, Terminal, Shield, Database } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Tech Stack & Tools Matrix — Prathamesh Lonare",
+  description:
+    "Discover the battle-tested technologies, AWS cloud services, Terraform IaC tools, Docker container orchestration, and Linux automation tools I use.",
+  alternates: {
+    canonical: "https://prathameshlonare.me/stack/",
+  },
+};
 
 const STACK_CATEGORIES: Array<{
   id: string;
@@ -167,7 +177,7 @@ export default function StackPage() {
         {/* Page Banner */}
         <div className="border-b-3 border-[#1A1A2E] pb-6 md:pb-8 mb-8 md:mb-12">
           <MonoLabel className="text-[#FF6B35] font-bold">TOOLS & INFRASTRUCTURE MATRIX</MonoLabel>
-          <ViewportType as="h2" className="text-[var(--text-page)] font-black mt-2">
+          <ViewportType as="h1" className="text-[var(--text-page)] font-black mt-2">
             TECH <span className="text-[#FF6B35]">STACK</span>
           </ViewportType>
           <p className="text-base md:text-lg text-zinc-700 font-medium max-w-2xl mt-3 md:mt-4 leading-relaxed">

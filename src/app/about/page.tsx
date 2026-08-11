@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { GrainOverlay } from "@/components/anti-ux/grain-overlay";
 import { Navigation } from "@/components/layout/navigation";
 import { ViewportType } from "@/components/anti-ux/viewport-type";
@@ -8,6 +9,15 @@ import { NumberTicker } from "@/components/animated/number-ticker";
 import { Footer } from "@/components/layout/footer";
 import { Circle } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "About — Prathamesh Lonare | DevOps & Cloud Systems Engineer",
+  description:
+    "Learn about Prathamesh's journey, engineering philosophy, B.Tech background, and principles for building cloud infrastructure and DevOps pipelines.",
+  alternates: {
+    canonical: "https://prathameshlonare.me/about/",
+  },
+};
+
 export default function AboutPage() {
   return (
     <GrainOverlay className="min-h-screen flex flex-col bg-[#FAFAFA] text-[#1A1A2E] overflow-x-hidden">
@@ -17,7 +27,7 @@ export default function AboutPage() {
         {/* Page Banner */}
         <div className="border-b-3 border-[#1A1A2E] pb-6 md:pb-8 mb-8 md:mb-12">
           <MonoLabel className="text-[#FF6B35] font-bold">SYSTEMS ENGINEER & ARCHITECT</MonoLabel>
-          <ViewportType as="h2" className="text-[var(--text-page)] font-black mt-2">
+          <ViewportType as="h1" className="text-[var(--text-page)] font-black mt-2">
             ABOUT <span className="text-[#FF6B35]">PRATHAMESH</span>
           </ViewportType>
         </div>

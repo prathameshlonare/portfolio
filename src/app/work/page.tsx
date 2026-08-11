@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { GrainOverlay } from "@/components/anti-ux/grain-overlay";
 import { Navigation } from "@/components/layout/navigation";
 import { ViewportType } from "@/components/anti-ux/viewport-type";
@@ -5,6 +6,15 @@ import { MonoLabel } from "@/components/anti-ux/mono-label";
 import { ArchitectureDiagram } from "@/components/sections/architecture-diagram";
 import { CaseStudyDetail } from "@/components/sections/case-study-detail";
 import { Footer } from "@/components/layout/footer";
+
+export const metadata: Metadata = {
+  title: "Work & Case Studies — Prathamesh Lonare | DevOps Projects",
+  description:
+    "Explore DevOps case studies, AWS serverless architectures, CloudFormation IaC templates, and automated CI/CD deployment pipeline projects.",
+  alternates: {
+    canonical: "https://prathameshlonare.me/work/",
+  },
+};
 
 const CASE_STUDIES = [
   {
@@ -115,7 +125,7 @@ export default function WorkPage() {
         {/* Page Banner */}
         <div className="border-b-3 border-[#1A1A2E] pb-6 md:pb-8 mb-8 md:mb-12">
           <MonoLabel className="text-[#FF6B35] font-bold">CASE STUDIES & SYSTEMS ARCHITECTURE</MonoLabel>
-          <ViewportType as="h2" className="text-[var(--text-page)] font-black mt-2">
+          <ViewportType as="h1" className="text-[var(--text-page)] font-black mt-2">
             DEVOPS WORK <span className="text-[#FF6B35]">&amp;</span> CASE STUDIES
           </ViewportType>
           <p className="text-base md:text-lg text-zinc-700 font-medium max-w-2xl mt-3 md:mt-4 leading-relaxed">

@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     "DevOps Engineer specializing in AWS, Terraform, Docker, and CI/CD automation. Building resilient, scalable, and automated cloud infrastructure.",
   keywords: ["DevOps", "AWS", "Terraform", "Docker", "CI/CD", "Cloud Infrastructure", "Prathamesh Lonare"],
   authors: [{ name: "Prathamesh Lonare" }],
+  alternates: {
+    canonical: "https://prathameshlonare.me/",
+  },
   icons: {
     icon: "/favicon.svg",
   },
