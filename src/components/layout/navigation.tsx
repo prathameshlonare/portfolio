@@ -85,8 +85,9 @@ export function Navigation() {
       {/* Mobile Drawer — max-h must exceed tallest content state (5 links + CTA ≈ 350px) */}
       <div
         id="mobile-menu"
+        hidden={!mobileMenuOpen}
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileMenuOpen ? "max-h-[400px] opacity-100 mt-2" : "max-h-0 opacity-0"
+          mobileMenuOpen ? "max-h-[400px] opacity-100 mt-2" : "max-h-0 opacity-0 hidden"
         }`}
         aria-hidden={!mobileMenuOpen}
       >

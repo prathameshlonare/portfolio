@@ -51,3 +51,5 @@ next-env.d.ts
 .impeccable/
 AGENTS.md
 CLAUDE.md
+audit_report.md
+

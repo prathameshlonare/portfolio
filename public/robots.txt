@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /*-sitemap.xml
+Disallow: /*_sitemap.xml
+Disallow: /sitemap*.xml
+Allow: /sitemap.xml
 
 Sitemap: https://prathameshlonare.me/sitemap.xml

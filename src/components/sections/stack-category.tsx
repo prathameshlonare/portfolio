@@ -70,35 +70,41 @@ export function StackCategory({
       </button>
 
       {/* Expanded Tools Grid */}
-      {isOpen && (
-        <div id={`panel-${id}`} role="region" aria-labelledby={`heading-${id}`} className="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 bg-white">
-          {tools.map((tool) => (
-            <div
-              key={tool.name}
-              className="border-2 border-[#1A1A2E] bg-[#FAFAFA] p-4 md:p-5 shadow-[4px_4px_0px_#1A1A2E] flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="font-mono font-extrabold text-base text-[#1A1A2E]">{tool.name}</h4>
-                  <span className="font-mono text-[10px] font-bold bg-[#FF6B35] text-white px-2 py-0.5 border border-[#1A1A2E]">
-                    {tool.badge}
-                  </span>
-                </div>
-                <p className="text-xs font-medium text-zinc-600 leading-relaxed mb-4">
-                  {tool.description}
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-zinc-300 flex justify-between items-center font-mono text-[11px]">
-                <span className="text-zinc-500 font-semibold">Proficiency:</span>
-                <span className="font-extrabold text-[#7C3AED] flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3 text-emerald-600" /> {tool.proficiency}
+      <div
+        id={`panel-${id}`}
+        role="region"
+        aria-labelledby={`heading-${id}`}
+        hidden={!isOpen}
+        className={`p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 bg-white ${
+          isOpen ? "" : "hidden"
+        }`}
+      >
+        {tools.map((tool) => (
+          <div
+            key={tool.name}
+            className="border-2 border-[#1A1A2E] bg-[#FAFAFA] p-4 md:p-5 shadow-[4px_4px_0px_#1A1A2E] flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex justify-between items-start mb-2">
+                <h4 className="font-mono font-extrabold text-base text-[#1A1A2E]">{tool.name}</h4>
+                <span className="font-mono text-[10px] font-bold bg-[#FF6B35] text-white px-2 py-0.5 border border-[#1A1A2E]">
+                  {tool.badge}
                 </span>
               </div>
+              <p className="text-xs font-medium text-zinc-600 leading-relaxed mb-4">
+                {tool.description}
+              </p>
             </div>
-          ))}
-        </div>
-      )}
+
+            <div className="pt-3 border-t border-zinc-300 flex justify-between items-center font-mono text-[11px]">
+              <span className="text-zinc-500 font-semibold">Proficiency:</span>
+              <span className="font-extrabold text-[#7C3AED] flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3 text-emerald-600" /> {tool.proficiency}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
