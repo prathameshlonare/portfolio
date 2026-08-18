@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import {
   motion,
   useAnimationFrame,
+  useInView,
   useMotionTemplate,
   useMotionValue,
   useTransform,
@@ -24,10 +25,13 @@ export function MovingBorder({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }) {
+  const svgRef = useRef<SVGSVGElement>(null);
   const pathRef = useRef<SVGRectElement>(null);
   const progress = useMotionValue<number>(0);
+  const isInView = useInView(svgRef, { margin: "50px" });
 
   useAnimationFrame((time) => {
+    if (!isInView) return;
     const length = pathRef.current?.getTotalLength();
     if (length) {
       const pxPerMillisecond = length / duration;
@@ -49,6 +53,7 @@ export function MovingBorder({
   return (
     <>
       <svg
+        ref={svgRef}
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
         className="absolute h-full w-full inset-0"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, FileDown } from "lucide-react";
 import { NeoButton } from "@/components/anti-ux/neo-button";
@@ -16,6 +16,18 @@ const NAV_LINKS = [
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const firstMenuItemRef = useRef<HTMLAnchorElement | null>(null);
+
+  // Move focus into menu on open, return to hamburger on close
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      requestAnimationFrame(() => firstMenuItemRef.current?.focus());
+    } else {
+      // Only return focus if the menu was previously open (not on initial mount)
+      hamburgerRef.current?.blur(); // let blur happen naturally
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <header className="sticky top-2 md:top-4 z-50 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-8 mb-6 md:mb-8">
@@ -72,6 +84,7 @@ export function Navigation() {
 
         {/* Mobile Toggle */}
         <button
+          ref={hamburgerRef}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden border-2 border-[#1A1A2E] bg-[#FAFAFA] p-2.5 shadow-[2px_2px_0px_#1A1A2E]"
           aria-label="Toggle Navigation"
@@ -82,21 +95,26 @@ export function Navigation() {
         </button>
       </div>
 
-      {/* Mobile Drawer — max-h must exceed tallest content state (5 links + CTA ≈ 350px) */}
+      {/* Mobile Drawer */}
       <div
         id="mobile-menu"
-        hidden={!mobileMenuOpen}
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileMenuOpen ? "max-h-[400px] opacity-100 mt-2" : "max-h-0 opacity-0 hidden"
+          mobileMenuOpen
+            ? "max-h-[450px] opacity-100 mt-2 pointer-events-auto"
+            : "max-h-0 opacity-0 pointer-events-none"
         }`}
         aria-hidden={!mobileMenuOpen}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") setMobileMenuOpen(false);
+        }}
       >
         <div className="bg-white border-3 border-[#1A1A2E] shadow-[4px_4px_0px_#FF6B35] md:shadow-[6px_6px_0px_#FF6B35] p-3 md:p-4 flex flex-col gap-2 md:gap-3">
-          {NAV_LINKS.map((link) => {
+          {NAV_LINKS.map((link, idx) => {
             const isActive = pathname === link.href;
             return (
               <TransitionLink
                 key={link.label}
+                ref={idx === 0 ? firstMenuItemRef : undefined}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`border-2 border-[#1A1A2E] font-mono font-bold text-sm py-3.5 px-4 flex justify-between items-center min-h-[48px] ${
@@ -110,6 +128,17 @@ export function Navigation() {
               </TransitionLink>
             );
           })}
+          <a
+            href="/prathamesh_lonare_resume.pdf"
+            download="Prathamesh_Lonare_Resume.pdf"
+            onClick={() => setMobileMenuOpen(false)}
+            className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] font-mono font-bold text-sm py-3.5 px-4 flex justify-between items-center min-h-[48px] active:bg-[#FF6B35] active:text-white"
+          >
+            <span className="flex items-center gap-2">
+              <FileDown className="w-4 h-4" /> RESUME
+            </span>
+            <span className="text-xs font-mono text-zinc-500">PDF</span>
+          </a>
           <TransitionLink href="/contact/" onClick={() => setMobileMenuOpen(false)}>
             <NeoButton variant="primary" className="w-full py-3.5 font-mono text-sm min-h-[48px]">
               Let&apos;s Talk <ArrowUpRight className="w-4 h-4" />

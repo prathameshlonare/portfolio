@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description: "DevOps Engineer specializing in AWS, Terraform, Docker, and CI/CD automation.",
     url: "https://prathameshlonare.me",
     siteName: "Prathamesh Lonare",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Prathamesh Lonare — DevOps Engineer" }],
+    images: [{ url: "/og-image.png", width: 1376, height: 768, alt: "Prathamesh Lonare — DevOps Engineer" }],
     type: "website",
   },
   twitter: {

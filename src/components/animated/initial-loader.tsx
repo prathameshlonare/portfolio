@@ -9,7 +9,18 @@ export function InitialLoader() {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
+    // Only show the initial loader once per browser session
+    try {
+      if (sessionStorage.getItem("portfolio_loader_shown")) {
+        setHidden(true);
+        return;
+      }
+      sessionStorage.setItem("portfolio_loader_shown", "1");
+    } catch {
+      // Fallback if sessionStorage is blocked
+    }
+
+    const timers: ReturnType<typeof setTimeout>[] = [];
 
     const bootSequence = [
       { progress: 15, status: "loading modules", delay: 200 },
@@ -24,29 +35,31 @@ export function InitialLoader() {
 
     bootSequence.forEach((step) => {
       totalDelay += step.delay;
-      setTimeout(() => {
-        if (!cancelled) {
-          setProgress(step.progress);
-          setStatus(step.status);
-        }
+      const t = setTimeout(() => {
+        setProgress(step.progress);
+        setStatus(step.status);
       }, totalDelay);
+      timers.push(t);
     });
 
-    setTimeout(() => {
-      if (!cancelled) setFading(true);
+    const tFade = setTimeout(() => {
+      setFading(true);
     }, totalDelay + 200);
+    timers.push(tFade);
 
-    setTimeout(() => {
-      if (!cancelled) setHidden(true);
+    const tHide = setTimeout(() => {
+      setHidden(true);
     }, totalDelay + 700);
+    timers.push(tHide);
 
     // Safety: force-hide after 4s no matter what
-    setTimeout(() => {
-      if (!cancelled) setHidden(true);
+    const tSafety = setTimeout(() => {
+      setHidden(true);
     }, 4000);
+    timers.push(tSafety);
 
     return () => {
-      cancelled = true;
+      timers.forEach(clearTimeout);
     };
   }, []);
 

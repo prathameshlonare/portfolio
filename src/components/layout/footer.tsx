@@ -1,9 +1,17 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { MonoLabel } from "@/components/anti-ux/mono-label";
 import { Mail, MapPin, Clock, Heart } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/brand-icons";
 import { VisitorTelemetry } from "@/components/sections/visitor-telemetry";
 
 export function Footer() {
+  const [currentYear, setCurrentYear] = useState<number>(() => new Date().getFullYear());
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
   return (
     <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-8 md:pt-12 pb-12 md:pb-16 mt-12 md:mt-20 border-t-3 border-[#1A1A2E]">
       <div className="bg-white border-3 border-[#1A1A2E] shadow-[4px_4px_0px_#1A1A2E] md:shadow-[6px_6px_0px_#1A1A2E] p-4 md:p-6 lg:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
@@ -69,7 +77,7 @@ export function Footer() {
       <VisitorTelemetry />
 
       <div className="flex flex-col sm:flex-row justify-between items-center gap-2 mt-3 md:mt-4 font-mono text-[10px] md:text-xs text-zinc-500">
-        <span>© {new Date().getFullYear()} Prathamesh Lonare. Built with Next.js 16 &amp; Tailwind.</span>
+        <span>© {currentYear} Prathamesh Lonare. Built with Next.js 16 &amp; Tailwind.</span>
         <div className="flex items-center gap-4">
           <a href="/privacy/" className="hover:text-[#FF6B35] underline transition-colors">Privacy Policy</a>
           <span className="hidden sm:inline">Engineered for speed &amp; reliability</span>

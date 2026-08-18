@@ -126,7 +126,7 @@ export default function WorkPage() {
         <div className="border-b-3 border-[#1A1A2E] pb-6 md:pb-8 mb-8 md:mb-12">
           <MonoLabel className="text-[#FF6B35] font-bold">CASE STUDIES & SYSTEMS ARCHITECTURE</MonoLabel>
           <ViewportType as="h1" className="text-[var(--text-page)] font-black mt-2">
-            DEVOPS WORK <span className="text-[#FF6B35]">&amp;</span> CASE STUDIES
+            DEVOPS WORK <span className="text-[#FF6B35]">&</span> CASE STUDIES
           </ViewportType>
           <p className="text-base md:text-lg text-zinc-700 font-medium max-w-2xl mt-3 md:mt-4 leading-relaxed">
             Detailed technical breakdowns of cloud infrastructure, serverless architectures, CI/CD automation pipelines, and software systems.

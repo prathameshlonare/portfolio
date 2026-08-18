@@ -20,15 +20,6 @@
   --text-caption: 0.75rem;                          /* 12px mono labels */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0D0D1A;
-    --foreground: #F4F4F5;
-    --surface: #1A1A2E;
-    --muted: #A1A1AA;
-    --border: #27272A;
-  }
-}
 
 @theme inline {
   --color-background: var(--background);

@@ -16,7 +16,7 @@ export function FeaturedWorkPreview() {
             INFRASTRUCTURE IN ACTION
           </h2>
         </div>
-        <Link href="/work">
+        <Link href="/work/">
           <NeoButton variant="secondary" className="font-mono text-xs">
             VIEW ALL CASE STUDIES <ArrowUpRight className="w-4 h-4" />
           </NeoButton>

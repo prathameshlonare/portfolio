@@ -54,6 +54,7 @@ export function NumberTicker({
   return (
     <span
       ref={ref}
+      aria-label={`${prefix}${value}${suffix}`}
       className={cn(
         "inline-block font-mono tracking-wider tabular-nums font-extrabold text-[#1A1A2E]",
         className

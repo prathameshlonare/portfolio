@@ -8,29 +8,28 @@ interface TransitionLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
 }
 
-export function TransitionLink({
-  href,
-  children,
-  onClick,
-  ...props
-}: TransitionLinkProps) {
-  const { navigate } = useTransitionNavigate();
+export const TransitionLink = React.forwardRef<HTMLAnchorElement, TransitionLinkProps>(
+  function TransitionLink({ href, children, onClick, ...props }, ref) {
+    const { navigate } = useTransitionNavigate();
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (onClick) onClick(e);
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (onClick) onClick(e);
 
-    // Allow external or internal hash links to function normally
-    if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("#")) {
-      return;
-    }
+      // Allow external or internal hash links to function normally
+      if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("#")) {
+        return;
+      }
 
-    e.preventDefault();
-    navigate(href);
-  };
+      e.preventDefault();
+      navigate(href);
+    };
 
-  return (
-    <a href={href} onClick={handleClick} {...props}>
-      {children}
-    </a>
-  );
-}
+    return (
+      <a ref={ref} href={href} onClick={handleClick} {...props}>
+        {children}
+      </a>
+    );
+  }
+);
+
+TransitionLink.displayName = "TransitionLink";

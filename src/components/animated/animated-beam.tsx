@@ -49,6 +49,7 @@ export function AnimatedBeam({
 
   // Calculate coordinates relative to container
   useEffect(() => {
+    let rAF: number;
     const updatePath = () => {
       if (containerRef.current && fromRef.current && toRef.current) {
         const containerRect = containerRef.current.getBoundingClientRect();
@@ -70,12 +71,20 @@ export function AnimatedBeam({
       }
     };
 
+    const handleResize = () => {
+      cancelAnimationFrame(rAF);
+      rAF = requestAnimationFrame(updatePath);
+    };
+
     // Initial update & resize observer
     updatePath();
-    const resizeObserver = new ResizeObserver(() => updatePath());
+    const resizeObserver = new ResizeObserver(handleResize);
     if (containerRef.current) resizeObserver.observe(containerRef.current);
 
-    return () => resizeObserver.disconnect();
+    return () => {
+      cancelAnimationFrame(rAF);
+      resizeObserver.disconnect();
+    };
   }, [containerRef, fromRef, toRef, curvature, startXOffset, startYOffset, endXOffset, endYOffset]);
 
   return (

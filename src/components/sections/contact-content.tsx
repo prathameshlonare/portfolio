@@ -23,15 +23,34 @@ export function ContactContent() {
   const mailtoLink = `mailto:${EMAIL}?subject=${encodeURIComponent(MAILTO_SUBJECT)}&body=${encodeURIComponent(MAILTO_BODY)}`;
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText(EMAIL);
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2500);
+    if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+      navigator.clipboard
+        .writeText(EMAIL)
+        .then(() => {
+          setCopiedEmail(true);
+          setTimeout(() => setCopiedEmail(false), 2500);
+        })
+        .catch(() => {
+          // Fallback if clipboard API fails
+          setCopiedEmail(false);
+        });
+    }
   };
 
   const handleCopyMessage = () => {
-    navigator.clipboard.writeText(`Subject: ${MAILTO_SUBJECT}\n\n${MAILTO_BODY}`);
-    setCopiedMessage(true);
-    setTimeout(() => setCopiedMessage(false), 2500);
+    const textToCopy = `Subject: ${MAILTO_SUBJECT}\n\n${MAILTO_BODY}`;
+    if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+      navigator.clipboard
+        .writeText(textToCopy)
+        .then(() => {
+          setCopiedMessage(true);
+          setTimeout(() => setCopiedMessage(false), 2500);
+        })
+        .catch(() => {
+          // Fallback if clipboard API fails
+          setCopiedMessage(false);
+        });
+    }
   };
 
   return (

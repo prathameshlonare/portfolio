@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { MonoLabel } from "@/components/anti-ux/mono-label";
 import { NeoCard } from "@/components/anti-ux/neo-card";
@@ -41,25 +41,54 @@ export function CaseStudyDetail({
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [showImages, setShowImages] = useState(false);
 
-  const openLightbox = (index: number) => setLightboxIndex(index);
-  const closeLightbox = () => setLightboxIndex(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const openLightbox = (index: number, trigger: HTMLButtonElement) => {
+    triggerRef.current = trigger;
+    setLightboxIndex(index);
+  };
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+    // Return focus to the thumbnail that opened the lightbox
+    triggerRef.current?.focus();
+  }, []);
   const prevImage = () => setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : images.length - 1));
   const nextImage = () => setLightboxIndex((i) => (i !== null && i < images.length - 1 ? i + 1 : 0));
 
   useEffect(() => {
     if (lightboxIndex === null) return;
+
+    // Move focus into the lightbox
+    requestAnimationFrame(() => closeButtonRef.current?.focus());
+
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "Escape") { closeLightbox(); return; }
       if (e.key === "ArrowLeft") setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : images.length - 1));
       if (e.key === "ArrowRight") setLightboxIndex((i) => (i !== null && i < images.length - 1 ? i + 1 : 0));
+
+      // Focus trap — cycle Tab/Shift+Tab within the 3 interactive elements
+      if (e.key === "Tab") {
+        const focusable = document.querySelectorAll<HTMLElement>(
+          "[data-lightbox-focusable]"
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
     };
+
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKey);
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKey);
     };
-  }, [lightboxIndex, images.length]);
+  }, [lightboxIndex, images.length, closeLightbox]);
   return (
     <div id={id} className="w-full max-w-7xl mx-auto my-12 scroll-mt-24">
       <NeoCard variant="orange" className="p-4 md:p-6 lg:p-10">
@@ -94,7 +123,8 @@ export function CaseStudyDetail({
                 {images.map((img, idx) => (
                   <button
                     key={idx}
-                    onClick={() => openLightbox(idx)}
+                    onClick={(e) => openLightbox(idx, e.currentTarget)}
+                    aria-label={`View ${img.alt} in image viewer`}
                     className="min-h-[48px] border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#FF6B35] hover:shadow-[4px_4px_0px_#FF6B35] transition-all cursor-pointer bg-[#FAFAFA] overflow-hidden aspect-video hover:-translate-x-0.5 hover:-translate-y-0.5"
                   >
                     <img
@@ -204,23 +234,18 @@ export function CaseStudyDetail({
       </NeoCard>
 
       {/* Lightbox Modal */}
-      {lightboxIndex !== null && createPortal(
+      {lightboxIndex !== null && typeof document !== "undefined" && document.body && createPortal(
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Image preview: ${images[lightboxIndex]?.alt || "Case study image"}`}
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
           onClick={closeLightbox}
         >
-          {/* Close button — top right, large touch target */}
+          {/* Prev arrow — left side (first focusable) */}
           <button
-            onClick={closeLightbox}
-            className="absolute top-4 right-4 md:top-6 md:right-6 w-12 h-12 flex items-center justify-center text-white/80 hover:text-white z-10"
-            aria-label="Close lightbox"
-          >
-            <X className="w-7 h-7 md:w-8 md:h-8" />
-          </button>
-
-          {/* Prev arrow — left side */}
-          <button
-            onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : images.length - 1)); }}
+            data-lightbox-focusable
+            onClick={(e) => { e.stopPropagation(); prevImage(); }}
             className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white/80 hover:text-white z-10"
             aria-label="Previous image"
           >
@@ -236,11 +261,23 @@ export function CaseStudyDetail({
 
           {/* Next arrow — right side */}
           <button
-            onClick={(e) => { e.stopPropagation(); setLightboxIndex((i) => (i !== null && i < images.length - 1 ? i + 1 : 0)); }}
+            data-lightbox-focusable
+            onClick={(e) => { e.stopPropagation(); nextImage(); }}
             className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white/80 hover:text-white z-10"
             aria-label="Next image"
           >
             <ChevronRight className="w-10 h-10" />
+          </button>
+
+          {/* Close button — receives initial focus, last in trap cycle */}
+          <button
+            ref={closeButtonRef}
+            data-lightbox-focusable
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 md:top-6 md:right-6 w-12 h-12 flex items-center justify-center text-white/80 hover:text-white z-10"
+            aria-label="Close lightbox"
+          >
+            <X className="w-7 h-7 md:w-8 md:h-8" />
           </button>
 
           <div className="absolute bottom-4 text-white/70 font-mono text-sm">

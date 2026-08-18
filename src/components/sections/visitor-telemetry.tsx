@@ -23,6 +23,9 @@ export function VisitorTelemetry() {
       .catch(() => {});
 
     const interval = setInterval(() => {
+      if (typeof document !== "undefined" && document.visibilityState !== "visible") {
+        return;
+      }
       fetch(CLOUDFLARE_WORKER_URL)
         .then((res) => res.json())
         .then((data) => {

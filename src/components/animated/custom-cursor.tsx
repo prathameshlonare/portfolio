@@ -54,13 +54,12 @@ export function CustomCursor() {
     };
 
     const handleMouseOut = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
+      const related = e.relatedTarget as HTMLElement | null;
       if (
-        target.tagName === "A" ||
-        target.tagName === "BUTTON" ||
-        target.closest("a") ||
-        target.closest("button") ||
-        target.dataset.cursor === "pointer"
+        !related ||
+        (!related.closest("a") &&
+          !related.closest("button") &&
+          related.dataset?.cursor !== "pointer")
       ) {
         setIsHovering(false);
       }

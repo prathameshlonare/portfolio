@@ -38,11 +38,11 @@ export function ScrollSection({
 
       const offset = directionMap[direction];
 
-      const children = stagger
+      const domTargets = stagger
         ? containerRef.current.children
         : [containerRef.current];
 
-      gsap.from(children, {
+      gsap.from(domTargets, {
         opacity: 0,
         ...offset,
         duration: 0.8,

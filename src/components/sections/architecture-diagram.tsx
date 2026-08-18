@@ -22,7 +22,7 @@ export function ArchitectureDiagram() {
           <MonoLabel className="text-[#FF6B35] font-bold text-[10px] md:text-xs">AWS SERVERLESS ARCHITECTURE</MonoLabel>
         </div>
         <div className="flex items-center gap-1.5 font-mono text-[9px] md:text-[10px] font-bold text-emerald-600 bg-emerald-100 border border-emerald-300 px-2 py-0.5 self-start">
-          <Radio className="w-3 h-3 md:w-3.5 md:h-3.5 animate-pulse" /> LIVE STREAM
+          <Radio className="w-3 h-3 md:w-3.5 md:h-3.5 animate-pulse" /> SYSTEM TOPOLOGY
         </div>
       </div>
 
