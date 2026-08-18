@@ -85,13 +85,15 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Cloudflare Web Analytics */}
-        <script
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "c0b6e20c1e38446ebbc4abb4ced1066c"}'
-          crossOrigin="anonymous"
-        />
+        {/* Cloudflare Web Analytics — token read from env so it can be rotated without a code push */}
+        {process.env.NEXT_PUBLIC_CF_BEACON_TOKEN && (
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={`{"token": "${process.env.NEXT_PUBLIC_CF_BEACON_TOKEN}"}`}
+            crossOrigin="anonymous"
+          />
+        )}
       </head>
       <body className="text-[#1A1A2E] selection:bg-[#FF6B35] selection:text-white">
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-[#FF6B35] focus:text-white focus:px-4 focus:py-2 focus:font-mono focus:text-sm">
