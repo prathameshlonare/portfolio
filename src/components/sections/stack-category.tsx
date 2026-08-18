@@ -46,7 +46,7 @@ export function StackCategory({
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={`panel-${id}`}
-        className="w-full p-4 md:p-6 flex justify-between items-center bg-[#FAFAFA] border-b-2 border-[#1A1A2E] text-left hover:bg-white transition-colors group cursor-pointer"
+        className="w-full p-4 md:p-6 flex justify-between items-center bg-[#FAFAFA] border-b-2 border-[#1A1A2E] text-left hover:bg-white transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 group cursor-pointer"
       >
         <div className="flex items-center gap-2 md:gap-3 min-w-0">
           <div className="w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#FF6B35] flex items-center justify-center text-[#FF6B35] shrink-0 group-hover:bg-[#FF6B35] group-hover:text-white transition-colors">

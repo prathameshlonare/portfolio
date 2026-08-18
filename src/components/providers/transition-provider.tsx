@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -21,9 +21,15 @@ const COLUMNS = 6;
 const ROUTE_MAP: Record<string, { label: string; tag: string }> = {
   "/": { label: "HOME_SYS", tag: "MAIN_OVERVIEW" },
   "/work": { label: "WORK_MODULES", tag: "CASE_STUDIES & ARCH" },
+  "/work/": { label: "WORK_MODULES", tag: "CASE_STUDIES & ARCH" },
   "/about": { label: "ABOUT_PROFILE", tag: "SYSTEMS_PHILOSOPHY" },
+  "/about/": { label: "ABOUT_PROFILE", tag: "SYSTEMS_PHILOSOPHY" },
   "/stack": { label: "TECH_STACK", tag: "INFRA MATRIX" },
+  "/stack/": { label: "TECH_STACK", tag: "INFRA MATRIX" },
   "/contact": { label: "DIRECT_DISPATCH", tag: "LET'S_TALK" },
+  "/contact/": { label: "DIRECT_DISPATCH", tag: "LET'S_TALK" },
+  "/privacy": { label: "PRIVACY_POLICY", tag: "LEGAL_DOCS" },
+  "/privacy/": { label: "PRIVACY_POLICY", tag: "LEGAL_DOCS" },
 };
 
 export function TransitionProvider({ children }: { children: React.ReactNode }) {
@@ -32,22 +38,47 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
   const [phase, setPhase] = useState<"idle" | "enter" | "exit">("idle");
   const [targetPath, setTargetPath] = useState("");
 
+  // Store timer IDs so they can be cancelled if the user navigates away
+  // (e.g. browser Back) before the animation completes.
+  const timerIds = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  const clearTimers = () => {
+    timerIds.current.forEach(clearTimeout);
+    timerIds.current = [];
+  };
+
+  // Cancel in-flight timers whenever the URL actually changes (Back/Forward)
+  useEffect(() => {
+    clearTimers();
+    setPhase("idle");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
   const navigate = (href: string) => {
-    if (href === pathname || phase !== "idle") return;
+    // Same page — just scroll to top instead of silently doing nothing
+    if (href === pathname) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    // Already animating — ignore duplicate clicks
+    if (phase !== "idle") return;
 
     setTargetPath(href);
     setPhase("enter");
 
     // Hold the terminal HUD briefly, then start pulling up the blinds (1000ms)
-    setTimeout(() => {
+    const t1 = setTimeout(() => {
       setPhase("exit");
     }, 1000);
 
     // Complete transition, then navigate (1700ms)
-    setTimeout(() => {
+    const t2 = setTimeout(() => {
       setPhase("idle");
       router.push(href);
     }, 1700);
+
+    timerIds.current = [t1, t2];
   };
 
   const currentRouteInfo = ROUTE_MAP[targetPath] || {

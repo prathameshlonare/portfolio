@@ -1,13 +1,11 @@
 import { NumberTicker } from "@/components/animated/number-ticker";
 import { MonoLabel } from "@/components/anti-ux/mono-label";
-import { VisitorTelemetry } from "@/components/sections/visitor-telemetry";
 import { Zap, Users, Timer, Layers } from "lucide-react";
 
 export function Metrics() {
   return (
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-12">
       <div className="bg-white border-3 border-[#1A1A2E] shadow-[6px_6px_0px_#1A1A2E] md:shadow-[8px_8px_0px_#1A1A2E] p-4 md:p-6 lg:p-8">
-        <VisitorTelemetry />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {/* Metric 1 */}

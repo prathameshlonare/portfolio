@@ -16,7 +16,7 @@ export default function Home() {
       <Navigation />
 
       {/* Main Content Sections — breathing room between sections */}
-      <main className="flex-1 flex flex-col gap-12 md:gap-16 lg:gap-24">
+      <main id="main-content" className="flex-1 flex flex-col gap-12 md:gap-16 lg:gap-24">
         <Hero />
         <ScrollSection>
           <Metrics />
