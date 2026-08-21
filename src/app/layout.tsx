@@ -3,6 +3,7 @@ import { Syne, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { TransitionProvider } from "@/components/providers/transition-provider";
 import { InitialLoader } from "@/components/animated/initial-loader";
+import { AgentationProvider } from "@/components/providers/agentation-provider";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -101,6 +102,7 @@ export default function RootLayout({
         </a>
         <InitialLoader />
         <TransitionProvider>{children}</TransitionProvider>
+        <AgentationProvider />
       </body>
     </html>
   );

@@ -13,21 +13,21 @@ export const projects: ProjectItem[] = [
     name: "Dorm-Dish",
     year: "2026",
     description:
-      "Serverless multi-tier platform on AWS — 6 REST endpoints, 3 CloudFormation stacks, 80% cost reduction vs EC2. Lambda + API Gateway + DynamoDB + CloudFront.",
-    tech: ["Lambda", "API Gateway", "DynamoDB", "S3", "CloudFront", "CloudFormation", "Python"],
+      "Serverless student accommodation platform on AWS — Cognito auth, Lambda + API Gateway backend, DynamoDB multi-table design, S3 media storage, Google Maps integration, and a recommendation engine. 80% cost reduction vs EC2.",
+    tech: ["Lambda", "API Gateway", "DynamoDB", "S3", "CloudFront", "CloudFormation", "Cognito", "Python"],
     github: "https://github.com/prathameshlonare/Dorm-and-Dish",
     live: null,
-    image: null,
+    image: "/projects/dorm-and-dish/architecture-diagram/architecture%20diagram.png",
   },
   {
     name: "Online Voting System",
     year: "2025",
     description:
-      "CI/CD pipeline reduced manual deploys from 8 to 0. DynamoDB On-Demand handles peak traffic automatically. Cognito + IAM least-privilege across all Lambda roles.",
-    tech: ["Lambda", "IAM", "DynamoDB", "Cognito", "CloudWatch", "S3", "GitHub Actions"],
+      "React + Amplify SDK frontend with Cognito multi-role auth (Student/Admin/Owner). Lambda + API Gateway backend, DynamoDB On-Demand for peak traffic, S3 CSV export. CI/CD from 8 manual deploys to zero.",
+    tech: ["React", "AWS Amplify", "Lambda", "DynamoDB", "Cognito", "S3", "GitHub Actions"],
     github: "https://github.com/prathameshlonare/Online-voting-system",
     live: null,
-    image: "/projects/online voting system/architecture diagram/system_architecture.png",
+    image: "/projects/online-voting-system/architecture-diagram/front_&_Integration_flow.png",
   },
   {
     name: "Statement Dashboard",
