@@ -12,7 +12,7 @@ import Link from "next/link";
 export function Hero() {
   return (
     <GsapHeroEntrance>
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-5 md:px-8 py-8 md:py-16">
+      <section className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Typography & Content */}
           <div className="lg:col-span-7 flex flex-col gap-5 md:gap-6 relative z-10">
@@ -72,7 +72,7 @@ export function Hero() {
                <Link
                 href="/prathamesh_lonare_resume.pdf"
                 download="Prathamesh_Lonare_Resume.pdf"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 font-mono text-xs font-bold text-[#1A1A2E] bg-[#FAFAFA] border-2 border-[#1A1A2E] px-3 py-2.5 shadow-[2px_2px_0px_#1A1A2E] hover:bg-[#FF6B35] hover:text-white hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 font-mono text-xs font-bold text-[#1A1A2E] bg-[#FAFAFA] border-2 border-[#1A1A2E] px-3 py-2.5 shadow-[2px_2px_0px_#1A1A2E] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] transition-all"
               >
                 <FileDown className="w-4 h-4" /> Resume PDF
               </Link>

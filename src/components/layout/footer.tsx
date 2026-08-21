@@ -52,7 +52,7 @@ export function Footer() {
               href="https://github.com/prathameshlonare"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-[#1A1A2E] bg-[#FAFAFA] hover:bg-[#1A1A2E] hover:text-white font-mono font-bold text-[10px] md:text-xs px-3 py-1.5 md:px-4 md:py-2 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center gap-1.5 md:gap-2"
+              className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] font-mono font-bold text-[10px] md:text-xs px-3 py-1.5 md:px-4 md:py-2 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] md:hover:shadow-[5px_5px_0px_#1A1A2E] flex items-center gap-1.5 md:gap-2"
             >
               <GithubIcon className="w-3.5 h-3.5 md:w-4 md:h-4" /> GitHub
             </a>
@@ -60,13 +60,13 @@ export function Footer() {
               href="https://www.linkedin.com/in/prathamesh-lonare21/"
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-[#1A1A2E] bg-[#FAFAFA] hover:bg-[#7C3AED] hover:text-white font-mono font-bold text-[10px] md:text-xs px-3 py-1.5 md:px-4 md:py-2 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center gap-1.5 md:gap-2"
+              className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] font-mono font-bold text-[10px] md:text-xs px-3 py-1.5 md:px-4 md:py-2 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] md:hover:shadow-[5px_5px_0px_#1A1A2E] flex items-center gap-1.5 md:gap-2"
             >
               <LinkedinIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#0077B5]" /> LinkedIn
             </a>
             <a
               href="mailto:prathameshlonare9@gmail.com"
-              className="border-2 border-[#1A1A2E] bg-[#FF6B35] text-white font-mono font-bold text-[10px] md:text-xs px-3 py-1.5 md:px-4 md:py-2 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center gap-1.5 md:gap-2"
+              className="border-2 border-[#1A1A2E] bg-[#FF6B35] text-white font-mono font-bold text-[10px] md:text-xs px-3 py-1.5 md:px-4 md:py-2 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] md:hover:shadow-[5px_5px_0px_#1A1A2E] flex items-center gap-1.5 md:gap-2"
             >
               <Mail className="w-3.5 h-3.5 md:w-4 md:h-4" /> Email Me
             </a>

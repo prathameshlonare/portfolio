@@ -34,7 +34,7 @@ export function Navigation() {
       <div className="bg-white border-3 border-[#1A1A2E] shadow-[4px_4px_0px_#1A1A2E] md:shadow-[6px_6px_0px_#1A1A2E] px-3 py-2.5 md:px-6 md:py-3 flex items-center justify-between">
         {/* Brand Logo */}
         <TransitionLink href="/" className="flex items-center gap-2 md:gap-3 group">
-          <div className="w-8 h-8 md:w-9 md:h-9 bg-[#FF6B35] border-2 border-[#1A1A2E] flex items-center justify-center text-white font-mono font-black text-lg md:text-xl shadow-[2px_2px_0px_#1A1A2E] group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform">
+          <div className="w-8 h-8 md:w-9 md:h-9 bg-[#FF6B35] border-2 border-[#1A1A2E] flex items-center justify-center text-white font-mono font-black text-lg md:text-xl shadow-[2px_2px_0px_#1A1A2E] group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
             P
           </div>
           <div className="flex flex-col">
@@ -55,10 +55,10 @@ export function Navigation() {
               <TransitionLink
                 key={link.label}
                 href={link.href}
-                className={`border-2 border-[#1A1A2E] font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center gap-1.5 ${
+                className={`border-2 border-[#1A1A2E] font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] flex items-center gap-1.5 ${
                   isActive
                     ? "bg-[#FF6B35] text-white"
-                    : "bg-[#FAFAFA] text-[#1A1A2E] hover:bg-[#FF6B35] hover:text-white"
+                    : "bg-[#FAFAFA] text-[#1A1A2E]"
                 }`}
               >
                 <span className="text-[10px] opacity-60 font-semibold">{link.badge}</span>
@@ -70,7 +70,7 @@ export function Navigation() {
           <a
             href="/prathamesh_lonare_resume.pdf"
             download="Prathamesh_Lonare_Resume.pdf"
-            className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] hover:bg-[#FF6B35] hover:text-white font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex items-center gap-1.5"
+            className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] flex items-center gap-1.5"
           >
             <FileDown className="w-3.5 h-3.5" /> RESUME
           </a>

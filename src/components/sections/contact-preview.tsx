@@ -28,7 +28,7 @@ export function ContactPreview() {
           <div className="flex flex-col gap-2.5 md:gap-3 font-mono text-xs md:text-sm">
             <a
               href={mailtoHref}
-              className="neo-card p-3 md:p-4 border-2 border-[#1A1A2E] shadow-[3px_3px_0px_#1A1A2E] md:shadow-[4px_4px_0px_#1A1A2E] flex items-center justify-between hover:bg-[#FAFAFA] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5"
+              className="neo-card p-3 md:p-4 border-2 border-[#1A1A2E] shadow-[3px_3px_0px_#1A1A2E] md:shadow-[4px_4px_0px_#1A1A2E] flex items-center justify-between transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#1A1A2E] md:hover:shadow-[6px_6px_0px_#1A1A2E]"
             >
               <div className="flex items-center gap-2 md:gap-3 min-w-0">
                 <Mail className="w-4 h-4 md:w-5 md:h-5 text-[#FF6B35] shrink-0" />

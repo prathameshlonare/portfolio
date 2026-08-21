@@ -15,7 +15,7 @@ export function NeoButton({
   const variantStyles = {
     primary: "neo-btn",
     secondary: "neo-btn neo-btn-secondary",
-    purple: "neo-btn bg-[#7C3AED] hover:bg-[#6d28d9] text-white",
+    purple: "neo-btn bg-[#7C3AED] text-white",
   };
 
   return (

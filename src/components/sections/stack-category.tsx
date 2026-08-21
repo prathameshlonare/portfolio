@@ -40,21 +40,21 @@ export function StackCategory({
   const IconComponent = ICON_MAP[iconType] || Cloud;
 
   return (
-    <div id={id} className="w-full max-w-7xl mx-auto my-6 border-3 border-[#1A1A2E] bg-white shadow-[6px_6px_0px_#1A1A2E] transition-all hover:shadow-[8px_8px_0px_#FF6B35]">
+    <div id={id} className="w-full max-w-7xl mx-auto my-6 border-3 border-[#1A1A2E] bg-white shadow-[6px_6px_0px_#1A1A2E]">
       {/* Category Header Bar */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={`panel-${id}`}
-        className="w-full p-4 md:p-6 flex justify-between items-center bg-[#FAFAFA] border-b-2 border-[#1A1A2E] text-left hover:bg-white transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 group cursor-pointer"
+        className="w-full p-4 md:p-6 flex justify-between items-center bg-[#FAFAFA] border-b-2 border-[#1A1A2E] text-left transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] cursor-pointer"
       >
         <div className="flex items-center gap-2 md:gap-3 min-w-0">
-          <div className="w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#FF6B35] flex items-center justify-center text-[#FF6B35] shrink-0 group-hover:bg-[#FF6B35] group-hover:text-white transition-colors">
+          <div className="w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#FF6B35] flex items-center justify-center text-[#FF6B35] shrink-0">
             <IconComponent className="w-4 h-4 md:w-5 md:h-5" />
           </div>
           <div className="min-w-0">
             <MonoLabel className="text-[#FF6B35] hidden md:block">ECOSYSTEM CATEGORY</MonoLabel>
-            <h3 id={`heading-${id}`} className="text-base md:text-xl lg:text-2xl font-black text-[#1A1A2E] tracking-tight truncate group-hover:text-[#FF6B35] transition-colors">{title}</h3>
+            <h3 id={`heading-${id}`} className="text-base md:text-xl lg:text-2xl font-black text-[#1A1A2E] tracking-tight truncate">{title}</h3>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export function StackCategory({
           <span className="hidden sm:inline-block font-mono text-[10px] md:text-xs font-bold text-zinc-500 bg-white border border-[#1A1A2E] px-2 md:px-2.5 py-0.5 md:py-1">
             {tools.length} TOOLS
           </span>
-          <div className="w-7 h-7 md:w-8 md:h-8 bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#1A1A2E] flex items-center justify-center group-hover:bg-[#1A1A2E] group-hover:text-white transition-all">
+          <div className="w-7 h-7 md:w-8 md:h-8 bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#1A1A2E] flex items-center justify-center">
             {isOpen ? <ChevronUp className="w-3.5 h-3.5 md:w-4 md:h-4" /> : <ChevronDown className="w-3.5 h-3.5 md:w-4 md:h-4" />}
           </div>
         </div>
@@ -81,7 +81,7 @@ export function StackCategory({
         {tools.map((tool) => (
           <div
             key={tool.name}
-            className="border-2 border-[#1A1A2E] bg-[#FAFAFA] p-4 md:p-5 shadow-[4px_4px_0px_#1A1A2E] hover:shadow-[6px_6px_0px_#7C3AED] hover:bg-white transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex flex-col justify-between"
+            className="border-2 border-[#1A1A2E] bg-[#FAFAFA] p-4 md:p-5 shadow-[4px_4px_0px_#1A1A2E] hover:shadow-[6px_6px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex flex-col justify-between"
           >
             <div>
               <div className="flex justify-between items-start mb-2">
