@@ -70,8 +70,9 @@ export function Hero() {
                 </NeoButton>
               </Link>
                <Link
-                href="/prathamesh_lonare_resume.pdf"
-                download="Prathamesh_Lonare_Resume.pdf"
+                href="https://drive.google.com/uc?export=download&id=1bwj41m9DzgKIYDoDX3lLXMpvirutykSz"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 font-mono text-xs font-bold text-[#1A1A2E] bg-[#FAFAFA] border-2 border-[#1A1A2E] px-3 py-2.5 shadow-[2px_2px_0px_#1A1A2E] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] transition-all"
               >
                 <FileDown className="w-4 h-4" /> Resume PDF

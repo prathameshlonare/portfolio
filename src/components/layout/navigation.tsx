@@ -68,8 +68,9 @@ export function Navigation() {
           })}
 
           <a
-            href="/prathamesh_lonare_resume.pdf"
-            download="Prathamesh_Lonare_Resume.pdf"
+            href="https://drive.google.com/uc?export=download&id=1bwj41m9DzgKIYDoDX3lLXMpvirutykSz"
+            target="_blank"
+            rel="noopener noreferrer"
             className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] flex items-center gap-1.5"
           >
             <FileDown className="w-3.5 h-3.5" /> RESUME
@@ -129,8 +130,9 @@ export function Navigation() {
             );
           })}
           <a
-            href="/prathamesh_lonare_resume.pdf"
-            download="Prathamesh_Lonare_Resume.pdf"
+            href="https://drive.google.com/uc?export=download&id=1bwj41m9DzgKIYDoDX3lLXMpvirutykSz"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
             className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] font-mono font-bold text-sm py-3.5 px-4 flex justify-between items-center min-h-[48px] active:bg-[#FF6B35] active:text-white"
           >
