@@ -9,17 +9,6 @@ export function InitialLoader() {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    // Only show the initial loader once per browser session
-    try {
-      if (sessionStorage.getItem("portfolio_loader_shown")) {
-        setHidden(true);
-        return;
-      }
-      sessionStorage.setItem("portfolio_loader_shown", "1");
-    } catch {
-      // Fallback if sessionStorage is blocked
-    }
-
     const timers: ReturnType<typeof setTimeout>[] = [];
 
     const bootSequence = [
