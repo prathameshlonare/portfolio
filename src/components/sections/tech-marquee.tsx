@@ -24,7 +24,7 @@ export function TechMarquee() {
           return (
             <div
               key={item.name}
-              className="neo-card flex items-center gap-2 md:gap-3 px-3 md:px-5 py-2 md:py-3 border-2 border-[#1A1A2E] bg-white shadow-[4px_4px_0px_#1A1A2E] hover:shadow-[6px_6px_0px_#FF6B35] transition-all cursor-pointer hover:-translate-x-0.5 hover:-translate-y-0.5"
+              className="neo-card flex items-center gap-2 md:gap-3 px-3 md:px-5 py-2 md:py-3 border-2 border-[#1A1A2E] bg-white shadow-[4px_4px_0px_#1A1A2E] hover:shadow-[6px_6px_0px_#1A1A2E] transition-all cursor-pointer hover:-translate-x-0.5 hover:-translate-y-0.5"
             >
               <div className="w-6 h-6 md:w-8 md:h-8 rounded-none bg-[#FAFAFA] border border-[#1A1A2E] flex items-center justify-center text-[#FF6B35]">
                 <IconComponent className="w-3 h-3 md:w-4 md:h-4" />
