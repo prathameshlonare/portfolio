@@ -40,13 +40,13 @@ export function StackCategory({
   const IconComponent = ICON_MAP[iconType] || Cloud;
 
   return (
-    <div id={id} className="w-full max-w-7xl mx-auto my-6 border-3 border-[#1A1A2E] bg-white shadow-[6px_6px_0px_#1A1A2E]">
+    <div id={id} className="w-full max-w-7xl mx-auto my-6 border-3 border-[#1A1A2E] bg-white shadow-[6px_6px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[8px_8px_0px_#1A1A2E]">
       {/* Category Header Bar */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={`panel-${id}`}
-        className="w-full p-4 md:p-6 flex justify-between items-center bg-[#FAFAFA] border-b-2 border-[#1A1A2E] text-left transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] cursor-pointer"
+        className="w-full p-4 md:p-6 flex justify-between items-center border-b-2 border-[#1A1A2E] text-left cursor-pointer"
       >
         <div className="flex items-center gap-2 md:gap-3 min-w-0">
           <div className="w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#FF6B35] flex items-center justify-center text-[#FF6B35] shrink-0">
@@ -74,14 +74,14 @@ export function StackCategory({
         role="region"
         aria-labelledby={`heading-${id}`}
         hidden={!isOpen}
-        className={`p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 bg-white ${
+        className={`p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 ${
           isOpen ? "" : "hidden"
         }`}
       >
         {tools.map((tool) => (
           <div
             key={tool.name}
-            className="border-2 border-[#1A1A2E] bg-[#FAFAFA] p-4 md:p-5 shadow-[4px_4px_0px_#1A1A2E] hover:shadow-[6px_6px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex flex-col justify-between"
+            className="border-2 border-[#1A1A2E] p-4 md:p-5 shadow-[3px_3px_0px_#1A1A2E] hover:shadow-[5px_5px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex flex-col justify-between"
           >
             <div>
               <div className="flex justify-between items-start mb-2">
