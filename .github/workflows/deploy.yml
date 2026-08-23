@@ -64,7 +64,40 @@ jobs:
             --exclude "*.html" \
             --cache-control "public, max-age=86400"
 
-      - name: Invalidate CloudFront
+      - name: Configure CloudFront 404 error page
+        run: |
+          # Get current distribution config
+          aws cloudfront get-distribution-config \
+            --id E76HPAMYIL45V > /tmp/cf-config.json
+
+          # Extract ETag for conditional update
+          ETAG=$(cat /tmp/cf-config.json | python3 -c "import sys,json; print(json.load(sys.stdin)['ETag'])")
+
+          # Build update: add custom error response for 404
+          cat /tmp/cf-config.json | python3 -c "
+          import sys, json
+          data = json.load(sys.stdin)['DistributionConfig']
+          data['CustomErrorResponses'] = {
+            'Quantity': 1,
+            'Items': [
+              {
+                'ErrorCode': 404,
+                'ResponsePagePath': '/404.html',
+                'ResponseCode': '404',
+                'ErrorCachingMinTTL': 10
+              }
+            ]
+          }
+          json.dump(data, open('/tmp/cf-update.json', 'w'))
+          "
+
+          # Apply update
+          aws cloudfront update-distribution \
+            --id E76HPAMYIL45V \
+            --if-match "$ETAG" \
+            --distribution-config file:///tmp/cf-update.json
+
+      - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation \
             --distribution-id E76HPAMYIL45V \
