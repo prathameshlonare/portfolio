@@ -26,7 +26,7 @@ export const projects: ProjectItem[] = [
       "React + Amplify SDK frontend with Cognito multi-role auth (Student/Admin/Owner). Lambda + API Gateway backend, DynamoDB On-Demand for peak traffic, S3 CSV export. CI/CD from 8 manual deploys to zero.",
     tech: ["React", "AWS Amplify", "Lambda", "DynamoDB", "Cognito", "S3", "GitHub Actions"],
     github: "https://github.com/prathameshlonare/Online-voting-system",
-    live: null,
+    live: "/voting/",
     image: "/projects/online-voting-system/architecture-diagram/front_&_Integration_flow.png",
   },
   {

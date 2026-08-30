@@ -41,6 +41,7 @@ const CASE_STUDIES = [
     ],
     tech: ["React", "AWS Amplify", "Lambda", "API Gateway", "DynamoDB", "Cognito", "S3", "IAM", "GitHub Actions"],
     githubUrl: "https://github.com/prathameshlonare/Online-voting-system",
+    liveUrl: "/voting/",
     showDiagram: true,
     images: [
       { src: "/projects/online-voting-system/architecture-diagram/front_&_Integration_flow.png", alt: "System architecture and integration flow diagram" },
