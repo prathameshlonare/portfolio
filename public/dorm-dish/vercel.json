@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/dorm-dish/(.*)", "destination": "/dorm-dish/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

@@ -80,7 +80,11 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`antialiased ${syne.variable} ${spaceMono.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`antialiased ${syne.variable} ${spaceMono.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -96,7 +100,10 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className="text-[#1A1A2E] selection:bg-[#FF6B35] selection:text-white">
+      <body
+        suppressHydrationWarning
+        className="text-[#1A1A2E] selection:bg-[#FF6B35] selection:text-white"
+      >
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-[#FF6B35] focus:text-white focus:px-4 focus:py-2 focus:font-mono focus:text-sm">
           Skip to content
         </a>

@@ -16,7 +16,7 @@ export const projects: ProjectItem[] = [
       "Serverless student accommodation platform on AWS — Cognito auth, Lambda + API Gateway backend, DynamoDB multi-table design, S3 media storage, Google Maps integration, and a recommendation engine. 80% cost reduction vs EC2.",
     tech: ["Lambda", "API Gateway", "DynamoDB", "S3", "CloudFront", "CloudFormation", "Cognito", "Python"],
     github: "https://github.com/prathameshlonare/Dorm-and-Dish",
-    live: null,
+    live: "/dorm-dish/",
     image: "/projects/dorm-and-dish/architecture-diagram/architecture%20diagram.png",
   },
   {

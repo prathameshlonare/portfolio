@@ -75,6 +75,7 @@ const CASE_STUDIES = [
     ],
     tech: ["Lambda", "API Gateway", "DynamoDB", "S3", "CloudFront", "CloudFormation", "Cognito", "Google Maps API", "Python"],
     githubUrl: "https://github.com/prathameshlonare/Dorm-and-Dish",
+    liveUrl: "/dorm-dish/",
     images: [
       { src: "/projects/dorm-and-dish/architecture-diagram/architecture%20diagram.png", alt: "Dorm-Dish system architecture diagram" },
     ],
