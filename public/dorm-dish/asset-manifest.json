@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/dorm-dish/static/css/main.f2cbd03f.css",
-    "main.js": "/dorm-dish/static/js/main.f4739349.js",
+    "main.js": "/dorm-dish/static/js/main.b4184dd2.js",
     "static/js/462.20d48d4f.chunk.js": "/dorm-dish/static/js/462.20d48d4f.chunk.js",
     "static/js/947.2f3c8047.chunk.js": "/dorm-dish/static/js/947.2f3c8047.chunk.js",
     "static/js/308.174504a9.chunk.js": "/dorm-dish/static/js/308.174504a9.chunk.js",
     "static/js/847.55e8c2f5.chunk.js": "/dorm-dish/static/js/847.55e8c2f5.chunk.js",
-    "static/js/71.d8d36ff9.chunk.js": "/dorm-dish/static/js/71.d8d36ff9.chunk.js",
+    "static/js/71.8692f6b1.chunk.js": "/dorm-dish/static/js/71.8692f6b1.chunk.js",
     "static/js/346.bd4c2ab0.chunk.js": "/dorm-dish/static/js/346.bd4c2ab0.chunk.js",
     "static/js/65.8fb18fff.chunk.js": "/dorm-dish/static/js/65.8fb18fff.chunk.js",
     "static/js/475.90a6debc.chunk.js": "/dorm-dish/static/js/475.90a6debc.chunk.js",
@@ -48,12 +48,12 @@
     "static/media/logo.png": "/dorm-dish/static/media/logo.4cc7cd3cfba4ce263cb1.png",
     "index.html": "/dorm-dish/index.html",
     "main.f2cbd03f.css.map": "/dorm-dish/static/css/main.f2cbd03f.css.map",
-    "main.f4739349.js.map": "/dorm-dish/static/js/main.f4739349.js.map",
+    "main.b4184dd2.js.map": "/dorm-dish/static/js/main.b4184dd2.js.map",
     "462.20d48d4f.chunk.js.map": "/dorm-dish/static/js/462.20d48d4f.chunk.js.map",
     "947.2f3c8047.chunk.js.map": "/dorm-dish/static/js/947.2f3c8047.chunk.js.map",
     "308.174504a9.chunk.js.map": "/dorm-dish/static/js/308.174504a9.chunk.js.map",
     "847.55e8c2f5.chunk.js.map": "/dorm-dish/static/js/847.55e8c2f5.chunk.js.map",
-    "71.d8d36ff9.chunk.js.map": "/dorm-dish/static/js/71.d8d36ff9.chunk.js.map",
+    "71.8692f6b1.chunk.js.map": "/dorm-dish/static/js/71.8692f6b1.chunk.js.map",
     "346.bd4c2ab0.chunk.js.map": "/dorm-dish/static/js/346.bd4c2ab0.chunk.js.map",
     "65.8fb18fff.chunk.js.map": "/dorm-dish/static/js/65.8fb18fff.chunk.js.map",
     "475.90a6debc.chunk.js.map": "/dorm-dish/static/js/475.90a6debc.chunk.js.map",
@@ -92,6 +92,6 @@
   },
   "entrypoints": [
     "static/css/main.f2cbd03f.css",
-    "static/js/main.f4739349.js"
+    "static/js/main.b4184dd2.js"
   ]
 }
