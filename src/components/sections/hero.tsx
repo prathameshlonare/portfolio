@@ -15,7 +15,7 @@ export function Hero() {
       <section className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Typography & Content */}
-          <div className="lg:col-span-7 flex flex-col gap-5 md:gap-6 relative z-10">
+          <div className="lg:col-span-7 flex flex-col gap-5 md:gap-6 relative z-10 min-w-0">
             <div className="flex items-center gap-3 gsap-badge">
               <MonoLabel className="text-[#FF6B35] flex items-center gap-2 bg-amber-100 border border-[#1A1A2E] px-2.5 py-1 md:px-3 shadow-[2px_2px_0px_#1A1A2E] text-[10px] md:text-xs">
                 <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -23,7 +23,7 @@ export function Hero() {
               </MonoLabel>
             </div>
 
-            <div className="flex flex-col gsap-title">
+            <div className="flex flex-col gsap-title min-w-0">
               <ViewportType as="h1" className="text-[var(--text-hero)]">
                 PRATHAMESH
               </ViewportType>
