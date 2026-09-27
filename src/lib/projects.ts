@@ -10,10 +10,20 @@ export interface ProjectItem {
 
 export const projects: ProjectItem[] = [
   {
+    name: "DuoKart",
+    year: "2026",
+    description:
+      "Resilient multi-tier e-commerce cloud infrastructure across 2 AZs on AWS us-east-2. Internet-facing ALB routing to private Auto Scaling EC2 instances, Multi-AZ RDS MySQL, and SQS/DLQ decoupled event-driven Lambda order workers.",
+    tech: ["CloudFormation", "VPC", "ALB", "Auto Scaling", "RDS MySQL", "SQS", "Lambda", "DynamoDB", "CloudWatch", "Python"],
+    github: "https://github.com/prathameshlonare/duokart",
+    live: "https://prathameshlonare.github.io/duokart/",
+    image: "/projects/duokart/architecture.png",
+  },
+  {
     name: "Dorm-Dish",
     year: "2026",
     description:
-      "Serverless student accommodation platform on AWS — Cognito auth, Lambda + API Gateway backend, DynamoDB multi-table design, S3 media storage, Google Maps integration, and a recommendation engine. 80% cost reduction vs EC2.",
+      "Serverless student accommodation platform on AWS: Cognito auth, Lambda + API Gateway backend, DynamoDB multi-table design, S3 media storage, Google Maps integration, and a recommendation engine. 80% cost reduction vs EC2.",
     tech: ["Lambda", "API Gateway", "DynamoDB", "S3", "CloudFront", "CloudFormation", "Cognito", "Python"],
     github: "https://github.com/prathameshlonare/Dorm-and-Dish",
     live: "/dorm-dish/",
@@ -43,7 +53,7 @@ export const projects: ProjectItem[] = [
     name: "AI Resume-Job Matcher",
     year: "2026",
     description:
-      "ML predictor trained on 1,200+ job postings. Semantic embeddings + logistic regression — 90% accuracy, 95% AUC-ROC. Streamlit app with keyword extraction.",
+      "ML predictor trained on 1,200+ job postings. Semantic embeddings + logistic regression: 90% accuracy, 95% AUC-ROC. Streamlit app with keyword extraction.",
     tech: ["Python", "Streamlit", "sentence-transformers", "scikit-learn", "pandas"],
     github: "https://github.com/prathameshlonare/ai-resume-job-matcher",
     live: null,

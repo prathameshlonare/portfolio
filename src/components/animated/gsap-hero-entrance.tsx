@@ -18,6 +18,12 @@ export function GsapHeroEntrance({ children }: GsapHeroEntranceProps) {
     () => {
       if (!containerRef.current) return;
 
+      // Skip animations if user prefers reduced motion (e.g. Windows visual effects disabled)
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      if (prefersReducedMotion) return;
+
       // Entrance timeline
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 

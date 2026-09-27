@@ -29,6 +29,12 @@ export function ScrollSection({
     () => {
       if (!containerRef.current) return;
 
+      // Skip scroll animations if user prefers reduced motion
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      if (prefersReducedMotion) return;
+
       const directionMap = {
         up: { y: 60, x: 0 },
         down: { y: -60, x: 0 },

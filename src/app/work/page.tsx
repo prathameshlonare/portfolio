@@ -18,6 +18,38 @@ export const metadata: Metadata = {
 
 const CASE_STUDIES = [
   {
+    id: "duokart",
+    title: "DuoKart Multi-Tier Cloud Infrastructure",
+    subtitle: "High Availability, Auto Scaling & Asynchronous Order Decoupling",
+    year: "2026",
+    problem:
+      "Monolithic e-commerce apps risk downtime during festival traffic surges, database connection exhaustion, and lost order transactions during unexpected compute failures.",
+    role: "Cloud Infrastructure Engineer (Team of 2) — engineered 6-tier modular CloudFormation infrastructure, private Auto Scaling Group, Multi-AZ RDS MySQL, SQS/DLQ asynchronous pipelines, and fault-injection drills.",
+    method: [
+      "Architected custom VPC across 2 AZs with layered security groups: public subnets (ALB, Bastion, NAT) and private subnets (app instances and RDS).",
+      "Configured internet-facing ALB forwarding traffic to a private Auto Scaling Group (2-4 EC2s) running Flask/gunicorn managed by systemd.",
+      "Provisioned Multi-AZ RDS MySQL 8.0 in isolated database subnets with SSM Parameter Store dynamic secret injection at instance boot.",
+      "Decoupled order processing using SQS Standard with Dead-Letter Queue (3-retry threshold) triggering Python 3.12 Lambda workers for DynamoDB conditional writes (RECEIVED -> PACKING).",
+      "Implemented split SNS notifications delivering distinct order alerts to store owners and shipping updates to customers.",
+      "Configured 8 CloudWatch alarms (ALB 5xx, unhealthy hosts, RDS CPU, SQS depth), a centralized operational dashboard, and a $20 budget cap.",
+    ],
+    outcome: [
+      "100% continuous 200 OK responses during kill-1-EC2 fault injection self-healing drills.",
+      "Zero lost orders with automatic poison message redrive to DLQ after 3 failures.",
+      "Private compute security with zero public IPs on app servers and database instances.",
+      "Strict cost discipline sustained under $25 total spend with automated nightly teardown routines.",
+    ],
+    tech: ["AWS VPC", "CloudFormation", "ALB", "EC2 Auto Scaling", "RDS MySQL", "SQS", "Lambda", "DynamoDB", "SNS", "CloudWatch", "Python"],
+    githubUrl: "https://github.com/prathameshlonare/duokart",
+    liveUrl: "https://prathameshlonare.github.io/duokart/",
+    images: [
+      { src: "/projects/duokart/architecture.png", alt: "DuoKart 6-tier AWS system architecture diagram" },
+      { src: "/projects/duokart/self-heal.png", alt: "Kill-1-EC2 fault injection self-healing verification" },
+      { src: "/projects/duokart/dashboard.png", alt: "CloudWatch operational monitoring dashboard" },
+      { src: "/projects/duokart/banner.jpg", alt: "DuoKart project overview banner" },
+    ],
+  },
+  {
     id: "online-voting-system",
     title: "Serverless Online Voting Platform",
     subtitle: "AWS Serverless & Automated CI/CD Pipeline",
