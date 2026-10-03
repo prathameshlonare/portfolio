@@ -36,11 +36,11 @@ export function VisitorTelemetry() {
         .catch(() => {});
     }, 30000);
 
-    return () => clearInterval(interval);
+  return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="border-2 border-[#1A1A2E] bg-[#0D0D1A] text-white p-3 font-mono text-xs shadow-[4px_4px_0px_#FF6B35] flex flex-wrap items-center justify-between gap-3 my-4">
+    <div className="border-2 border-[#1A1A2E] bg-[#0D0D1A] text-white p-3 font-mono text-xs shadow-[3px_3px_0px_#1A1A2E] md:shadow-[4px_4px_0px_#FF6B35] flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 my-4">
       {/* Telemetry Stream Badge */}
       <div className="flex items-center gap-2 font-extrabold text-[#FF6B35]">
         <Radio className="w-3.5 h-3.5 text-[#FF6B35] animate-pulse" />
@@ -48,14 +48,14 @@ export function VisitorTelemetry() {
       </div>
 
       {/* Live Active Viewers */}
-      <div className="flex items-center gap-2 bg-[#1A1A2E] border border-emerald-500/40 px-3 py-1 text-emerald-400 font-bold">
+      <div className="flex items-center gap-2 bg-[#1A1A2E] border border-emerald-500/40 px-2.5 sm:px-3 py-1 text-emerald-400 font-bold text-[11px] sm:text-xs">
         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
         <Eye className="w-3.5 h-3.5 text-emerald-400" />
         <span>{activeViewers !== null ? `${activeViewers} LIVE NOW` : "CONNECTING..."}</span>
       </div>
 
       {/* Unique Visitors */}
-      <div className="flex items-center gap-2 bg-[#1A1A2E] border border-purple-500/40 px-3 py-1 text-zinc-200 font-bold">
+      <div className="flex items-center gap-2 bg-[#1A1A2E] border border-purple-500/40 px-2.5 sm:px-3 py-1 text-zinc-200 font-bold text-[11px] sm:text-xs">
         <Activity className="w-3.5 h-3.5 text-[#7C3AED]" />
         <span>UNIQUE VISITORS: <strong className="text-[#FF6B35]">{uniqueVisitors !== null ? uniqueVisitors.toLocaleString() : "..."}</strong></span>
       </div>

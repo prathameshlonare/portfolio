@@ -7,7 +7,7 @@ import { ContactContent } from "@/components/sections/contact-content";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Contact — Prathamesh Lonare | DevOps & Cloud Systems Engineer",
+  title: "Contact: Prathamesh Lonare | DevOps & Cloud Systems Engineer",
   description:
     "Get in touch with Prathamesh Lonare for DevOps roles, AWS cloud infrastructure projects, automation consulting, or pipeline inquiries.",
   alternates: {

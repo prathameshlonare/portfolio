@@ -35,11 +35,11 @@ export function CaseStudyDetail({
   tech,
   githubUrl,
   liveUrl,
-  showDiagram = false,
   images = [],
 }: CaseStudyProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [showImages, setShowImages] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -67,7 +67,7 @@ export function CaseStudyDetail({
       if (e.key === "ArrowLeft") setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : images.length - 1));
       if (e.key === "ArrowRight") setLightboxIndex((i) => (i !== null && i < images.length - 1 ? i + 1 : 0));
 
-      // Focus trap — cycle Tab/Shift+Tab within the 3 interactive elements
+      // Focus trap: cycle Tab/Shift+Tab within the interactive elements
       if (e.key === "Tab") {
         const focusable = document.querySelectorAll<HTMLElement>(
           "[data-lightbox-focusable]"
@@ -89,37 +89,38 @@ export function CaseStudyDetail({
       window.removeEventListener("keydown", handleKey);
     };
   }, [lightboxIndex, images.length, closeLightbox]);
+
   return (
-    <div id={id} className="w-full max-w-7xl mx-auto my-12 scroll-mt-24">
-      <NeoCard variant="orange" className="p-4 md:p-6 lg:p-10">
+    <div id={id} className="w-full max-w-7xl mx-auto my-8 sm:my-10 md:my-12 scroll-mt-24">
+      <NeoCard variant="orange" className="p-4 sm:p-5 md:p-6 lg:p-10">
         {/* Header Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b-3 border-[#1A1A2E] pb-6 mb-8 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b-3 border-[#1A1A2E] pb-4 sm:pb-6 mb-6 md:mb-8 gap-3 sm:gap-4">
           <div>
-            <div className="flex items-center gap-3 mb-2">
-              <span className="font-mono text-xs font-black bg-[#1A1A2E] text-white px-2.5 py-1">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
+              <span className="font-mono text-[10px] sm:text-xs font-black bg-[#1A1A2E] text-white px-2 py-0.5 sm:px-2.5 sm:py-1">
                 CASE STUDY
               </span>
-              <MonoLabel className="text-[#FF6B35] font-bold">{subtitle}</MonoLabel>
+              <MonoLabel className="text-[#FF6B35] font-bold text-[10px] sm:text-xs">{subtitle}</MonoLabel>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-black text-[#1A1A2E] tracking-tight">{title}</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-black text-[#1A1A2E] tracking-tight">{title}</h2>
           </div>
-          <span className="font-mono text-base font-extrabold text-[#7C3AED] bg-purple-50 border-2 border-[#1A1A2E] px-3 py-1 shadow-[2px_2px_0px_#1A1A2E]">
+          <span className="font-mono text-xs sm:text-sm md:text-base font-extrabold text-[#7C3AED] bg-purple-50 border-2 border-[#1A1A2E] px-2.5 sm:px-3 py-0.5 sm:py-1 shadow-[2px_2px_0px_#1A1A2E] self-start md:self-auto">
             YEAR {year}
           </span>
         </div>
 
-        {/* Image Gallery — Collapsible */}
+        {/* Image Gallery: Collapsible */}
         {images.length > 0 && (
-          <div className="border-2 border-[#1A1A2E] bg-white shadow-[4px_4px_0px_#1A1A2E] mb-8">
+          <div className="border-2 border-[#1A1A2E] bg-white shadow-[3px_3px_0px_#1A1A2E] md:shadow-[4px_4px_0px_#1A1A2E] mb-6 md:mb-8">
             <button
               onClick={() => setShowImages(!showImages)}
-              className="w-full flex items-center justify-between p-3 cursor-pointer"
+              className="w-full flex items-center justify-between p-3 cursor-pointer min-h-[44px]"
             >
               <MonoLabel className="text-[#FF6B35]">SCREENSHOTS & DIAGRAMS ({images.length})</MonoLabel>
               <ChevronDown className={`w-5 h-5 text-[#1A1A2E] transition-transform ${showImages ? "rotate-180" : ""}`} />
             </button>
             {showImages && (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 p-3 pt-0">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3 p-3 pt-0">
                 {images.map((img, idx) => (
                   <button
                     key={idx}
@@ -143,56 +144,56 @@ export function CaseStudyDetail({
         )}
 
         {/* Breakdown Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start mb-8">
-          {/* Left Column: Problem & Role */}
-          <div className="lg:col-span-6 flex flex-col gap-4 md:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 items-start mb-4 sm:mb-6">
+          {/* Left Column: Problem & Role (Collapsible on Mobile, Always Visible on Desktop) */}
+          <div className={`lg:col-span-6 flex flex-col gap-4 md:gap-6 ${showDetails ? "flex" : "hidden lg:flex"}`}>
             {/* Problem */}
-            <div className="border-2 border-[#1A1A2E] bg-[#FAFAFA] p-4 md:p-5 shadow-[4px_4px_0px_#1A1A2E]">
+            <div className="border-2 border-[#1A1A2E] bg-[#FAFAFA] p-3.5 sm:p-4 md:p-5 shadow-[3px_3px_0px_#1A1A2E] md:shadow-[4px_4px_0px_#1A1A2E]">
               <div className="flex items-center gap-2 mb-2">
-                <AlertTriangle className="w-4 h-4 text-[#FF6B35]" />
+                <AlertTriangle className="w-4 h-4 text-[#FF6B35] shrink-0" />
                 <MonoLabel className="text-[#FF6B35]">01 / THE PROBLEM</MonoLabel>
               </div>
-              <p className="text-sm md:text-base text-zinc-700 font-medium leading-relaxed">{problem}</p>
+              <p className="text-xs sm:text-sm md:text-base text-zinc-700 font-medium leading-relaxed">{problem}</p>
             </div>
 
             {/* Role */}
-            <div className="border-2 border-[#1A1A2E] bg-white p-4 md:p-5 shadow-[4px_4px_0px_#7C3AED]">
+            <div className="border-2 border-[#1A1A2E] bg-white p-3.5 sm:p-4 md:p-5 shadow-[3px_3px_0px_#7C3AED] md:shadow-[4px_4px_0px_#7C3AED]">
               <div className="flex items-center gap-2 mb-2">
-                <Terminal className="w-4 h-4 text-[#7C3AED]" />
+                <Terminal className="w-4 h-4 text-[#7C3AED] shrink-0" />
                 <MonoLabel className="text-[#7C3AED]">02 / MY ROLE & OWNERSHIP</MonoLabel>
               </div>
-              <p className="text-sm md:text-base text-zinc-700 font-medium leading-relaxed">{role}</p>
+              <p className="text-xs sm:text-sm md:text-base text-zinc-700 font-medium leading-relaxed">{role}</p>
             </div>
           </div>
 
           {/* Right Column: Method & Outcome */}
           <div className="lg:col-span-6 flex flex-col gap-4 md:gap-6">
-            {/* Method */}
-            <div className="border-2 border-[#1A1A2E] bg-white p-4 md:p-5 shadow-[4px_4px_0px_#1A1A2E]">
+            {/* Method (Collapsible on Mobile, Always Visible on Desktop) */}
+            <div className={`border-2 border-[#1A1A2E] bg-white p-3.5 sm:p-4 md:p-5 shadow-[3px_3px_0px_#1A1A2E] md:shadow-[4px_4px_0px_#1A1A2E] ${showDetails ? "block" : "hidden lg:block"}`}>
               <div className="flex items-center gap-2 mb-3">
-                <Cpu className="w-4 h-4 text-[#1A1A2E]" />
+                <Cpu className="w-4 h-4 text-[#1A1A2E] shrink-0" />
                 <MonoLabel className="text-[#1A1A2E]">03 / METHOD & ARCHITECTURE</MonoLabel>
               </div>
               <ul className="flex flex-col gap-2 font-mono text-[11px] md:text-xs text-zinc-700 font-bold">
                 {method.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="text-[#FF6B35] font-black">❯</span>
+                    <span className="text-[#FF6B35] font-black shrink-0">❯</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Outcome */}
-            <div className="border-2 border-[#1A1A2E] bg-[#FAFAFA] p-4 md:p-5 shadow-[4px_4px_0px_#FF6B35]">
+            {/* Outcome: High Signal (Always Visible on Mobile & Desktop) */}
+            <div className="border-2 border-[#1A1A2E] bg-[#FAFAFA] p-3.5 sm:p-4 md:p-5 shadow-[3px_3px_0px_#FF6B35] md:shadow-[4px_4px_0px_#FF6B35]">
               <div className="flex items-center gap-2 mb-3">
-                <CheckCircle className="w-4 h-4 text-emerald-600" />
+                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
                 <MonoLabel className="text-emerald-700">04 / MEASURABLE OUTCOMES</MonoLabel>
               </div>
               <ul className="flex flex-col gap-2 font-mono text-[11px] md:text-xs text-zinc-800 font-extrabold">
                 {outcome.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="text-emerald-600 font-black">✓</span>
+                    <span className="text-emerald-600 font-black shrink-0">✓</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -201,10 +202,27 @@ export function CaseStudyDetail({
           </div>
         </div>
 
+        {/* Mobile Progressive Disclosure Toggle */}
+        <button
+          type="button"
+          onClick={() => setShowDetails(!showDetails)}
+          aria-expanded={showDetails}
+          className="lg:hidden w-full flex items-center justify-between py-2.5 px-3.5 mb-5 border-2 border-[#1A1A2E] bg-white hover:bg-[#FAFAFA] shadow-[2px_2px_0px_#1A1A2E] active:translate-x-0.5 active:translate-y-0.5 font-mono text-xs font-black text-[#1A1A2E] cursor-pointer transition-all min-h-[44px]"
+        >
+          <span className="flex items-center gap-2 text-left">
+            <span className="text-[#FF6B35] font-black">{showDetails ? "[-]" : "[+]"}</span>
+            <span>{showDetails ? "HIDE ARCHITECTURE & PROBLEM" : "VIEW ARCHITECTURE & METHOD"}</span>
+          </span>
+          <span className="text-[10px] text-zinc-600 bg-zinc-100 border border-[#1A1A2E] px-2 py-0.5 font-bold shrink-0">
+            {showDetails ? "COLLAPSE" : `${method.length} BULLETS`}
+          </span>
+        </button>
+
         {/* Tech Stack Chips */}
-        <div className="flex flex-wrap items-center gap-2 pt-4 border-t-2 border-[#1A1A2E] mb-6">
-          <MonoLabel className="mr-2">TECH DEPLOYED:</MonoLabel>
-          {tech.map((t) => (
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-4 border-t-2 border-[#1A1A2E] mb-6">
+          <MonoLabel className="mr-1 sm:mr-2 text-[10px] sm:text-xs">TECH DEPLOYED:</MonoLabel>
+          {/* On mobile: if collapsed show first 5, if expanded show all */}
+          {(showDetails ? tech : tech.slice(0, 5)).map((t) => (
             <span
               key={t}
               className="font-mono text-[10px] md:text-xs font-bold text-[#1A1A2E] bg-[#FAFAFA] border-2 border-[#1A1A2E] px-2 md:px-3 py-0.5 md:py-1 shadow-[2px_2px_0px_#FF6B35]"
@@ -212,20 +230,35 @@ export function CaseStudyDetail({
               {t}
             </span>
           ))}
+          {/* On mobile when collapsed: badge showing count of remaining chips */}
+          {!showDetails && tech.length > 5 && (
+            <span className="lg:hidden font-mono text-[10px] font-bold text-zinc-600 bg-zinc-100 border border-zinc-400 px-2 py-0.5">
+              +{tech.length - 5} more
+            </span>
+          )}
+          {/* On desktop: always show remaining chips */}
+          {!showDetails && tech.slice(5).map((t) => (
+            <span
+              key={t}
+              className="hidden lg:inline-flex font-mono text-[10px] md:text-xs font-bold text-[#1A1A2E] bg-[#FAFAFA] border-2 border-[#1A1A2E] px-2 md:px-3 py-0.5 md:py-1 shadow-[2px_2px_0px_#FF6B35]"
+            >
+              {t}
+            </span>
+          ))}
         </div>
 
         {/* Links CTAs */}
-        <div className="flex flex-wrap gap-4 pt-2">
+        <div className="flex flex-wrap gap-3 sm:gap-4 pt-2">
           {githubUrl && (
             <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-              <NeoButton variant="secondary" className="font-mono text-xs">
+              <NeoButton variant="secondary" className="font-mono text-xs min-h-[44px]">
                 <GithubIcon className="w-4 h-4" /> [inspect_source_code]
               </NeoButton>
             </a>
           )}
           {liveUrl && (
             <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-              <NeoButton variant="primary" className="font-mono text-xs">
+              <NeoButton variant="primary" className="font-mono text-xs min-h-[44px]">
                 <ExternalLink className="w-4 h-4" /> [view_live_demo] <ArrowUpRight className="w-3.5 h-3.5" />
               </NeoButton>
             </a>
@@ -242,7 +275,7 @@ export function CaseStudyDetail({
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
           onClick={closeLightbox}
         >
-          {/* Prev arrow — left side (first focusable) */}
+          {/* Prev arrow: left side (first focusable) */}
           <button
             data-lightbox-focusable
             onClick={(e) => { e.stopPropagation(); prevImage(); }}
@@ -259,7 +292,7 @@ export function CaseStudyDetail({
             onClick={(e) => e.stopPropagation()}
           />
 
-          {/* Next arrow — right side */}
+          {/* Next arrow: right side */}
           <button
             data-lightbox-focusable
             onClick={(e) => { e.stopPropagation(); nextImage(); }}
@@ -269,7 +302,7 @@ export function CaseStudyDetail({
             <ChevronRight className="w-10 h-10" />
           </button>
 
-          {/* Close button — receives initial focus, last in trap cycle */}
+          {/* Close button: receives initial focus, last in trap cycle */}
           <button
             ref={closeButtonRef}
             data-lightbox-focusable

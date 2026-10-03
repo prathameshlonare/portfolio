@@ -2,9 +2,9 @@ import { projects } from "@/lib/projects";
 import { MonoLabel } from "@/components/anti-ux/mono-label";
 import { NeoCard } from "@/components/anti-ux/neo-card";
 import { NeoButton } from "@/components/anti-ux/neo-button";
-import { ExternalLink, ArrowUpRight, Server, Layers } from "lucide-react";
+import { ExternalLink, ArrowUpRight, Server } from "lucide-react";
 import { GithubIcon } from "@/components/ui/brand-icons";
-import Link from "next/link";
+import { TransitionLink } from "@/components/layout/transition-link";
 
 export function FeaturedWorkPreview() {
   return (
@@ -16,11 +16,11 @@ export function FeaturedWorkPreview() {
             INFRASTRUCTURE IN ACTION
           </h2>
         </div>
-        <Link href="/work/">
+        <TransitionLink href="/work/">
           <NeoButton variant="secondary" className="font-mono text-xs">
             VIEW ALL CASE STUDIES <ArrowUpRight className="w-4 h-4" />
           </NeoButton>
-        </Link>
+        </TransitionLink>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -69,7 +69,7 @@ export function FeaturedWorkPreview() {
               </div>
             </div>
 
-            <div className="flex gap-3 pt-4 border-t-2 border-[#1A1A2E]">
+            <div className="flex flex-wrap gap-2.5 sm:gap-3 pt-4 border-t-2 border-[#1A1A2E]">
               {project.github && (
                 <a
                   href={project.github}

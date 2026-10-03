@@ -1,19 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { MonoLabel } from "@/components/anti-ux/mono-label";
-import { Mail, MapPin, Clock, Heart } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/brand-icons";
 import { VisitorTelemetry } from "@/components/sections/visitor-telemetry";
+import { TransitionLink } from "@/components/layout/transition-link";
 
 export function Footer() {
-  const [currentYear, setCurrentYear] = useState<number>(() => new Date().getFullYear());
-
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-  }, []);
+  const currentYear = new Date().getFullYear();
   return (
-    <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-8 md:pt-12 pb-12 md:pb-16 mt-12 md:mt-20 border-t-3 border-[#1A1A2E]">
+    <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-8 md:pt-12 pb-8 sm:pb-12 md:pb-16 mt-12 md:mt-20 border-t-3 border-[#1A1A2E]">
       <div className="bg-white border-3 border-[#1A1A2E] shadow-[4px_4px_0px_#1A1A2E] md:shadow-[6px_6px_0px_#1A1A2E] p-4 md:p-6 lg:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
         {/* Left Column: Brand & Status */}
         <div className="md:col-span-6 flex flex-col gap-3 md:gap-4">
@@ -30,7 +26,7 @@ export function Footer() {
             Architecting infrastructure as code, CI/CD automation pipelines, and serverless backends on AWS.
           </p>
 
-          <div className="flex flex-wrap gap-2.5 md:gap-4 pt-1 md:pt-2 font-mono text-[10px] md:text-xs">
+          <div className="flex flex-wrap gap-2 sm:gap-2.5 md:gap-4 pt-1 md:pt-2 font-mono text-[10px] md:text-xs">
             <div className="flex items-center gap-1.5 md:gap-2 bg-emerald-50 border border-emerald-300 text-emerald-800 px-2.5 py-1 md:px-3 font-semibold">
               <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               Open for Cloud / DevOps Roles
@@ -46,7 +42,7 @@ export function Footer() {
 
         {/* Right Column: Social Links */}
         <div className="md:col-span-6 flex flex-col md:items-end gap-3 md:gap-4">
-          <MonoLabel>Social Systems & Code</MonoLabel>
+          <MonoLabel>Social Systems &amp; Code</MonoLabel>
           <div className="flex flex-wrap gap-2 md:gap-3">
             <a
               href="https://github.com/prathameshlonare"
@@ -76,11 +72,21 @@ export function Footer() {
 
       <VisitorTelemetry />
 
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-2 mt-3 md:mt-4 font-mono text-[10px] md:text-xs text-zinc-500">
-        <span>© {currentYear} Prathamesh Lonare. Built with Next.js 16 &amp; Tailwind.</span>
-        <div className="flex items-center gap-4">
-          <a href="/privacy/" className="hover:text-[#FF6B35] underline transition-colors">Privacy Policy</a>
-          <span className="hidden sm:inline">Engineered for speed &amp; reliability</span>
+      {/* Sub-Footer Bar: Cleanly paired copyright & privacy policy */}
+      <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t-2 border-[#1A1A2E] flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-[11px] sm:text-xs text-zinc-600">
+        <div className="flex items-center gap-2 flex-wrap justify-center text-center">
+          <span className="font-bold text-[#1A1A2E]">© {currentYear} Prathamesh Lonare</span>
+          <span className="text-zinc-400">•</span>
+          <TransitionLink
+            href="/privacy/"
+            className="font-bold text-[#1A1A2E] hover:text-[#FF6B35] underline decoration-[#FF6B35] underline-offset-2 transition-colors"
+          >
+            Privacy Policy
+          </TransitionLink>
+        </div>
+
+        <div className="text-[10px] sm:text-xs text-zinc-600 text-center font-bold">
+          100% Chai-driven development • Zero manual deploys
         </div>
       </div>
     </footer>

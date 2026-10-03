@@ -71,6 +71,10 @@ export default function RootLayout({
     knowsAbout: [
       "AWS Lambda",
       "Terraform",
+      "AWS CloudFormation",
+      "AWS ALB",
+      "Amazon RDS",
+      "Amazon SQS",
       "Docker",
       "GitHub Actions",
       "DynamoDB",
@@ -90,7 +94,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Cloudflare Web Analytics — token read from env so it can be rotated without a code push */}
+        {/* Cloudflare Web Analytics: token read from env so it can be rotated without a code push */}
         {process.env.NEXT_PUBLIC_CF_BEACON_TOKEN && (
           <script
             defer

@@ -1,7 +1,6 @@
-import { MonoLabel } from "@/components/anti-ux/mono-label";
 import { NeoButton } from "@/components/anti-ux/neo-button";
 import { Mail, MapPin, Clock, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import { TransitionLink } from "@/components/layout/transition-link";
 
 const EMAIL = "prathameshlonare9@gmail.com";
 const MAILTO_SUBJECT = "DevOps Opportunity / Cloud Infrastructure Inquiry";
@@ -63,11 +62,11 @@ export function ContactPreview() {
               </NeoButton>
             </a>
 
-            <Link href="/contact" className="block">
+            <TransitionLink href="/contact/" className="block">
               <NeoButton variant="secondary" className="w-full py-3 font-mono text-sm justify-center">
                 View Full Contact Page
               </NeoButton>
-            </Link>
+            </TransitionLink>
           </div>
         </div>
       </div>

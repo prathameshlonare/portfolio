@@ -1,6 +1,6 @@
 # Prathamesh Lonare — DevOps & Cloud Systems Engineer
 
-> DevOps Engineer specializing in AWS serverless infrastructure, Terraform Infrastructure as Code (IaC), Docker containerization, and automated CI/CD pipelines.
+> DevOps Engineer specializing in AWS serverless infrastructure, multi-tier cloud architectures, Terraform & CloudFormation Infrastructure as Code (IaC), Docker containerization, and automated CI/CD pipelines.
 
 ## Executive Summary
 - **Name:** Prathamesh Lonare
@@ -13,30 +13,37 @@
 - **LinkedIn:** https://www.linkedin.com/in/prathamesh-lonare21/
 
 ## Core Technical Stack
-- **Cloud Platform:** AWS (Lambda, DynamoDB, API Gateway, S3, CloudFront, CloudWatch, IAM, Cognito)
+- **Cloud Platform:** AWS (ALB, EC2 Auto Scaling, RDS MySQL, SQS/DLQ, Lambda, DynamoDB, API Gateway, S3, CloudFront, CloudWatch, IAM, Cognito)
 - **Infrastructure as Code:** Terraform, AWS CloudFormation
 - **Containers & CI/CD:** Docker, GitHub Actions, Nginx
 - **Languages & Runtimes:** Python (Boto3, scikit-learn), Bash/Linux Shell, Node.js, TypeScript
 - **Security & Quality:** Bandit SAST Scanner, IAM Least-Privilege Policies
 
 ## Key Projects & Case Studies
-1. **Serverless Online Voting Platform (2025)**
-   - 6 AWS Lambda microservices, API Gateway, DynamoDB On-Demand.
+1. **DuoKart Multi-Tier Cloud Infrastructure (2026)**
+   - Resilient multi-tier e-commerce architecture across 2 AZs on AWS us-east-2.
+   - Modular 6-tier CloudFormation stacks: VPC, internet-facing ALB, private Auto Scaling EC2 instances, Multi-AZ RDS MySQL, decoupled SQS/DLQ, and Python Lambda workers.
+   - Self-healing validated with 100% 200 OK responses during kill-1-EC2 fault injection drills.
+   - GitHub: https://github.com/prathameshlonare/duokart
+   - Live Architecture & Documentation: https://prathameshlonare.github.io/duokart/
+
+2. **Serverless Online Voting Platform (2025)**
+   - 6 AWS Lambda microservices, API Gateway, DynamoDB On-Demand, Cognito multi-role authentication.
    - 500+ active student users served with zero downtime and 180ms P99 latency.
-   - Reduced deployment time from 12 mins to 3 mins via GitHub Actions.
+   - Reduced deployment time from 12 mins to 3 mins via GitHub Actions automated CI/CD.
    - GitHub: https://github.com/prathameshlonare/Online-voting-system
 
-2. **Dorm-Dish Multi-Tier AWS Platform (2026)**
-   - IaC CloudFormation stacks with S3 static hosting & CloudFront CDN.
+3. **Dorm-Dish Multi-Tier AWS Platform (2026)**
+   - Serverless accommodation backend with 41 Lambda endpoints, DynamoDB multi-table design, S3 storage, and CloudFront CDN.
    - Achieved 80% cost reduction compared to provisioned EC2 instances.
    - GitHub: https://github.com/prathameshlonare/Dorm-and-Dish
 
-3. **Statement Dashboard PWA (2026)**
+4. **Statement Dashboard PWA (2026)**
    - Offline-first financial statement analyzer running 100% in browser (React 19, pdf.js).
    - Zero server data transmission for privacy-preserving analytics.
    - GitHub: https://github.com/prathameshlonare/statement-dashboard
 
-4. **AI Resume-Job Matcher (2026)**
+5. **AI Resume-Job Matcher (2026)**
    - Machine learning classifier (scikit-learn, sentence-transformers) for ATS resume optimization.
    - 95% AUC-ROC score on job relevance classification dataset.
    - GitHub: https://github.com/prathameshlonare/ai-resume-job-matcher

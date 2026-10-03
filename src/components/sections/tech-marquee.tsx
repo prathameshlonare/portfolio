@@ -9,6 +9,9 @@ const TECH_ITEMS = [
   { name: "GitHub Actions", category: "CI/CD", icon: Workflow },
   { name: "DynamoDB", category: "NoSQL Database", icon: Database },
   { name: "CloudFront", category: "CDN Edge", icon: Shield },
+  { name: "CloudFormation", category: "IaC Stacks", icon: Layers },
+  { name: "AWS ALB", category: "Load Balancer", icon: Server },
+  { name: "RDS MySQL", category: "Multi-AZ DB", icon: Database },
   { name: "Python", category: "Automation", icon: Terminal },
   { name: "Linux & Bash", category: "Shell Systems", icon: Cpu },
 ];

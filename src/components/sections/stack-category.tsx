@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { MonoLabel } from "@/components/anti-ux/mono-label";
-import { ChevronDown, ChevronUp, CheckCircle2, Cloud, Layers, Server, Terminal, Shield } from "lucide-react";
+import { ChevronDown, ChevronUp, Cloud, Layers, Server, Terminal, Shield } from "lucide-react";
 
 const ICON_MAP = {
   cloud: Cloud,
@@ -17,8 +17,9 @@ export type CategoryIconType = keyof typeof ICON_MAP;
 export interface ToolDetail {
   name: string;
   badge: string;
+  context: string;
   description: string;
-  proficiency: "Expert" | "Advanced" | "Intermediate";
+  depth: 2 | 3 | 4;
 }
 
 export interface StackCategoryProps {
@@ -40,21 +41,23 @@ export function StackCategory({
   const IconComponent = ICON_MAP[iconType] || Cloud;
 
   return (
-    <div id={id} className="w-full max-w-7xl mx-auto my-6 border-3 border-[#1A1A2E] bg-white shadow-[6px_6px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[8px_8px_0px_#1A1A2E]">
+    <div id={id} className="w-full max-w-7xl mx-auto my-3 sm:my-4 md:my-6 border-3 border-[#1A1A2E] bg-white shadow-[3px_3px_0px_#1A1A2E] sm:shadow-[6px_6px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#1A1A2E] md:hover:shadow-[8px_8px_0px_#1A1A2E]">
       {/* Category Header Bar */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-controls={`panel-${id}`}
-        className="w-full p-4 md:p-6 flex justify-between items-center border-b-2 border-[#1A1A2E] text-left cursor-pointer"
+        className="w-full p-3 sm:p-4 md:p-6 flex justify-between items-center border-b-2 border-[#1A1A2E] text-left cursor-pointer min-h-[52px]"
       >
-        <div className="flex items-center gap-2 md:gap-3 min-w-0">
+        <div className="flex items-center gap-2.5 md:gap-3 min-w-0 pr-2">
           <div className="w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#FF6B35] flex items-center justify-center text-[#FF6B35] shrink-0">
             <IconComponent className="w-4 h-4 md:w-5 md:h-5" />
           </div>
           <div className="min-w-0">
-            <MonoLabel className="text-[#FF6B35] hidden md:block">ECOSYSTEM CATEGORY</MonoLabel>
-            <h3 id={`heading-${id}`} className="text-base md:text-xl lg:text-2xl font-black text-[#1A1A2E] tracking-tight truncate">{title}</h3>
+            <MonoLabel className="text-[#FF6B35] hidden sm:block">ECOSYSTEM CATEGORY</MonoLabel>
+            <h3 id={`heading-${id}`} className="text-sm sm:text-base md:text-xl lg:text-2xl font-black text-[#1A1A2E] tracking-tight leading-tight">
+              {title}
+            </h3>
           </div>
         </div>
 
@@ -74,19 +77,21 @@ export function StackCategory({
         role="region"
         aria-labelledby={`heading-${id}`}
         hidden={!isOpen}
-        className={`p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 ${
+        className={`p-3 sm:p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 ${
           isOpen ? "" : "hidden"
         }`}
       >
         {tools.map((tool) => (
           <div
             key={tool.name}
-            className="border-2 border-[#1A1A2E] p-4 md:p-5 shadow-[3px_3px_0px_#1A1A2E] hover:shadow-[5px_5px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex flex-col justify-between"
+            className="border-2 border-[#1A1A2E] p-3 sm:p-4 md:p-5 shadow-[2px_2px_0px_#1A1A2E] sm:shadow-[3px_3px_0px_#1A1A2E] hover:shadow-[5px_5px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex flex-col justify-between bg-[#FAFAFA]"
           >
             <div>
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="font-mono font-extrabold text-base text-[#1A1A2E]">{tool.name}</h4>
-                <span className="font-mono text-[10px] font-bold bg-[#FF6B35] text-white px-2 py-0.5 border border-[#1A1A2E] shadow-[1px_1px_0px_#1A1A2E]">
+              <div className="flex justify-between items-start mb-2 gap-2">
+                <h4 className="font-mono font-extrabold text-sm sm:text-base text-[#1A1A2E] leading-tight">
+                  {tool.name}
+                </h4>
+                <span className="font-mono text-[9px] sm:text-[10px] font-bold bg-[#FF6B35] text-white px-1.5 py-0.5 border border-[#1A1A2E] shadow-[1px_1px_0px_#1A1A2E] shrink-0">
                   {tool.badge}
                 </span>
               </div>
@@ -95,11 +100,22 @@ export function StackCategory({
               </p>
             </div>
 
-            <div className="pt-3 border-t border-zinc-300 flex justify-between items-center font-mono text-[11px]">
-              <span className="text-zinc-500 font-semibold">Proficiency:</span>
-              <span className="font-extrabold text-[#7C3AED] flex items-center gap-1">
-                <CheckCircle2 className="w-3 h-3 text-emerald-600" /> {tool.proficiency}
+            <div className="pt-2.5 sm:pt-3 border-t border-zinc-300 flex justify-between items-center gap-2 font-mono text-[10px] sm:text-[11px]">
+              <span className="font-bold text-[#1A1A2E] bg-white border border-[#1A1A2E] px-1.5 py-0.5 truncate max-w-[140px] sm:max-w-[200px]" title={tool.context}>
+                {tool.context}
               </span>
+              <div className="flex items-center gap-1 shrink-0" title={`Depth: ${tool.depth}/4`}>
+                {[1, 2, 3, 4].map((bar) => (
+                  <div
+                    key={bar}
+                    className={`w-1.5 h-3.5 border border-[#1A1A2E] ${
+                      bar <= tool.depth
+                        ? "bg-[#1A1A2E]"
+                        : "bg-white"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         ))}

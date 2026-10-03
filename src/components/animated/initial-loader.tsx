@@ -12,15 +12,15 @@ export function InitialLoader() {
     const timers: ReturnType<typeof setTimeout>[] = [];
 
     const bootSequence = [
-      { progress: 15, status: "loading modules", delay: 200 },
-      { progress: 35, status: "connecting to cloud", delay: 400 },
-      { progress: 55, status: "initializing terraform", delay: 300 },
-      { progress: 75, status: "syncing infrastructure", delay: 350 },
-      { progress: 90, status: "deploying portfolio", delay: 250 },
-      { progress: 100, status: "system ready", delay: 200 },
+      { progress: 15, status: "loading modules", delay: 180 },
+      { progress: 35, status: "connecting to cloud", delay: 300 },
+      { progress: 55, status: "initializing terraform", delay: 250 },
+      { progress: 75, status: "syncing infrastructure", delay: 280 },
+      { progress: 90, status: "deploying portfolio", delay: 200 },
+      { progress: 100, status: "system ready", delay: 150 },
     ];
 
-    let totalDelay = 100;
+    let totalDelay = 80;
 
     bootSequence.forEach((step) => {
       totalDelay += step.delay;
@@ -33,18 +33,18 @@ export function InitialLoader() {
 
     const tFade = setTimeout(() => {
       setFading(true);
-    }, totalDelay + 200);
+    }, totalDelay + 150);
     timers.push(tFade);
 
     const tHide = setTimeout(() => {
       setHidden(true);
-    }, totalDelay + 700);
+    }, totalDelay + 550);
     timers.push(tHide);
 
-    // Safety: force-hide after 4s no matter what
+    // Safety fallback: force-hide after 2.8s
     const tSafety = setTimeout(() => {
       setHidden(true);
-    }, 4000);
+    }, 2800);
     timers.push(tSafety);
 
     return () => {
@@ -56,13 +56,12 @@ export function InitialLoader() {
 
   return (
     <div
-      className="fixed inset-0 z-[300] bg-[#1A1A2E] flex flex-col items-center justify-center"
+      className="fixed inset-0 z-[300] bg-[#1A1A2E] flex flex-col items-center justify-center pointer-events-none"
       style={{
         opacity: fading ? 0 : 1,
-        transform: fading ? "scale(0.95)" : "scale(1)",
+        transform: fading ? "scale(0.96)" : "scale(1)",
         transition:
           "opacity 0.4s cubic-bezier(0.76,0,0.24,1), transform 0.4s cubic-bezier(0.76,0,0.24,1)",
-        pointerEvents: "none",
       }}
     >
       {/* Logo */}
@@ -75,7 +74,7 @@ export function InitialLoader() {
       </div>
 
       {/* Terminal */}
-      <div className="w-full max-w-sm animate-[fadeInUp_0.4s_ease_0.3s_both]">
+      <div className="w-full max-w-sm animate-[fadeInUp_0.4s_ease_0.3s_both] px-4">
         <div className="border-2 border-[#FF6B35]/50 bg-[#0D0D1A] shadow-[4px_4px_0px_#7C3AED]">
           <div className="flex items-center gap-1.5 px-3 py-2 border-b border-[#FF6B35]/20">
             <div className="w-2 h-2 rounded-full bg-[#FF6B35]" />

@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint check
+        run: npm run lint
+
       - name: Build and export
         run: npm run build
         env:
@@ -43,13 +46,11 @@ jobs:
           # 1. Hashed static assets — cache forever (filenames change on every build)
           aws s3 sync out/_next/static/ s3://prathameshlonare.me/_next/static/ \
             --region eu-north-1 \
-            --delete \
             --cache-control "public, max-age=31536000, immutable"
 
           # 2. HTML files — never cache in browser (always revalidate on visit)
           aws s3 sync out/ s3://prathameshlonare.me/ \
             --region eu-north-1 \
-            --delete \
             --exclude "_next/static/*" \
             --exclude "*.js" \
             --exclude "*.css" \
@@ -70,32 +71,46 @@ jobs:
           aws cloudfront get-distribution-config \
             --id E76HPAMYIL45V > /tmp/cf-config.json
 
-          # Extract ETag for conditional update
-          ETAG=$(cat /tmp/cf-config.json | python3 -c "import sys,json; print(json.load(sys.stdin)['ETag'])")
-
-          # Build update: add custom error response for 404
-          cat /tmp/cf-config.json | python3 -c "
+          # Check if 404 custom error response is already configured
+          ALREADY_CONFIGURED=$(python3 -c "
           import sys, json
-          data = json.load(sys.stdin)['DistributionConfig']
-          data['CustomErrorResponses'] = {
-            'Quantity': 1,
-            'Items': [
-              {
-                'ErrorCode': 404,
-                'ResponsePagePath': '/404.html',
-                'ResponseCode': '404',
-                'ErrorCachingMinTTL': 10
-              }
-            ]
-          }
-          json.dump(data, open('/tmp/cf-update.json', 'w'))
-          "
+          try:
+              data = json.load(open('/tmp/cf-config.json'))['DistributionConfig']
+              items = data.get('CustomErrorResponses', {}).get('Items', [])
+              matched = any(i.get('ErrorCode') == 404 and i.get('ResponsePagePath') == '/404.html' for i in items)
+              print('yes' if matched else 'no')
+          except Exception:
+              print('no')
+          ")
 
-          # Apply update
-          aws cloudfront update-distribution \
-            --id E76HPAMYIL45V \
-            --if-match "$ETAG" \
-            --distribution-config file:///tmp/cf-update.json
+          if [ "$ALREADY_CONFIGURED" = "yes" ]; then
+            echo "CloudFront 404 custom error page is already configured. Skipping distribution update."
+          else
+            echo "Configuring CloudFront 404 custom error response..."
+            ETAG=$(cat /tmp/cf-config.json | python3 -c "import sys,json; print(json.load(sys.stdin)['ETag'])")
+
+            cat /tmp/cf-config.json | python3 -c "
+            import sys, json
+            data = json.load(sys.stdin)['DistributionConfig']
+            data['CustomErrorResponses'] = {
+              'Quantity': 1,
+              'Items': [
+                {
+                  'ErrorCode': 404,
+                  'ResponsePagePath': '/404.html',
+                  'ResponseCode': '404',
+                  'ErrorCachingMinTTL': 10
+                }
+              ]
+            }
+            json.dump(data, open('/tmp/cf-update.json', 'w'))
+            "
+
+            aws cloudfront update-distribution \
+              --id E76HPAMYIL45V \
+              --if-match "$ETAG" \
+              --distribution-config file:///tmp/cf-update.json
+          fi
 
       - name: Invalidate CloudFront cache
         run: |

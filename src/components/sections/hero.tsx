@@ -7,7 +7,7 @@ import { NeoButton } from "@/components/anti-ux/neo-button";
 import { LazyGlobe } from "@/components/animated/lazy-globe";
 import { GsapHeroEntrance } from "@/components/animated/gsap-hero-entrance";
 import { ArrowRight, Terminal, Cloud, ShieldCheck, FileDown } from "lucide-react";
-import Link from "next/link";
+import { TransitionLink } from "@/components/layout/transition-link";
 
 export function Hero() {
   return (
@@ -40,7 +40,7 @@ export function Hero() {
             </div>
 
             <p className="text-sm md:text-lg font-medium text-zinc-700 max-w-xl leading-relaxed gsap-tagline">
-              DevOps Engineer specializing in AWS serverless infrastructure, Terraform IaC, container orchestration, and automated CI/CD pipelines.
+              Cloud &amp; DevOps Engineer building reproducible AWS infrastructure with Terraform and GitHub Actions. Focused on least-privilege IAM, automated S3/CloudFront static delivery, and event-driven serverless backends.
             </p>
 
             {/* Monospace Stack Chips */}
@@ -59,24 +59,24 @@ export function Hero() {
 
             {/* Action CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 pt-4 gsap-cta">
-              <Link href="/work/" className="w-full sm:w-auto">
+              <TransitionLink href="/work/" className="w-full sm:w-auto">
                 <NeoButton variant="primary" className="w-full sm:w-auto text-sm font-mono tracking-wider justify-center">
                   SEE THE WORK <ArrowRight className="w-4 h-4" />
                 </NeoButton>
-              </Link>
-              <Link href="/contact/" className="w-full sm:w-auto">
+              </TransitionLink>
+              <TransitionLink href="/contact/" className="w-full sm:w-auto">
                 <NeoButton variant="secondary" className="w-full sm:w-auto text-sm font-mono tracking-wider justify-center">
                   <Terminal className="w-4 h-4" /> GET IN TOUCH
                 </NeoButton>
-              </Link>
-               <Link
+              </TransitionLink>
+              <a
                 href="https://drive.google.com/uc?export=download&id=1bwj41m9DzgKIYDoDX3lLXMpvirutykSz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 font-mono text-xs font-bold text-[#1A1A2E] bg-[#FAFAFA] border-2 border-[#1A1A2E] px-3 py-2.5 shadow-[2px_2px_0px_#1A1A2E] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] transition-all"
               >
-                <FileDown className="w-4 h-4" /> Resume PDF
-              </Link>
+                <FileDown className="w-4 h-4" /> RESUME (PDF)
+              </a>
             </div>
           </div>
 
@@ -86,19 +86,19 @@ export function Hero() {
               <LazyGlobe />
             </div>
 
-            <div className="grid grid-cols-2 gap-2 md:gap-3">
-              <div className="bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] p-2.5 md:p-3 flex items-center gap-2">
-                <Cloud className="w-4 h-4 md:w-5 md:h-5 text-[#FF6B35]" />
-                <div>
-                  <div className="font-mono text-[10px] md:text-xs font-extrabold text-[#1A1A2E]">AWS SERVERLESS</div>
-                  <div className="font-mono text-[9px] md:text-[10px] text-zinc-500">6 Lambda REST API</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+              <div className="bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] p-2.5 md:p-3 flex items-center gap-2.5">
+                <Cloud className="w-4 h-4 md:w-5 md:h-5 text-[#FF6B35] shrink-0" />
+                <div className="min-w-0">
+                  <div className="font-mono text-[10px] md:text-xs font-extrabold text-[#1A1A2E] truncate">AWS ARCHITECTURE</div>
+                  <div className="font-mono text-[9px] md:text-[10px] text-zinc-500 truncate">Multi-AZ ALB + EC2 + RDS</div>
                 </div>
               </div>
-              <div className="bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] p-2.5 md:p-3 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-[#7C3AED]" />
-                <div>
-                  <div className="font-mono text-[10px] md:text-xs font-extrabold text-[#1A1A2E]">ZERO DOWNTIME</div>
-                  <div className="font-mono text-[9px] md:text-[10px] text-zinc-500">100% Automated CI/CD</div>
+              <div className="bg-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] p-2.5 md:p-3 flex items-center gap-2.5">
+                <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-[#7C3AED] shrink-0" />
+                <div className="min-w-0">
+                  <div className="font-mono text-[10px] md:text-xs font-extrabold text-[#1A1A2E] truncate">DEPLOY AUTOMATION</div>
+                  <div className="font-mono text-[9px] md:text-[10px] text-zinc-500 truncate">GitHub Actions CI/CD to AWS</div>
                 </div>
               </div>
             </div>

@@ -109,7 +109,7 @@ export function MovingBorderCard({
         </MovingBorder>
       </div>
 
-      <div className={cn("relative bg-white w-full h-full p-6 z-10", className)}>
+      <div className={cn("relative bg-white w-full h-full p-4 sm:p-5 md:p-6 z-10", className)}>
         {children}
       </div>
     </div>

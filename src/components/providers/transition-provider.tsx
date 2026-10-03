@@ -38,8 +38,7 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
   const [phase, setPhase] = useState<"idle" | "enter" | "exit">("idle");
   const [targetPath, setTargetPath] = useState("");
 
-  // Store timer IDs so they can be cancelled if the user navigates away
-  // (e.g. browser Back) before the animation completes.
+  const isNavigatingRef = useRef(false);
   const timerIds = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const clearTimers = () => {
@@ -47,38 +46,72 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
     timerIds.current = [];
   };
 
-  // Cancel in-flight timers whenever the URL actually changes (Back/Forward)
+  // Trigger exit animation when pathname changes during navigation
   useEffect(() => {
+    if (!isNavigatingRef.current) {
+      clearTimers();
+      setPhase("idle");
+      return;
+    }
+
+    // The new route is now mounted in the DOM under the covered bars.
+    // Trigger the exit animation so the bars retract smoothly!
     clearTimers();
-    setPhase("idle");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // Brief pause to display the target module on HUD (150ms), then start exit
+    const tExit = setTimeout(() => {
+      setPhase("exit");
+    }, 150);
+
+    // Once bars finish retracting (duration ~450ms + stagger), reset to idle
+    const tIdle = setTimeout(() => {
+      setPhase("idle");
+      isNavigatingRef.current = false;
+    }, 850);
+
+    timerIds.current = [tExit, tIdle];
   }, [pathname]);
 
   const navigate = (href: string) => {
-    // Same page — just scroll to top instead of silently doing nothing
-    if (href === pathname) {
+    // Normalize URL with trailing slash for static export compatibility
+    const normalizedHref =
+      href.endsWith("/") || href.includes("#") || href.includes("?")
+        ? href
+        : `${href}/`;
+
+    // Same page: smooth scroll to top
+    if (normalizedHref === pathname) {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
 
-    // Already animating — ignore duplicate clicks
+    // Already animating: prevent duplicate clicks
     if (phase !== "idle") return;
 
-    setTargetPath(href);
+    clearTimers();
+    isNavigatingRef.current = true;
+    setTargetPath(normalizedHref);
     setPhase("enter");
 
-    // Hold the terminal HUD briefly, then start pulling up the blinds (1000ms)
-    const t1 = setTimeout(() => {
-      setPhase("exit");
-    }, 1000);
+    // Phase 1: Bars fall down and cover the screen (450ms).
+    // Push the route while the screen is 100% covered!
+    const tPush = setTimeout(() => {
+      router.push(normalizedHref);
+    }, 450);
 
-    // Complete transition, then navigate (1700ms)
-    const t2 = setTimeout(() => {
-      setPhase("idle");
-      router.push(href);
-    }, 1700);
+    // Fallback safety: if pathname never changes (e.g. static link delay), force exit
+    const tFallback = setTimeout(() => {
+      if (isNavigatingRef.current) {
+        setPhase("exit");
+        const tEnd = setTimeout(() => {
+          setPhase("idle");
+          isNavigatingRef.current = false;
+        }, 600);
+        timerIds.current.push(tEnd);
+      }
+    }, 2200);
 
-    timerIds.current = [t1, t2];
+    timerIds.current = [tPush, tFallback];
   };
 
   const currentRouteInfo = ROUTE_MAP[targetPath] || {
@@ -95,13 +128,13 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
             scale: phase === "enter" ? 0.97 : 1,
             filter: phase === "enter" ? "blur(3px)" : "blur(0px)",
           }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="flex-1 flex flex-col w-full"
         >
           {children}
         </motion.div>
 
-        {/* Hyper-Immersive Transition Blinds & HUD */}
+        {/* Transition Blinds & HUD */}
         <AnimatePresence>
           {phase !== "idle" && (
             <>
@@ -117,17 +150,17 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
                     className="flex-1 bg-[#0D0D1A] border-r border-[#FF6B35]/25 shadow-[4px_0px_12px_rgba(0,0,0,0.6)] relative"
                     style={{ originY: phase === "enter" ? 0 : 1 }}
                     initial={{ scaleY: 0 }}
-                    animate={phase === "enter" ? { scaleY: 1 } : { scaleY: 0 }}
+                    animate={{ scaleY: phase === "enter" ? 1 : 0 }}
                     transition={{
-                      duration: 0.55,
+                      duration: 0.45,
                       delay:
                         phase === "enter"
-                          ? i * 0.05
-                          : (COLUMNS - 1 - i) * 0.05,
+                          ? i * 0.04
+                          : (COLUMNS - 1 - i) * 0.04,
                       ease: [0.76, 0, 0.24, 1],
                     }}
                   >
-                    {/* Top orange accent block line on columns */}
+                    {/* Orange accent line on column edge */}
                     <div className="h-1 bg-[#FF6B35] w-full" />
                   </motion.div>
                 ))}
@@ -136,17 +169,16 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
               {/* 2. Interactive Terminal Routing HUD Badge */}
               <motion.div
                 key="hud-overlay"
-                initial={{ opacity: 0, scale: 0.85, y: 20 }}
-                animate={
-                  phase === "enter"
-                    ? { opacity: 1, scale: 1, y: 0 }
-                    : { opacity: 0, scale: 0.95, y: -20 }
-                }
-                exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                transition={{ duration: 0.35, delay: phase === "enter" ? 0.15 : 0 }}
+                initial={{ opacity: 0, scale: 0.85, y: 15 }}
+                animate={{
+                  opacity: phase === "enter" ? 1 : 0,
+                  scale: phase === "enter" ? 1 : 0.95,
+                  y: phase === "enter" ? 0 : -15,
+                }}
+                transition={{ duration: 0.25, delay: phase === "enter" ? 0.1 : 0 }}
                 className="fixed inset-0 z-[210] flex items-center justify-center pointer-events-none px-4"
               >
-                <div className="bg-[#0D0D1A] border-3 border-[#FF6B35] shadow-[8px_8px_0px_#7C3AED] p-5 max-w-xs w-full text-white font-mono relative overflow-hidden">
+                <div className="bg-[#0D0D1A] border-3 border-[#FF6B35] shadow-[6px_6px_0px_#7C3AED] md:shadow-[8px_8px_0px_#7C3AED] p-4 sm:p-5 max-w-xs w-full text-white font-mono relative overflow-hidden">
                   {/* Top Bar Diagnostics */}
                   <div className="flex items-center justify-between border-b border-zinc-800 pb-2 mb-3">
                     <div className="flex items-center gap-2">
@@ -164,8 +196,8 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
                   <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1">
                     TARGET MODULE:
                   </div>
-                  <div className="bg-[#1A1A2E] border-2 border-[#FF6B35] p-2.5 shadow-[3px_3px_0px_#FF6B35] flex items-center justify-between">
-                    <span className="font-extrabold text-sm text-white tracking-wider">
+                  <div className="bg-[#1A1A2E] border-2 border-[#FF6B35] p-2 sm:p-2.5 shadow-[2px_2px_0px_#FF6B35] flex items-center justify-between">
+                    <span className="font-extrabold text-xs sm:text-sm text-white tracking-wider">
                       [{currentRouteInfo.label}]
                     </span>
                     <span className="text-[10px] text-[#FF6B35] font-mono font-bold">
@@ -174,7 +206,7 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
                   </div>
 
                   {/* Progress Line */}
-                  <div className="mt-3.5 space-y-1">
+                  <div className="mt-3 space-y-1">
                     <div className="flex justify-between items-center text-[10px] text-zinc-400">
                       <span>{currentRouteInfo.tag}</span>
                       <span className="text-emerald-400 font-bold">P99: 14ms</span>
@@ -184,7 +216,7 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
                         className="h-full bg-[#FF6B35]"
                         initial={{ width: "0%" }}
                         animate={{ width: "100%" }}
-                        transition={{ duration: 0.7, ease: "easeInOut" }}
+                        transition={{ duration: 0.45, ease: "easeInOut" }}
                       />
                     </div>
                   </div>

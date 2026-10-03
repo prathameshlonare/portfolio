@@ -10,7 +10,7 @@ import { Footer } from "@/components/layout/footer";
 import { Circle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About — Prathamesh Lonare | DevOps & Cloud Systems Engineer",
+  title: "About: Prathamesh Lonare | DevOps & Cloud Systems Engineer",
   description:
     "Learn about Prathamesh's journey, engineering philosophy, B.Tech background, and principles for building cloud infrastructure and DevOps pipelines.",
   alternates: {
@@ -26,7 +26,7 @@ export default function AboutPage() {
       <main id="main-content" className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-6 md:py-8 w-full">
         {/* Page Banner */}
         <div className="border-b-3 border-[#1A1A2E] pb-6 md:pb-8 mb-8 md:mb-12">
-          <MonoLabel className="text-[#FF6B35] font-bold">SYSTEMS ENGINEER & ARCHITECT</MonoLabel>
+          <MonoLabel className="text-[#FF6B35] font-bold">CLOUD & DEVOPS SYSTEMS ENGINEER</MonoLabel>
           <ViewportType as="h1" className="text-[var(--text-page)] font-black mt-2">
             ABOUT <span className="text-[#FF6B35]">PRATHAMESH</span>
           </ViewportType>
@@ -36,10 +36,10 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start mb-12 md:mb-16">
           {/* Left Column: Spotlight Photo Card */}
           <div className="lg:col-span-5">
-            <div className="relative border-3 border-[#1A1A2E] bg-white shadow-[4px_4px_0px_#FF6B35] md:shadow-[8px_8px_0px_#FF6B35] p-4 md:p-6 overflow-hidden">
+            <div className="relative border-3 border-[#1A1A2E] bg-white shadow-[4px_4px_0px_#FF6B35] md:shadow-[8px_8px_0px_#FF6B35] p-3.5 sm:p-4 md:p-6 overflow-hidden max-w-sm lg:max-w-none mx-auto w-full">
               <Spotlight fill="#FF6B35" />
 
-              <div className="w-full aspect-square border-2 border-[#1A1A2E] shadow-[4px_4px_0px_#7C3AED] relative z-30 overflow-hidden">
+              <div className="w-full max-w-[200px] sm:max-w-[240px] lg:max-w-none aspect-square border-2 border-[#1A1A2E] shadow-[3px_3px_0px_#7C3AED] md:shadow-[4px_4px_0px_#7C3AED] relative z-30 overflow-hidden mx-auto">
                 <img
                   src="/profile.webp"
                   alt="Prathamesh Lonare"
@@ -67,54 +67,54 @@ export default function AboutPage() {
           </div>
 
           {/* Right Column: Narrative Bio */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6">
             <MonoLabel className="text-[#7C3AED]">BACKGROUND & PHILOSOPHY</MonoLabel>
 
-            <h2 className="text-[var(--text-section)] font-extrabold text-[#1A1A2E] leading-snug">
+            <h2 className="text-xl sm:text-2xl md:text-[var(--text-section)] font-extrabold text-[#1A1A2E] leading-snug">
               I find the edge cases in deployment pipelines weirdly fascinating.
             </h2>
 
-            <p className="text-base md:text-lg text-zinc-700 font-medium leading-relaxed">
-              I am a B.Tech Computer Science graduate specializing in cloud infrastructure automation, Infrastructure as Code (IaC) with Terraform and CloudFormation, and serverless backends on Amazon Web Services (AWS).
+            <p className="text-sm sm:text-base md:text-lg text-zinc-700 font-medium leading-relaxed">
+              I am a B.Tech Computer Science graduate specializing in cloud infrastructure automation, Infrastructure as Code with Terraform and CloudFormation, and event-driven serverless backends on AWS.
             </p>
 
-            <p className="text-base text-zinc-700 font-medium leading-relaxed">
-              My core engineering philosophy centers on building automated deployment pipelines that eliminate human error. Whether provisioning AWS Lambda microservices, configuring DynamoDB databases, establishing API Gateway routing rules, or writing GitHub Actions CI/CD workflows, I focus on system reliability, high availability, and cost efficiency.
+            <p className="text-sm sm:text-base text-zinc-700 font-medium leading-relaxed">
+              I spend most of my time writing modular Terraform, troubleshooting IAM permission boundaries, and automating CI/CD pipelines so changes move from a git commit to an active AWS environment with zero manual intervention.
             </p>
 
-            <p className="text-base text-zinc-700 font-medium leading-relaxed">
-              Throughout my engineering journey, I have architected and deployed production systems serving hundreds of active users. I believe modern cloud infrastructure should be declarative, reproducible, and self-healing. By leveraging serverless primitives, least-privilege IAM policies, and automated static security analysis (SAST), I build cloud environments engineered for zero downtime and rapid iteration.
+            <p className="text-sm sm:text-base text-zinc-700 font-medium leading-relaxed">
+              I test failure paths deliberately. On my multi-tier setups, I run kill-instance fault injection drills to verify Auto Scaling self-heals, set automated CloudWatch billing caps to prevent unexpected AWS charges, and enforce least-privilege IAM policies with zero wildcard permissions.
             </p>
 
             {/* Metrics Cards */}
-            <div className="grid grid-cols-3 gap-2 md:gap-4 pt-4">
-              <div className="border-2 border-[#1A1A2E] bg-white p-2.5 md:p-4 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] text-center">
-                <div className="font-mono text-xl md:text-2xl lg:text-3xl font-black text-[#FF6B35]">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 pt-3 sm:pt-4">
+              <div className="border-2 border-[#1A1A2E] bg-white p-2 sm:p-3 md:p-4 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] text-center">
+                <div className="font-mono text-lg sm:text-2xl lg:text-3xl font-black text-[#FF6B35]">
                   <NumberTicker value={7.5} decimalPlaces={1} />
                 </div>
-                <MonoLabel className="text-[8px] md:text-[10px] block mt-1">B.TECH CGPA</MonoLabel>
+                <MonoLabel className="text-[8px] sm:text-[10px] block mt-1 truncate">B.TECH CGPA</MonoLabel>
               </div>
 
-              <div className="border-2 border-[#1A1A2E] bg-white p-2.5 md:p-4 shadow-[2px_2px_0px_#7C3AED] md:shadow-[3px_3px_0px_#7C3AED] text-center">
-                <div className="font-mono text-xl md:text-2xl lg:text-3xl font-black text-[#7C3AED]">
+              <div className="border-2 border-[#1A1A2E] bg-white p-2 sm:p-3 md:p-4 shadow-[2px_2px_0px_#7C3AED] md:shadow-[3px_3px_0px_#7C3AED] text-center">
+                <div className="font-mono text-lg sm:text-2xl lg:text-3xl font-black text-[#7C3AED]">
                   <NumberTicker value={41} />
                 </div>
-                <MonoLabel className="text-[8px] md:text-[10px] block mt-1">LAMBDA ENDPOINTS</MonoLabel>
+                <MonoLabel className="text-[8px] sm:text-[10px] block mt-1 truncate">LAMBDA HANDLERS</MonoLabel>
               </div>
 
-              <div className="border-2 border-[#1A1A2E] bg-white p-2.5 md:p-4 shadow-[2px_2px_0px_#FF6B35] md:shadow-[3px_3px_0px_#FF6B35] text-center">
-                <div className="font-mono text-xl md:text-2xl lg:text-3xl font-black text-[#1A1A2E]">
+              <div className="border-2 border-[#1A1A2E] bg-white p-2 sm:p-3 md:p-4 shadow-[2px_2px_0px_#FF6B35] md:shadow-[3px_3px_0px_#FF6B35] text-center">
+                <div className="font-mono text-lg sm:text-2xl lg:text-3xl font-black text-[#1A1A2E]">
                   <NumberTicker value={500} suffix="+" />
                 </div>
-                <MonoLabel className="text-[8px] md:text-[10px] block mt-1">USERS SERVED</MonoLabel>
+                <MonoLabel className="text-[8px] sm:text-[10px] block mt-1 truncate">ACTIVE VOTERS</MonoLabel>
               </div>
             </div>
           </div>
         </div>
 
         {/* 3 Core Principles */}
-        <section className="my-12 md:my-16">
-          <MonoLabel className="text-[#FF6B35] mb-4 block">HOW I THINK — 3 CORE PRINCIPLES</MonoLabel>
+        <section className="my-10 sm:my-12 md:my-16">
+          <MonoLabel className="text-[#FF6B35] mb-4 block">HOW I THINK: 3 CORE PRINCIPLES</MonoLabel>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             <NeoCard variant="orange">
               <div className="w-10 h-10 bg-[#FF6B35] text-white border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#1A1A2E] flex items-center justify-center font-mono font-black text-lg mb-4">
@@ -122,7 +122,7 @@ export default function AboutPage() {
               </div>
               <h3 className="font-extrabold text-xl mb-2 text-[#1A1A2E]">Automate before scaling</h3>
               <p className="text-sm font-medium text-zinc-600 leading-relaxed">
-                Manual deployments don&apos;t scale. Everything must be defined as code in Terraform or CloudFormation before adding traffic.
+                Manual deployments do not scale. Everything must be defined as code in Terraform or CloudFormation before adding traffic.
               </p>
             </NeoCard>
 
@@ -132,7 +132,7 @@ export default function AboutPage() {
               </div>
               <h3 className="font-extrabold text-xl mb-2 text-[#1A1A2E]">Measure before trusting</h3>
               <p className="text-sm font-medium text-zinc-600 leading-relaxed">
-                Opinions don&apos;t matter in infrastructure. P99 latency, error rates, and CloudWatch metrics dictate deployment decisions.
+                Opinions do not matter in infrastructure. P99 latency, error rates, and CloudWatch metrics dictate deployment decisions.
               </p>
             </NeoCard>
 
@@ -142,7 +142,7 @@ export default function AboutPage() {
               </div>
               <h3 className="font-extrabold text-xl mb-2 text-[#1A1A2E]">Simplify before adding</h3>
               <p className="text-sm font-medium text-zinc-600 leading-relaxed">
-                The best infrastructure is the one you don&apos;t have to manage. Prefer serverless Lambda and DynamoDB over heavy VMs.
+                The best infrastructure is the one you do not have to manage. Prefer serverless Lambda and DynamoDB over heavy VMs.
               </p>
             </NeoCard>
           </div>

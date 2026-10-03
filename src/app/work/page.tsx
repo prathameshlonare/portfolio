@@ -8,7 +8,7 @@ import { CaseStudyDetail } from "@/components/sections/case-study-detail";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Work & Case Studies — Prathamesh Lonare | DevOps Projects",
+  title: "Work & Case Studies: Prathamesh Lonare | DevOps Projects",
   description:
     "Explore DevOps case studies, AWS serverless architectures, CloudFormation IaC templates, and automated CI/CD deployment pipeline projects.",
   alternates: {
@@ -16,15 +16,15 @@ export const metadata: Metadata = {
   },
 };
 
-const CASE_STUDIES = [
+const CLOUD_CASE_STUDIES = [
   {
     id: "duokart",
     title: "DuoKart Multi-Tier Cloud Infrastructure",
     subtitle: "High Availability, Auto Scaling & Asynchronous Order Decoupling",
     year: "2026",
     problem:
-      "Monolithic e-commerce apps risk downtime during festival traffic surges, database connection exhaustion, and lost order transactions during unexpected compute failures.",
-    role: "Cloud Infrastructure Engineer (Team of 2) — engineered 6-tier modular CloudFormation infrastructure, private Auto Scaling Group, Multi-AZ RDS MySQL, SQS/DLQ asynchronous pipelines, and fault-injection drills.",
+      "Monolithic e-commerce apps risk downtime during traffic surges, database connection exhaustion, and lost order transactions during unexpected compute instance failures.",
+    role: "Cloud Infrastructure Engineer (Team of 2): engineered 6-tier modular CloudFormation infrastructure, private Auto Scaling Group, Multi-AZ RDS MySQL, SQS/DLQ asynchronous pipelines, and fault-injection drills.",
     method: [
       "Architected custom VPC across 2 AZs with layered security groups: public subnets (ALB, Bastion, NAT) and private subnets (app instances and RDS).",
       "Configured internet-facing ALB forwarding traffic to a private Auto Scaling Group (2-4 EC2s) running Flask/gunicorn managed by systemd.",
@@ -34,7 +34,7 @@ const CASE_STUDIES = [
       "Configured 8 CloudWatch alarms (ALB 5xx, unhealthy hosts, RDS CPU, SQS depth), a centralized operational dashboard, and a $20 budget cap.",
     ],
     outcome: [
-      "100% continuous 200 OK responses during kill-1-EC2 fault injection self-healing drills.",
+      "100% continuous 200 OK responses during kill-1-EC2 fault injection drills (ASG auto-healed in 3.5 minutes while ALB drained connections).",
       "Zero lost orders with automatic poison message redrive to DLQ after 3 failures.",
       "Private compute security with zero public IPs on app servers and database instances.",
       "Strict cost discipline sustained under $25 total spend with automated nightly teardown routines.",
@@ -52,24 +52,24 @@ const CASE_STUDIES = [
   {
     id: "online-voting-system",
     title: "Serverless Online Voting Platform",
-    subtitle: "AWS Serverless & Automated CI/CD Pipeline",
+    subtitle: "Event-Driven Serverless Backend & Automated CI/CD",
     year: "2025",
     problem:
-      "The college relied on paper-based physical voting for over 500+ students, resulting in manual vote tallying errors, slow result delivery, and vulnerability to tampering.",
-    role: "DevOps Engineer & Backend Developer — designed the AWS serverless architecture with Amplify SDK integration, Terraform IaC scripts, and GitHub Actions automated deployment pipeline.",
+      "Paper-based college elections for 500+ students caused manual tallying errors, slow result delivery, and vulnerability to ballot tampering.",
+    role: "DevOps & Backend Engineer: designed the AWS serverless architecture with Amplify SDK integration, scoped IAM policies, and GitHub Actions automated deployment pipeline.",
     method: [
       "Built React frontend integrated with AWS Amplify SDK for seamless Cognito auth, API Gateway, and S3 access.",
-      "Implemented Cognito multi-role auth — Student, Admin, and Owner users with role-based access.",
-      "Wrote 6 AWS Lambda REST microservices using Python, fronted by API Gateway.",
-      "Provisioned DynamoDB On-Demand for votes, candidates, and config storage with automatic peak traffic scaling.",
-      "Configured S3 for CSV file storage and data export workflows.",
+      "Implemented Cognito multi-role auth: Student, Admin, and Owner users with granular role-based access.",
+      "Developed 6 Python Lambda REST microservices behind API Gateway with scoped IAM execution policies on specific DynamoDB table ARNs.",
+      "Provisioned DynamoDB On-Demand capacity for votes, candidates, and config storage to handle peak concurrent voting bursts without throttling.",
+      "Configured S3 for ballot audit CSV storage and data export workflows with presigned URL access.",
       "Built GitHub Actions CI/CD pipeline reducing deploys from 8 manual steps to zero.",
     ],
     outcome: [
-      "500+ active students served with zero downtime during peak voting hours.",
+      "500+ active students served with zero downtime during peak voting windows.",
       "180ms P99 latency recorded across all REST API endpoints.",
-      "&lt;0.1% error rate during live operations.",
-      "Reduced deployment execution time from 12 minutes to 3 minutes.",
+      "<0.1% error rate during live operations.",
+      "Reduced deployment execution time from 12 minutes to 3 minutes via dependency caching.",
     ],
     tech: ["React", "AWS Amplify", "Lambda", "API Gateway", "DynamoDB", "Cognito", "S3", "IAM", "GitHub Actions"],
     githubUrl: "https://github.com/prathameshlonare/Online-voting-system",
@@ -86,24 +86,24 @@ const CASE_STUDIES = [
   {
     id: "dorm-dish",
     title: "Dorm-Dish Multi-Tier AWS Platform",
-    subtitle: "Infrastructure as Code & Serverless Backend",
+    subtitle: "Infrastructure as Code & Serverless Migration",
     year: "2026",
     problem:
-      "Traditional EC2 server hosting incurred continuous monthly costs even during idle periods, while lacking automated scaling for high campus demand spikes.",
-    role: "Cloud Architect — designed CloudFormation stacks, API Gateway integration, Lambda microservices, and CloudFront global CDN distribution.",
+      "Traditional EC2 server hosting incurred continuous monthly costs ($15+/mo) during idle academic breaks while lacking auto-scaling for campus demand spikes.",
+    role: "Cloud & Backend Engineer: designed CloudFormation stacks, API Gateway integration, Lambda microservices, and CloudFront global CDN distribution.",
     method: [
-      "Refactored monolithic backend into serverless microservices with Lambda + API Gateway.",
-      "Designed DynamoDB multi-table schema (UserProfile, Room, Mess, Bookings, Reviews) with Lambda orchestration.",
-      "Integrated Cognito user pool for multi-role auth (Student, Room/Mess Owner, Admin).",
-      "Added Google Maps API for location services and a recommendation engine for listings.",
-      "Configured S3 for cover/document photo storage with presigned URL access.",
-      "Wrote CloudFormation IaC templates for reproducible environment spins.",
+      "Refactored monolithic backend into serverless microservices with AWS Lambda + API Gateway.",
+      "Designed DynamoDB multi-table schema (UserProfile, Room, Mess, Bookings, Reviews) with composite primary keys.",
+      "Integrated Cognito User Pools for multi-role auth across Students, Property Owners, and Admins.",
+      "Added Google Maps API for geolocation and an automated recommendation engine for verified listings.",
+      "Configured S3 for cover and document photo storage with presigned URL access.",
+      "Wrote modular CloudFormation IaC templates for reproducible environment provisioning and teardown.",
     ],
     outcome: [
-      "Achieved an 80% cost reduction compared to provisioned EC2 instances.",
-      "100% automated infrastructure setup via CloudFormation.",
+      "Monthly AWS cost dropped from $15+/mo to $0.00/mo within free tier during idle periods.",
+      "100% automated infrastructure setup and teardown via CloudFormation CLI.",
       "Sub-second global content delivery via CloudFront edge locations.",
-      "Multi-role authentication with Cognito — Students, Owners, and Admins.",
+      "Cold start latency minimized under 350ms with lightweight Python runtime packaging.",
     ],
     tech: ["Lambda", "API Gateway", "DynamoDB", "S3", "CloudFront", "CloudFormation", "Cognito", "Google Maps API", "Python"],
     githubUrl: "https://github.com/prathameshlonare/Dorm-and-Dish",
@@ -113,47 +113,105 @@ const CASE_STUDIES = [
     ],
   },
   {
+    id: "sysadmin-toolkit",
+    title: "Linux SysAdmin Automation Toolkit",
+    subtitle: "Daemon Supervision, Network Diagnostics & POSIX Security Audit",
+    year: "2026",
+    problem:
+      "Linux server administrators spend hours weekly diagnosing crashed background services, investigating network socket drops, hunting runaway processes, and auditing insecure file permissions.",
+    role: "Linux Systems Developer: authored modular POSIX-compliant Bash automation scripts with ShellCheck CI linting, self-documenting CLI flags, and webhook alerting.",
+    method: [
+      "Developed monitor-service.sh with systemd status inspection, automatic daemon restart upon failure, and Slack webhook alert dispatching.",
+      "Built network-check.sh for rapid diagnostic scans of DNS resolution latency, listening TCP/UDP sockets, and firewall packet drops.",
+      "Created setup-permissions.sh to audit filesystem trees, identifying unauthorized SUID/SGID binaries and world-writable files.",
+      "Engineered process-manager.sh to monitor top memory and CPU consumers with graduated termination signals (SIGTERM escalating to SIGKILL).",
+      "Enforced production safety standards with --dry-run execution previews, standardized POSIX exit codes, and ShellCheck AST linting in GitHub Actions.",
+    ],
+    outcome: [
+      "Sub-30-second root cause diagnosis for crashed systemd units and broken network sockets.",
+      "Zero false-positive script executions via strict error handling (set -euo pipefail) and dry-run validation.",
+      "Automated security auditing of system filesystems, flagging risky permission bits in under 2 minutes.",
+      "100% clean ShellCheck compliance enforced continuously via GitHub Actions CI pipeline.",
+    ],
+    tech: ["Bash", "Linux (Ubuntu/Debian)", "systemd", "POSIX Shell", "Networking", "ShellCheck", "GitHub Actions"],
+    githubUrl: "https://github.com/prathameshlonare/sysadmin-toolkit",
+    images: [],
+  },
+];
+
+const LAB_CASE_STUDIES = [
+  {
+    id: "100-days-of-devops",
+    title: "100 Days of DevOps Practice Lab",
+    subtitle: "Hands-on Curriculum: Linux, Git, Docker, CI/CD, Terraform & Kubernetes",
+    year: "2026",
+    problem:
+      "Junior candidates frequently rely on high-level web console tutorials, leaving major gaps in Linux kernel primitives, container runtime isolation, stateful IaC workflows, and cluster failure modes.",
+    role: "DevOps Engineer & Author: architected and executed a structured 6-phase engineering curriculum with reproducible configuration files, automated CI test harnesses, and infrastructure blueprints.",
+    method: [
+      "Phase 01 (Linux Systems): authored modular Bash scripts for systemd daemon supervision, POSIX permission audits, process signals (SIGTERM/SIGKILL), and socket diagnostics.",
+      "Phase 02 (Git Automation): established trunk-based development workflows, rebase conventions, commit linting hooks, and branch protection policies.",
+      "Phase 03 (Container Runtimes): engineered multi-stage Docker builds, non-root user execution, cgroups/namespaces isolation, and Docker Compose network segmentation.",
+      "Phase 04 (CI/CD Pipelines): built GitHub Actions workflows for automated ShellCheck linting, test execution, container image security scanning, and deployment gates.",
+      "Phase 05 (AWS & Terraform): developed modular HCL configurations for custom VPCs, S3 remote state storage with DynamoDB state locking, and least-privilege IAM policies.",
+      "Phase 06 (Kubernetes Clusters): deployed Pods, ReplicaSets, ClusterIP/NodePort Services, Ingress controllers, ConfigMaps, and probed rolling update strategies.",
+    ],
+    outcome: [
+      "6 structured curriculum phases covering operating systems fundamentals through production cluster orchestration.",
+      "Over 50+ self-contained, reproducible lab configurations and shell automation scripts.",
+      "100% reproducible environments using pure code configurations without manual AWS console intervention.",
+      "Continuous verifiable proof of hands-on daily systems discipline and automation practice.",
+    ],
+    tech: ["Linux", "Bash", "Git", "Docker", "GitHub Actions", "Terraform (HCL)", "AWS", "Kubernetes"],
+    githubUrl: "https://github.com/prathameshlonare/100-days-of-devops",
+    images: [],
+  },
+];
+
+const UTILITY_PROJECTS = [
+  {
     id: "statement-dashboard",
     title: "Statement Dashboard PWA",
     subtitle: "Offline-First Bank Analyzer & Financial Health Scoring",
     year: "2026",
     problem:
       "Users hesitated to upload sensitive PDF/CSV bank statements to cloud servers due to privacy concerns and third-party data collection risks.",
-    role: "Full-Stack Architect — engineered client-side PDF parsing using pdf.js, local WebStorage persistence, and offline PWA service workers.",
+    role: "Full-Stack Engineer: engineered client-side PDF parsing using pdf.js, local WebStorage persistence, and offline PWA service workers.",
     method: [
-      "Integrated React 19 + TypeScript + Vite for client-side execution.",
+      "Integrated React 19 + TypeScript + Vite for client-side local execution.",
       "Built offline PDF/CSV parsing pipeline with zero server transmission.",
-      "Implemented recurring payment pattern detection algorithms in browser.",
+      "Implemented recurring payment pattern detection algorithms running entirely in-browser.",
     ],
     outcome: [
-      "100% offline security — zero byte data leaves the client device.",
+      "100% offline security: zero bytes of user data leave the client device.",
       "Sub-500ms statement parsing speed for 50+ page PDFs.",
-      "Complete financial health scoring engine running in local Web Worker.",
+      "Complete financial health scoring engine running in local Web Workers.",
     ],
     tech: ["React 19", "TypeScript", "Vite", "Tailwind", "shadcn/ui", "Recharts", "pdf.js"],
     githubUrl: "https://github.com/prathameshlonare/statement-dashboard",
     images: [],
   },
   {
-    id: "ai-resume-job-matcher",
-    title: "AI Resume-Job Matcher",
-    subtitle: "Machine Learning Predictor & Semantic Keyword Extraction",
+    id: "ats-resume-architect",
+    title: "ATS Resume Architect",
+    subtitle: "Deterministic 8-Gate Technical Resume Linter & Keyword Engine",
     year: "2026",
     problem:
-      "Job applicants faced high rejection rates due to keyword mismatches and unoptimized resume formatting against Automated Tracking Systems (ATS).",
-    role: "ML & Systems Engineer — trained semantic embeddings model on 1,200+ tech job descriptions and deployed Streamlit app.",
+      "Job seekers rely on generic AI rewrite tools that hallucinate unearned claims, inject corporate buzzwords, and fail standard Applicant Tracking System (ATS) parsing rules.",
+    role: "Systems Tooling Developer: built a deterministic CLI and agent skill with 8 structural audit gates, zero-buzzword enforcement dictionaries, and metric extraction rules.",
     method: [
-      "Extracted TF-IDF and sentence-transformer semantic vector embeddings.",
-      "Trained Logistic Regression classifier achieving high AUC-ROC metric.",
-      "Built Streamlit interactive UI with instant keyword gap analysis.",
+      "Engineered deterministic 8-gate linting engine validating action-verb starters, quantified metrics, technology pairings, and length bounds.",
+      "Implemented strict anti-buzzword filter blocking 50+ banned corporate filler terms and generic throat-clearing openers.",
+      "Built 4-axis semantic audit analyzing role alignment, engineering depth, measurable impact, and ATS readability.",
+      "Added codebase metric mining logic to automatically convert raw git diffs and commit histories into quantified achievement bullets.",
     ],
     outcome: [
-      "90% classification accuracy on test dataset of tech job postings.",
-      "95% AUC-ROC score for candidate-job relevance matching.",
-      "Instant actionable ATS keyword suggestions for applicants.",
+      "100% deterministic rule evaluations with zero AI hallucinations or fabricated claims.",
+      "Identifies and eliminates 100% of recognized corporate filler terms before candidate submission.",
+      "Zero external API dependencies: sub-second local python CLI execution.",
     ],
-    tech: ["Python", "Streamlit", "sentence-transformers", "scikit-learn", "pandas"],
-    githubUrl: "https://github.com/prathameshlonare/ai-resume-job-matcher",
+    tech: ["Python", "AST Parsing", "CLI Architecture", "Regex Engine", "Open-Source Skill"],
+    githubUrl: "https://github.com/prathameshlonare/ats-resume-architect",
     images: [],
   },
 ];
@@ -178,11 +236,49 @@ export default function WorkPage() {
         {/* Live Architecture Diagram */}
         <ArchitectureDiagram />
 
-        {/* Case Studies List */}
+        {/* Primary Cloud Case Studies List */}
         <div className="flex flex-col gap-8 md:gap-12 mt-8 md:mt-12">
-          {CASE_STUDIES.map((study) => (
+          {CLOUD_CASE_STUDIES.map((study) => (
             <CaseStudyDetail key={study.id} {...study} />
           ))}
+        </div>
+
+        {/* Engineering Practice Lab Section */}
+        <div className="mt-14 md:mt-20 pt-8 md:pt-12 border-t-3 border-[#1A1A2E]">
+          <div className="mb-6 md:mb-8">
+            <MonoLabel className="text-[#FF6B35]">CONTINUOUS SYSTEMS DISCIPLINE</MonoLabel>
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-[#1A1A2E] tracking-tight mt-1">
+              ENGINEERING PRACTICE LAB
+            </h2>
+            <p className="text-sm md:text-base text-zinc-600 mt-2 max-w-2xl font-medium">
+              Hands-on curriculum repository documenting deliberate practice across Linux internals, containerization, Infrastructure as Code, and cluster orchestration.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-8 md:gap-12">
+            {LAB_CASE_STUDIES.map((study) => (
+              <CaseStudyDetail key={study.id} {...study} />
+            ))}
+          </div>
+        </div>
+
+        {/* Secondary Utilities Section */}
+        <div className="mt-14 md:mt-20 pt-8 md:pt-12 border-t-3 border-[#1A1A2E]">
+          <div className="mb-6 md:mb-8">
+            <MonoLabel className="text-[#7C3AED]">CLIENT RUNTIMES & PACKAGED UTILITIES</MonoLabel>
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-black text-[#1A1A2E] tracking-tight mt-1">
+              SOFTWARE & DATA TOOLS
+            </h2>
+            <p className="text-sm md:text-base text-zinc-600 mt-2 max-w-2xl font-medium">
+              Focused offline-first applications, data extraction models, and local developer utilities.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-8 md:gap-12">
+            {UTILITY_PROJECTS.map((study) => (
+              <CaseStudyDetail key={study.id} {...study} />
+            ))}
+          </div>
         </div>
       </main>
 

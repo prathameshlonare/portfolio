@@ -1,6 +1,6 @@
 "use client";
 
-import React, { HTMLAttributes, useRef, useState } from "react";
+import React, { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 interface NeoCardProps extends HTMLAttributes<HTMLDivElement> {
