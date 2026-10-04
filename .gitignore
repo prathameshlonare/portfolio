@@ -37,7 +37,7 @@ yarn-error.log*
 
 # internal docs (not needed in public repo)
 SESSION.md
-docs/superpowers/
+docs/
 
 # raw resume text (keep PDF in public/)
 resume.txt
