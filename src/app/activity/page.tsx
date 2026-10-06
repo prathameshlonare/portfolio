@@ -13,6 +13,8 @@ export const metadata = {
   alternates: { canonical: "https://prathameshlonare.me/activity/" },
 };
 
+export const dynamic = "force-static";
+
 export default async function ActivityPage() {
   const snapshot = await getActivitySnapshot();
   const hasCommits = snapshot.repos.some((r) => r.commits.length > 0);

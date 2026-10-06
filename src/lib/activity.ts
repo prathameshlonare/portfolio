@@ -140,6 +140,6 @@ export async function getActivitySnapshot(): Promise<ActivitySnapshot> {
     );
     return { fetchedAt: new Date().toISOString().slice(0, 10), repos };
   } catch {
-    return { ...FALLBACK_SNAPSHOT, fetchedAt: new Date().toISOString().slice(0, 10) };
+    return FALLBACK_SNAPSHOT;
   }
 }

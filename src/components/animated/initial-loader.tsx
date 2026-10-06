@@ -25,16 +25,11 @@ export function InitialLoader() {
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState("booting");
   const [fading, setFading] = useState(false);
-  // Repeat visits skip the boot entirely, decided at first render so not
-  // even one frame of curtain flashes. markIntroReady is idempotent, so the
-  // StrictMode double-render is harmless.
-  const [hidden, setHidden] = useState(() => {
-    if (typeof window !== "undefined" && alreadySeen()) {
-      markIntroReady();
-      return true;
-    }
-    return false;
-  });
+  // Repeat visits skip the boot entirely. Initializer stays pure (no side
+  // effects); the mount effect below lifts the curtain when hidden starts true.
+  const [hidden, setHidden] = useState(
+    () => typeof window !== "undefined" && alreadySeen()
+  );
   const markedRef = useRef(false);
 
   const finish = () => {
@@ -48,7 +43,13 @@ export function InitialLoader() {
   };
 
   useEffect(() => {
-    if (hidden) return;
+    if (hidden) {
+      if (!markedRef.current) {
+        markedRef.current = true;
+        markIntroReady();
+      }
+      return;
+    }
 
     const timers: ReturnType<typeof setTimeout>[] = [];
 
@@ -91,7 +92,7 @@ export function InitialLoader() {
     return () => {
       timers.forEach(clearTimeout);
     };
-  }, []);
+  }, [hidden]);
 
   if (hidden) return null;
 

@@ -256,6 +256,13 @@ export function Footer() {
             <span className="mt-0.5 block text-zinc-500 sm:mt-0 sm:inline">
               {" "}— boring and predictable deploys
             </span>
+            {" · "}
+            <TransitionLink
+              href="/privacy/"
+              className="font-bold text-zinc-300 hover:text-[#FF6B35] underline decoration-[#FF6B35] underline-offset-2 transition-colors"
+            >
+              Privacy Policy
+            </TransitionLink>
           </span>
           <button
             type="button"
