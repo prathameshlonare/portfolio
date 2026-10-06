@@ -15,6 +15,7 @@ export const metadata = {
 
 export default async function ActivityPage() {
   const snapshot = await getActivitySnapshot();
+  const hasCommits = snapshot.repos.some((r) => r.commits.length > 0);
 
   return (
     <GrainOverlay className="min-h-screen flex flex-col bg-[#FAFAFA] text-[#1A1A2E] overflow-x-hidden">
@@ -57,8 +58,8 @@ export default async function ActivityPage() {
                 )}
               </div>
               {repo.available && repo.lastRun ? (
-                <p className="font-mono text-[11px] text-zinc-600 leading-relaxed">
-                  Last run: {repo.lastRun.name} · {repo.lastRun.conclusion} ·{" "}
+                <p className="font-mono text-[11px] text-zinc-600 leading-relaxed break-words">
+                  Last run: {repo.lastRun.name} · {repo.lastRun.conclusion ?? "running"} ·{" "}
                   {repo.lastRun.createdAt.slice(0, 10)}
                 </p>
               ) : (
@@ -70,6 +71,7 @@ export default async function ActivityPage() {
                 href={`https://github.com/prathameshlonare/${repo.slug}/actions`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`View ${repo.name} workflow runs on GitHub`}
                 className="mt-3 font-mono text-[11px] font-bold text-[#1A1A2E] hover:text-[#FF6B35] transition-colors"
               >
                 View runs ↗
@@ -81,6 +83,7 @@ export default async function ActivityPage() {
         <h2 className="font-mono text-xs font-bold tracking-[0.15em] text-zinc-500 mb-4">
           02 / RECENT COMMITS
         </h2>
+        {hasCommits ? (
         <ul className="flex flex-col gap-3 mb-8 md:mb-12">
           {snapshot.repos.flatMap((repo) =>
             repo.commits.map((c) => (
@@ -91,7 +94,7 @@ export default async function ActivityPage() {
                 <span className="font-bold text-white bg-[#1A1A2E] px-1.5 py-px">
                   {c.sha}
                 </span>
-                <span className="font-bold flex-1 min-w-[12rem]">{c.message}</span>
+                <span className="font-bold flex-1 min-w-0 break-words">{c.message}</span>
                 <span className="text-zinc-500 text-[11px]">
                   {repo.name} · {c.date.slice(0, 10)}
                 </span>
@@ -99,6 +102,9 @@ export default async function ActivityPage() {
             ))
           )}
         </ul>
+        ) : (
+          <p className="font-mono text-[11px] text-zinc-500 leading-relaxed mb-8 md:mb-12">No recent commits in this snapshot.</p>
+        )}
 
         <h2 className="font-mono text-xs font-bold tracking-[0.15em] text-zinc-500 mb-4">
           03 / REPO VITALS
@@ -111,11 +117,11 @@ export default async function ActivityPage() {
             >
               <p className="font-mono text-xs font-bold">{repo.name.toUpperCase()}</p>
               <p className="text-xl md:text-2xl font-black mt-1">
-                ★ {repo.available ? repo.stars : "—"}
+                <span aria-hidden="true">★</span> {repo.available ? repo.stars : "—"}
               </p>
               <p className="font-mono text-[11px] text-zinc-500 mt-1">
                 {repo.available
-                  ? `${repo.language} · pushed ${repo.pushedAt.slice(0, 10)}`
+                  ? `${repo.language ? `${repo.language} · ` : ""}pushed ${repo.pushedAt.slice(0, 10)}`
                   : "unavailable"}
               </p>
             </div>
