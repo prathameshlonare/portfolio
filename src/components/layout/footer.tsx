@@ -106,7 +106,7 @@ export function Footer() {
       <div className="w-full max-w-7xl mx-auto px-5 sm:px-6 md:px-8">
         {/* Telemetry strip — wraps to two rows on mobile, one row on desktop */}
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b-2 border-white/15 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.15em]">
-          <span className="text-[#FF6B35]">/// END OF TRANSMISSION</span>
+          <span className="text-[#FF6B35]">{"/// END OF TRANSMISSION"}</span>
           <span className="text-zinc-400">AKOT 20.70N 77.06E · IST</span>
           <span
             className="flex w-full items-center gap-1.5 text-zinc-200 sm:ml-auto sm:w-auto"
@@ -129,22 +129,22 @@ export function Footer() {
             </h2>
             <ul className="flex flex-col">
               <li>
-                <a href="/work/#duokart" className={linkCls}>
+                <TransitionLink href="/work/#duokart" className={linkCls}>
                   <span className={numCls}>→</span>
                   DuoKart Multi-Tier
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="/work/#dorm-dish" className={linkCls}>
+                <TransitionLink href="/work/#dorm-dish" className={linkCls}>
                   <span className={numCls}>→</span>
                   Dorm-Dish APIs
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="/work/#sysadmin-toolkit" className={linkCls}>
+                <TransitionLink href="/work/#sysadmin-toolkit" className={linkCls}>
                   <span className={numCls}>→</span>
                   SysAdmin Automation
-                </a>
+                </TransitionLink>
               </li>
             </ul>
           </nav>

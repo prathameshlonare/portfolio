@@ -1,6 +1,7 @@
 import { NumberTicker } from "@/components/animated/number-ticker";
 import { MonoLabel } from "@/components/anti-ux/mono-label";
 import { SecHead } from "@/components/anti-ux/sec-head";
+import { TransitionLink } from "@/components/layout/transition-link";
 import { Zap, Boxes, Timer } from "lucide-react";
 
 export function Metrics() {
@@ -64,9 +65,9 @@ export function Metrics() {
           <span className="font-bold text-zinc-600">
             PIPELINES <span className="text-[#FF6B35]">●</span> SNAPSHOT ON EVERY DEPLOY
           </span>
-          <a href="/activity/" className="font-bold text-[#1A1A2E] hover:text-[#FF6B35] transition-colors">
+          <TransitionLink href="/activity/" className="font-bold text-[#1A1A2E] hover:text-[#FF6B35] transition-colors">
             SEE LIVE PROOF →
-          </a>
+          </TransitionLink>
         </div>
       </div>
     </section>

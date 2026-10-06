@@ -40,10 +40,13 @@ export function InteractiveGlobe() {
   const [pingId, setPingId] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [reducedMotion] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 
   useEffect(() => {
-    setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     const el = containerRef.current;
     if (!el) return;
     const io = new IntersectionObserver(

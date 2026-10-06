@@ -28,6 +28,8 @@ const ROUTE_MAP: Record<string, { label: string; tag: string }> = {
   "/stack/": { label: "TECH_STACK", tag: "INFRA MATRIX" },
   "/contact": { label: "DIRECT_DISPATCH", tag: "LET'S_TALK" },
   "/contact/": { label: "DIRECT_DISPATCH", tag: "LET'S_TALK" },
+  "/activity": { label: "ACTIVITY_FEED", tag: "PIPELINES & COMMITS" },
+  "/activity/": { label: "ACTIVITY_FEED", tag: "PIPELINES & COMMITS" },
   "/privacy": { label: "PRIVACY_POLICY", tag: "LEGAL_DOCS" },
   "/privacy/": { label: "PRIVACY_POLICY", tag: "LEGAL_DOCS" },
 };

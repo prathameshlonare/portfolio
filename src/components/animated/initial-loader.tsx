@@ -3,15 +3,43 @@
 import React, { useEffect, useRef, useState } from "react";
 import { markIntroReady } from "@/hooks/use-intro-ready";
 
+const SEEN_KEY = "pl-intro-played";
+
+function alreadySeen(): boolean {
+  try {
+    return sessionStorage.getItem(SEEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function rememberSeen() {
+  try {
+    sessionStorage.setItem(SEEN_KEY, "1");
+  } catch {
+    // private mode etc. — loader simply replays, nothing breaks
+  }
+}
+
 export function InitialLoader() {
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState("booting");
   const [fading, setFading] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  // Repeat visits skip the boot entirely, decided at first render so not
+  // even one frame of curtain flashes. markIntroReady is idempotent, so the
+  // StrictMode double-render is harmless.
+  const [hidden, setHidden] = useState(() => {
+    if (typeof window !== "undefined" && alreadySeen()) {
+      markIntroReady();
+      return true;
+    }
+    return false;
+  });
   const markedRef = useRef(false);
 
   const finish = () => {
     setHidden(true);
+    rememberSeen();
     // Lift the curtain exactly once: waiting intro actors may start.
     if (!markedRef.current) {
       markedRef.current = true;
@@ -20,6 +48,8 @@ export function InitialLoader() {
   };
 
   useEffect(() => {
+    if (hidden) return;
+
     const timers: ReturnType<typeof setTimeout>[] = [];
 
     const bootSequence = [

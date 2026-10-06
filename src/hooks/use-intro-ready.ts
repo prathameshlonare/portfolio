@@ -24,10 +24,9 @@ export function useIntroReady() {
   const [ready, setReady] = useState(introReady);
 
   useEffect(() => {
-    if (introReady) {
-      setReady(true);
-      return;
-    }
+    // No synchronous sync needed: the loader marks ready during its own
+    // first render (which precedes subscribers), so useState above already
+    // observes the final flag. This only subscribes for late arrivals.
     const onReady = () => setReady(true);
     window.addEventListener(INTRO_READY_EVENT, onReady);
     return () => window.removeEventListener(INTRO_READY_EVENT, onReady);
