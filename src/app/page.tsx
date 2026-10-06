@@ -3,6 +3,7 @@ import { Navigation } from "@/components/layout/navigation";
 import { Hero } from "@/components/sections/hero";
 import { Metrics } from "@/components/sections/metrics";
 import { TechMarquee } from "@/components/sections/tech-marquee";
+import { Process } from "@/components/sections/process";
 import { QuoteSection } from "@/components/sections/quote-section";
 import { FeaturedWorkPreview } from "@/components/sections/featured-work-preview";
 import { ContactPreview } from "@/components/sections/contact-preview";
@@ -23,6 +24,9 @@ export default function Home() {
         </ScrollSection>
         <ScrollSection direction="left">
           <TechMarquee />
+        </ScrollSection>
+        <ScrollSection>
+          <Process />
         </ScrollSection>
         <ScrollSection direction="right">
           <QuoteSection />

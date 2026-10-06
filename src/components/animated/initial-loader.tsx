@@ -1,12 +1,23 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { markIntroReady } from "@/hooks/use-intro-ready";
 
 export function InitialLoader() {
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState("booting");
   const [fading, setFading] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const markedRef = useRef(false);
+
+  const finish = () => {
+    setHidden(true);
+    // Lift the curtain exactly once: waiting intro actors may start.
+    if (!markedRef.current) {
+      markedRef.current = true;
+      markIntroReady();
+    }
+  };
 
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
@@ -37,13 +48,13 @@ export function InitialLoader() {
     timers.push(tFade);
 
     const tHide = setTimeout(() => {
-      setHidden(true);
+      finish();
     }, totalDelay + 550);
     timers.push(tHide);
 
     // Safety fallback: force-hide after 2.8s
     const tSafety = setTimeout(() => {
-      setHidden(true);
+      finish();
     }, 2800);
     timers.push(tSafety);
 

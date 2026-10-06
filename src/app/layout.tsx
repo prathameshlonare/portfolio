@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Syne, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { TransitionProvider } from "@/components/providers/transition-provider";
+import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
 import { InitialLoader } from "@/components/animated/initial-loader";
 import { AgentationProvider } from "@/components/providers/agentation-provider";
 
@@ -112,7 +113,9 @@ export default function RootLayout({
           Skip to content
         </a>
         <InitialLoader />
-        <TransitionProvider>{children}</TransitionProvider>
+        <SmoothScrollProvider>
+          <TransitionProvider>{children}</TransitionProvider>
+        </SmoothScrollProvider>
         <AgentationProvider />
       </body>
     </html>

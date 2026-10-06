@@ -19,6 +19,24 @@ const InteractiveGlobeInner = dynamic(
 );
 
 export function LazyGlobe() {
+  // Warm the globe chunk during idle time after load, so the first
+  // scroll into the hero never pays download + parse mid-scroll.
+  React.useEffect(() => {
+    const warm = () => {
+      import("./interactive-globe").catch(() => {});
+    };
+    const w = window as unknown as {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    if (typeof w.requestIdleCallback === "function") {
+      const id = w.requestIdleCallback(warm, { timeout: 3000 });
+      return () => w.cancelIdleCallback?.(id);
+    }
+    const t = window.setTimeout(warm, 1500);
+    return () => window.clearTimeout(t);
+  }, []);
+
   return (
     <Suspense
       fallback={

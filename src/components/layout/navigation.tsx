@@ -15,9 +15,30 @@ const NAV_LINKS = [
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const firstMenuItemRef = useRef<HTMLAnchorElement | null>(null);
+
+  useEffect(() => {
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const y = window.scrollY;
+      // Hysteresis band: shrink past 80, restore only below 24,
+      // so fast flicks around one line can't flutter the header.
+      setScrolled((prev) => (prev ? y > 24 : y > 80));
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Move focus into menu on open, return to hamburger on close
   useEffect(() => {
@@ -31,10 +52,10 @@ export function Navigation() {
 
   return (
     <header className="sticky top-2 md:top-4 z-50 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-8 mb-6 md:mb-8">
-      <div className="bg-white border-3 border-[#1A1A2E] shadow-[4px_4px_0px_#1A1A2E] md:shadow-[6px_6px_0px_#1A1A2E] px-3 py-2.5 md:px-6 md:py-3 flex items-center justify-between">
+      <div className={`bg-white border-3 border-[#1A1A2E] shadow-[4px_4px_0px_#1A1A2E] md:shadow-[6px_6px_0px_#1A1A2E] px-3 flex items-center justify-between transition-all duration-200 ${scrolled ? "py-1.5 md:px-5 md:py-2" : "py-2.5 md:px-6 md:py-3"}`}>
         {/* Brand Logo */}
         <TransitionLink href="/" className="flex items-center gap-2 md:gap-3 group">
-          <div className="w-8 h-8 md:w-9 md:h-9 bg-[#FF6B35] border-2 border-[#1A1A2E] flex items-center justify-center text-white font-mono font-black text-lg md:text-xl shadow-[2px_2px_0px_#1A1A2E] group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+          <div className="w-8 h-8 md:w-9 md:h-9 bg-[#FF6B35] border-2 border-[#1A1A2E] flex items-center justify-center text-white font-mono font-black text-lg md:text-xl shadow-[2px_2px_0px_#1A1A2E]">
             P
           </div>
           <div className="flex flex-col">
@@ -55,7 +76,7 @@ export function Navigation() {
               <TransitionLink
                 key={link.label}
                 href={link.href}
-                className={`border-2 border-[#1A1A2E] font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] flex items-center gap-1.5 ${
+                className={`border-2 border-[#1A1A2E] font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-[2px] active:translate-y-[2px] flex items-center gap-1.5 ${
                   isActive
                     ? "bg-[#FF6B35] text-white"
                     : "bg-[#FAFAFA] text-[#1A1A2E]"
@@ -71,15 +92,15 @@ export function Navigation() {
             href="https://drive.google.com/uc?export=download&id=1bwj41m9DzgKIYDoDX3lLXMpvirutykSz"
             target="_blank"
             rel="noopener noreferrer"
-            className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] flex items-center gap-1.5"
+            className="border-2 border-[#1A1A2E] bg-[#FAFAFA] text-[#1A1A2E] font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-[2px] active:translate-y-[2px] flex items-center gap-1.5"
           >
             <FileDown className="w-3.5 h-3.5" /> RESUME
           </a>
 
           <TransitionLink href="/contact/">
-            <NeoButton variant="primary" className="py-1.5 px-4 text-xs font-mono">
+            <span className="border-2 border-[#1A1A2E] bg-[#FF6B35] text-white font-mono font-bold text-xs px-3.5 py-1.5 shadow-[2px_2px_0px_#1A1A2E] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-[2px] active:translate-y-[2px] flex items-center gap-1.5">
               Let&apos;s Talk <ArrowUpRight className="w-3.5 h-3.5" />
-            </NeoButton>
+            </span>
           </TransitionLink>
         </nav>
 

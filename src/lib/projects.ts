@@ -7,6 +7,11 @@ export interface ProjectItem {
   github: string | null;
   live: string | null;
   image?: string | null;
+  outcome?: string | null;
+  role?: string | null;
+  evidence?: string | null;
+  failureLearned?: string | null;
+  impact?: "HIGH" | "MEDIUM" | null;
 }
 
 export const cloudProjects: ProjectItem[] = [
@@ -20,6 +25,12 @@ export const cloudProjects: ProjectItem[] = [
     github: "https://github.com/prathameshlonare/duokart",
     live: "https://prathameshlonare.github.io/duokart/",
     image: "/projects/duokart/architecture.png",
+    outcome: "Survived a kill-1-EC2 drill with zero dropped responses",
+    role: "Cloud Infra Engineer, team of 2",
+    evidence: "ASG auto-healed in 3.5 min, DLQ redrive after 3 failures",
+    failureLearned:
+      "Monoliths drop orders when compute dies mid-request; fixed with SQS decoupling plus DLQ redrive",
+    impact: "HIGH",
   },
   {
     name: "Dorm-Dish",
@@ -31,6 +42,12 @@ export const cloudProjects: ProjectItem[] = [
     github: "https://github.com/prathameshlonare/Dorm-and-Dish",
     live: "/dorm-dish/",
     image: "/projects/dorm-and-dish/architecture-diagram/architecture%20diagram.png",
+    outcome: "$15+/mo idle cut to $0.00/mo",
+    role: "Cloud and Backend Engineer",
+    evidence: "CFN teardown, CloudFront edge, 350ms cold starts",
+    failureLearned:
+      "Idle EC2 billed through academic breaks; fixed by going serverless",
+    impact: "HIGH",
   },
   {
     name: "Online Voting System",
@@ -42,6 +59,12 @@ export const cloudProjects: ProjectItem[] = [
     github: "https://github.com/prathameshlonare/Online-voting-system",
     live: "/voting/",
     image: "/projects/online-voting-system/architecture-diagram/front_&_Integration_flow.png",
+    outcome: "500+ students voted with zero downtime",
+    role: "DevOps and Backend Engineer",
+    evidence: "12m to 3m deploys, 180ms P99 latency",
+    failureLearned:
+      "Paper tallying caused errors and slow results; fixed with DynamoDB burst writes plus S3 audit export",
+    impact: "HIGH",
   },
   {
     name: "SysAdmin Toolkit",
@@ -53,6 +76,12 @@ export const cloudProjects: ProjectItem[] = [
     github: "https://github.com/prathameshlonare/sysadmin-toolkit",
     live: null,
     image: null,
+    outcome: "Crashed units diagnosed in under 30 seconds",
+    role: "Sole builder, Bash",
+    evidence: "systemd supervision, ShellCheck CI, dry-run validation",
+    failureLearned:
+      "Hand-checking units and sockets wasted on-call time; fixed with strict scripts",
+    impact: "MEDIUM",
   },
 ];
 

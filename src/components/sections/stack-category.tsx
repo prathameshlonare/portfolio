@@ -41,7 +41,7 @@ export function StackCategory({
   const IconComponent = ICON_MAP[iconType] || Cloud;
 
   return (
-    <div id={id} className="w-full max-w-7xl mx-auto my-3 sm:my-4 md:my-6 border-3 border-[#1A1A2E] bg-white shadow-[3px_3px_0px_#1A1A2E] sm:shadow-[6px_6px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#1A1A2E] md:hover:shadow-[8px_8px_0px_#1A1A2E]">
+    <div id={id} className="w-full max-w-7xl mx-auto my-3 sm:my-4 md:my-6 border-3 border-[#1A1A2E] bg-white shadow-[3px_3px_0px_#1A1A2E] sm:shadow-[6px_6px_0px_#1A1A2E] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5">
       {/* Category Header Bar */}
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -84,7 +84,7 @@ export function StackCategory({
         {tools.map((tool) => (
           <div
             key={tool.name}
-            className="border-2 border-[#1A1A2E] p-3 sm:p-4 md:p-5 shadow-[2px_2px_0px_#1A1A2E] sm:shadow-[3px_3px_0px_#1A1A2E] hover:shadow-[5px_5px_0px_#1A1A2E] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 flex flex-col justify-between bg-[#FAFAFA]"
+            className="border-2 border-[#1A1A2E] p-3 sm:p-4 md:p-5 shadow-[2px_2px_0px_#1A1A2E] sm:shadow-[3px_3px_0px_#1A1A2E] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-[2px] active:translate-y-[2px] flex flex-col justify-between bg-[#FAFAFA]"
           >
             <div>
               <div className="flex justify-between items-start mb-2 gap-2">

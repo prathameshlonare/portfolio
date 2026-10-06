@@ -126,7 +126,7 @@ export function CaseStudyDetail({
                     key={idx}
                     onClick={(e) => openLightbox(idx, e.currentTarget)}
                     aria-label={`View ${img.alt} in image viewer`}
-                    className="min-h-[48px] border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#FF6B35] hover:shadow-[4px_4px_0px_#FF6B35] transition-all cursor-pointer bg-[#FAFAFA] overflow-hidden aspect-video hover:-translate-x-0.5 hover:-translate-y-0.5"
+                    className="min-h-[48px] border-2 border-[#1A1A2E] shadow-[2px_2px_0px_#FF6B35] transition-transform cursor-pointer bg-[#FAFAFA] overflow-hidden aspect-video hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-[2px] active:translate-y-[2px]"
                   >
                     <img
                       src={img.src}

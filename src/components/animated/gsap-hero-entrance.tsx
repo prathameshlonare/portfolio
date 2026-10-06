@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useIntroReady } from "@/hooks/use-intro-ready";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,9 +14,13 @@ interface GsapHeroEntranceProps {
 
 export function GsapHeroEntrance({ children }: GsapHeroEntranceProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  // Wait for the boot curtain / route blinds to clear so the
+  // entrance plays visibly instead of behind a cover.
+  const ready = useIntroReady();
 
   useGSAP(
     () => {
+      if (!ready) return;
       if (!containerRef.current) return;
 
       // Skip animations if user prefers reduced motion (e.g. Windows visual effects disabled)
@@ -71,7 +76,7 @@ export function GsapHeroEntrance({ children }: GsapHeroEntranceProps) {
           "-=0.8"
         );
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [ready] }
   );
 
   return <div ref={containerRef}>{children}</div>;

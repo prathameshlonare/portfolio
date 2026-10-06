@@ -48,6 +48,21 @@ body {
   overflow-x: hidden;
 }
 
+/* Lenis smooth scroll — required helpers, no visual effect.
+   Provider mounts only on fine pointers without reduced motion. */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 
 
 @keyframes bg-box-float {

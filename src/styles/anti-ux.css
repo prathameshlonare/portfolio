@@ -11,7 +11,6 @@
 
 .neo-card:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0 #1A1A2E;
 }
 
 /* Neo-brutalist button: interactive physical button with hard shadow */
@@ -34,12 +33,10 @@
 
 .neo-btn:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #1A1A2E;
 }
 
 .neo-btn:active {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 #1A1A2E;
 }
 
 .neo-btn-secondary {
@@ -146,16 +143,16 @@
     box-shadow: 3px 3px 0 #1A1A2E;
   }
   .neo-card:hover {
-    box-shadow: 4px 4px 0 #1A1A2E;
+    transform: translate(-2px, -2px);
   }
   .neo-btn {
     box-shadow: 2px 2px 0 #1A1A2E;
   }
   .neo-btn:hover {
-    box-shadow: 3px 3px 0 #1A1A2E;
+    transform: translate(-2px, -2px);
   }
   .neo-btn:active {
-    box-shadow: 1px 1px 0 #1A1A2E;
+    transform: translate(2px, 2px);
   }
   .hard-shadow {
     box-shadow: 3px 3px 0 #1A1A2E;

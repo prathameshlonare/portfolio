@@ -6,29 +6,39 @@ import { NeoButton } from "@/components/anti-ux/neo-button";
 
 import { LazyGlobe } from "@/components/animated/lazy-globe";
 import { GsapHeroEntrance } from "@/components/animated/gsap-hero-entrance";
-import { ArrowRight, Terminal, Cloud, ShieldCheck, FileDown } from "lucide-react";
+import { ScrambleText } from "@/components/animated/scramble-text";
+import { useIntroReady } from "@/hooks/use-intro-ready";
+import { Terminal, Cloud, ShieldCheck, FileDown } from "lucide-react";
 import { TransitionLink } from "@/components/layout/transition-link";
 
 export function Hero() {
+  // Scramble waits for the boot curtain / route blinds to clear.
+  const ready = useIntroReady();
   return (
     <GsapHeroEntrance>
       <section className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left rail */}
+          <div className="hidden lg:flex lg:col-span-1 items-stretch justify-start" aria-hidden="true">
+            <span className="font-mono text-[10px] font-bold tracking-[0.3em] text-zinc-500 [writing-mode:vertical-rl] rotate-180 border-l-2 border-[#1A1A2E] pl-1.5">
+              PORTFOLIO 2026 / IST / AKOT
+            </span>
+          </div>
           {/* Left Column: Typography & Content */}
-          <div className="lg:col-span-7 flex flex-col gap-5 md:gap-6 relative z-10 min-w-0">
+          <div className="lg:col-span-6 flex flex-col gap-5 md:gap-6 relative z-10 min-w-0">
             <div className="flex items-center gap-3 gsap-badge">
               <MonoLabel className="text-[#FF6B35] flex items-center gap-2 bg-amber-100 border border-[#1A1A2E] px-2.5 py-1 md:px-3 shadow-[2px_2px_0px_#1A1A2E] text-[10px] md:text-xs">
-                <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                DEV-OPS ARCHITECTURE 2026
+                <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-emerald-500"></span>
+                OPEN TO WORK: REPLIES IN 24H IST
               </MonoLabel>
             </div>
 
             <div className="flex flex-col gsap-title min-w-0">
               <ViewportType as="h1" className="text-[var(--text-hero)]">
-                PRATHAMESH
+                <ScrambleText text="PRATHAMESH" duration={1400} delay={150} start={ready} />
               </ViewportType>
               <ViewportType as="div" className="text-[#FF6B35] text-[var(--text-hero)]">
-                LONARE
+                <ScrambleText text="LONARE" duration={1100} delay={400} start={ready} />
               </ViewportType>
             </div>
 
@@ -61,7 +71,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-3 pt-4 gsap-cta">
               <TransitionLink href="/work/" className="w-full sm:w-auto">
                 <NeoButton variant="primary" className="w-full sm:w-auto text-sm font-mono tracking-wider justify-center">
-                  SEE THE WORK <ArrowRight className="w-4 h-4" />
+                  SEE THE WORK
                 </NeoButton>
               </TransitionLink>
               <TransitionLink href="/contact/" className="w-full sm:w-auto">
@@ -73,7 +83,7 @@ export function Hero() {
                 href="https://drive.google.com/uc?export=download&id=1bwj41m9DzgKIYDoDX3lLXMpvirutykSz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 font-mono text-xs font-bold text-[#1A1A2E] bg-[#FAFAFA] border-2 border-[#1A1A2E] px-3 py-2.5 shadow-[2px_2px_0px_#1A1A2E] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#1A1A2E] transition-all"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 font-mono text-xs font-bold text-[#1A1A2E] bg-[#FAFAFA] border-3 border-[#1A1A2E] px-3 py-2.5 shadow-[2px_2px_0px_#1A1A2E] md:shadow-[4px_4px_0px_#1A1A2E] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-[2px] active:translate-y-[2px]"
               >
                 <FileDown className="w-4 h-4" /> RESUME (PDF)
               </a>

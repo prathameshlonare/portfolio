@@ -2,7 +2,7 @@ import { projects } from "@/lib/projects";
 import { MonoLabel } from "@/components/anti-ux/mono-label";
 import { NeoCard } from "@/components/anti-ux/neo-card";
 import { NeoButton } from "@/components/anti-ux/neo-button";
-import { ExternalLink, ArrowUpRight, Server } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/ui/brand-icons";
 import { TransitionLink } from "@/components/layout/transition-link";
 
@@ -18,58 +18,75 @@ export function FeaturedWorkPreview() {
         </div>
         <TransitionLink href="/work/">
           <NeoButton variant="secondary" className="font-mono text-xs">
-            VIEW ALL CASE STUDIES <ArrowUpRight className="w-4 h-4" />
+            VIEW ALL <ArrowUpRight className="w-4 h-4" />
           </NeoButton>
         </TransitionLink>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
         {projects.map((project, idx) => (
           <NeoCard
             key={project.name}
             variant={idx % 2 === 0 ? "orange" : "purple"}
-            className="flex flex-col justify-between"
+            className="flex flex-col h-full"
           >
-            <div>
-              <div className="flex justify-between items-center mb-4 pb-3 border-b-2 border-[#1A1A2E]">
-                <div className="flex items-center gap-2">
-                  <Server className="w-4 h-4 text-[#FF6B35]" />
-                  <span className="font-mono text-xs font-bold text-[#1A1A2E]">
-                    0{idx + 1} / CASE STUDY
-                  </span>
-                </div>
-                <span className="font-mono text-xs font-bold text-zinc-500">{project.year}</span>
-              </div>
-
-              <h3 className="text-xl md:text-2xl font-black text-[#1A1A2E] mb-3">{project.name}</h3>
-
-              {project.image && (
-                <div className="w-full h-36 md:h-44 mb-4 border-2 border-[#1A1A2E] bg-black shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] relative overflow-hidden group">
-                  <img
-                    src={project.image}
-                    alt={`${project.name} Architecture / Screenshot`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
+            <div className="flex justify-between items-center gap-2 mb-4 pb-3 border-b-2 border-[#1A1A2E]">
+              <span className="font-mono text-xs font-bold text-[#1A1A2E]">
+                0{idx + 1} / {project.name.toUpperCase()} &middot; {project.year}
+              </span>
+              {project.impact && (
+                <span className="font-mono text-[10px] font-bold text-white bg-[#FF6B35] border-2 border-[#1A1A2E] px-2 py-0.5 shrink-0">
+                  IMPACT {project.impact}
+                </span>
               )}
-
-              <p className="text-sm font-medium text-zinc-700 leading-relaxed mb-6">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="font-mono text-[11px] font-bold bg-[#FAFAFA] border border-[#1A1A2E] px-2 py-0.5"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
             </div>
 
-            <div className="flex flex-wrap gap-2.5 sm:gap-3 pt-4 border-t-2 border-[#1A1A2E]">
+            <h3 className="text-xl md:text-2xl font-black text-[#1A1A2E] mb-3">
+              {project.outcome ?? project.name}
+            </h3>
+
+            {project.image && (
+              <div className="w-full h-36 md:h-44 mb-4 border-2 border-[#1A1A2E] bg-black shadow-[2px_2px_0px_#1A1A2E] md:shadow-[3px_3px_0px_#1A1A2E] relative overflow-hidden group">
+                <img
+                  src={project.image}
+                  alt={`${project.name} Architecture / Screenshot`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            )}
+
+            <p className="text-sm font-medium text-zinc-700 leading-relaxed mb-3">
+              {project.description}
+            </p>
+
+            {project.role && (
+              <p className="font-mono text-[11px] text-[#1A1A2E] leading-relaxed">
+                Role: {project.role}
+              </p>
+            )}
+            {project.evidence && (
+              <p className="font-mono text-[11px] text-zinc-500 leading-relaxed">
+                Evidence: {project.evidence}
+              </p>
+            )}
+            {project.failureLearned && (
+              <p className="font-mono text-[11px] leading-relaxed mt-2 bg-amber-100 border-2 border-[#1A1A2E] px-2.5 py-2">
+                Failure learned: {project.failureLearned}
+              </p>
+            )}
+
+            <div className="flex flex-wrap gap-2 mt-auto pt-6">
+              {project.tech.map((t) => (
+                <span
+                  key={t}
+                  className="font-mono text-[11px] font-bold bg-[#FAFAFA] border border-[#1A1A2E] px-2 py-0.5"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-2.5 sm:gap-3 pt-4 mt-4 border-t-2 border-[#1A1A2E]">
               {project.github && (
                 <a
                   href={project.github}
@@ -97,4 +114,3 @@ export function FeaturedWorkPreview() {
     </section>
   );
 }
-

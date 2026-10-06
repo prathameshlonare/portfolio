@@ -16,18 +16,18 @@ export function ContactPreview() {
         <div className="lg:col-span-6 flex flex-col gap-4 md:gap-6">
           <div>
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-black text-[#1A1A2E] tracking-tight">
-              LET&apos;S BUILD SOMETHING.
+              STOP BABYSITTING DEPLOYS.
             </h2>
           </div>
 
           <p className="text-sm md:text-base text-zinc-700 font-medium leading-relaxed">
-            Interested in cloud infrastructure, CI/CD pipeline optimization, or full-stack DevOps architecture? Send a message or email me directly.
+            Architecture review, CI/CD rescue, or full DevOps setup. I reply in 24h IST with a plan, not a pitch.
           </p>
 
           <div className="flex flex-col gap-2.5 md:gap-3 font-mono text-xs md:text-sm">
             <a
               href={mailtoHref}
-              className="neo-card p-3 md:p-4 border-2 border-[#1A1A2E] shadow-[3px_3px_0px_#1A1A2E] md:shadow-[4px_4px_0px_#1A1A2E] flex items-center justify-between transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#1A1A2E] md:hover:shadow-[6px_6px_0px_#1A1A2E]"
+              className="p-3 md:p-4 border-2 border-[#1A1A2E] shadow-[3px_3px_0px_#1A1A2E] md:shadow-[4px_4px_0px_#1A1A2E] flex items-center justify-between"
             >
               <div className="flex items-center gap-2 md:gap-3 min-w-0">
                 <Mail className="w-4 h-4 md:w-5 md:h-5 text-[#FF6B35] shrink-0" />
@@ -58,13 +58,13 @@ export function ContactPreview() {
 
             <a href={mailtoHref} className="block">
               <NeoButton variant="primary" className="w-full py-3 font-mono text-sm justify-center">
-                <Mail className="w-4 h-4" /> Open Email Client <ArrowUpRight className="w-4 h-4" />
+                <Mail className="w-4 h-4" /> Email me about your pipeline <ArrowUpRight className="w-4 h-4" />
               </NeoButton>
             </a>
 
             <TransitionLink href="/contact/" className="block">
               <NeoButton variant="secondary" className="w-full py-3 font-mono text-sm justify-center">
-                View Full Contact Page
+                Open the contact page
               </NeoButton>
             </TransitionLink>
           </div>
