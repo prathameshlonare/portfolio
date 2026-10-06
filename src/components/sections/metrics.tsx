@@ -60,6 +60,14 @@ export function Metrics() {
             </p>
           </div>
         </div>
+        <div className="border-t-2 border-[#1A1A2E] mt-4 md:mt-6 pt-3 md:pt-4 font-mono text-[11px] md:text-xs flex flex-wrap items-center justify-between gap-2">
+          <span className="font-bold text-zinc-600">
+            PIPELINES <span className="text-[#FF6B35]">●</span> SNAPSHOT ON EVERY DEPLOY
+          </span>
+          <a href="/activity/" className="font-bold text-[#1A1A2E] hover:text-[#FF6B35] transition-colors">
+            SEE LIVE PROOF →
+          </a>
+        </div>
       </div>
     </section>
   );
