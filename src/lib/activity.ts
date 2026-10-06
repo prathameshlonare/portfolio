@@ -38,6 +38,8 @@ const REPOS = [
 
 const FALLBACK_DATE = "2026-10-06";
 
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+
 function unavailable(slug: string, name: string): RepoActivity {
   return {
     slug,
@@ -64,6 +66,7 @@ async function gh<T>(path: string, token?: string): Promise<T> {
       "User-Agent": "portfolio-activity-snapshot",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
+    signal: AbortSignal.timeout(15000),
   });
   if (!res.ok) throw new Error(`GitHub ${res.status} on ${path}`);
   return (await res.json()) as T;
@@ -100,7 +103,7 @@ async function fetchRepo(
     gh<GhRepo>(`/repos/${OWNER}/${slug}`, token),
   ]);
 
-  const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  const weekAgo = Date.now() - WEEK_MS;
   const weekRuns = runs.workflow_runs.filter(
     (r) => Date.parse(r.created_at) >= weekAgo && r.conclusion !== null
   );
@@ -118,7 +121,7 @@ async function fetchRepo(
       : null,
     commits: commits.slice(0, 5).map((c) => ({
       sha: c.sha.slice(0, 7),
-      message: c.commit.message.split("\n")[0],
+      message: c.commit.message.split("\n")[0] ?? "",
       date: c.commit.author?.date ?? "",
     })),
     stars: repo.stargazers_count,
@@ -137,6 +140,6 @@ export async function getActivitySnapshot(): Promise<ActivitySnapshot> {
     );
     return { fetchedAt: new Date().toISOString().slice(0, 10), repos };
   } catch {
-    return FALLBACK_SNAPSHOT;
+    return { ...FALLBACK_SNAPSHOT, fetchedAt: new Date().toISOString().slice(0, 10) };
   }
 }
